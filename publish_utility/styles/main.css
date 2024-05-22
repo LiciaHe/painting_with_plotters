@@ -28,38 +28,38 @@ a:hover {
 }
 
 .margin_lr {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 p {
   text-align: left;
   font-size: 1.7vw;
-  line-height: 1.955vw;
+  line-height: 1.785vw;
 }
 
 @media (max-width: 500px) {
   p, ol, ul {
     font-size: 5.5vw;
-    line-height: 6.325vw;
+    line-height: 5.775vw;
   }
   p *, ol *, ul * {
     font-size: 5.5vw;
-    line-height: 6.325vw;
+    line-height: 5.775vw;
   }
 }
 @media (max-width: 1000px) {
   p, ol, ul {
     font-size: 3vw;
-    line-height: 3.45vw;
+    line-height: 3.15vw;
   }
   p *, ol *, ul * {
     font-size: 3vw;
-    line-height: 3.45vw;
+    line-height: 3.15vw;
   }
 }
 ol {
-  line-height: 1.955vw;
+  line-height: 1.785vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
@@ -67,7 +67,7 @@ ol {
 }
 
 ul {
-  line-height: 1.955vw;
+  line-height: 1.785vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
@@ -207,39 +207,39 @@ a:hover {
 }
 
 .margin_lr {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 p {
   text-align: left;
   font-size: 1.7vw;
-  line-height: 1.955vw;
+  line-height: 1.785vw;
 }
 
 @media (max-width: 500px) {
   p, ol, ul {
     font-size: 5.5vw;
-    line-height: 6.325vw;
+    line-height: 5.775vw;
   }
   p *, ol *, ul * {
     font-size: 5.5vw;
-    line-height: 6.325vw;
+    line-height: 5.775vw;
   }
 }
 @media (max-width: 1000px) {
   p, ol, ul {
     font-size: 3vw;
-    line-height: 3.45vw;
+    line-height: 3.15vw;
   }
   p *, ol *, ul * {
     font-size: 3vw;
-    line-height: 3.45vw;
+    line-height: 3.15vw;
   }
 }
 
 ol {
-  line-height: 1.955vw;
+  line-height: 1.785vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
@@ -247,7 +247,7 @@ ol {
 }
 
 ul {
-  line-height: 1.955vw;
+  line-height: 1.785vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
@@ -311,8 +311,8 @@ h5 {
 }
 
 .hor_container {
-  width: 80%;
-  margin-top: 3.3333333333%;
+  width: 60%;
+  margin-top: 6.6666666667%;
 }
 .hor_container * {
   width: 100%;
@@ -322,7 +322,7 @@ h5 {
   font-size: 1.7vw;
   border-bottom: 3px dotted #01090e;
   text-align: center;
-  width: 80%;
+  width: 60%;
 }
 
 .course-module {
@@ -356,11 +356,11 @@ h5 {
 }
 
 .iframe_container {
-  width: 80%;
+  width: 60%;
   height: 50vh;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20%;
   overflow: hidden;
 }
 
@@ -373,12 +373,12 @@ h5 {
 
 .nav {
   font-size: 2.125vw;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
   flex-wrap: wrap;
-  width: 80%;
+  width: 60%;
   height: auto;
 }
 @media (max-width: 500px) {
@@ -399,21 +399,21 @@ h5 {
 
 .full_width_content {
   width: 100%;
-  margin-top: 1.25%;
+  margin-top: 2.5%;
 }
 .full_width_content * {
   text-align: left;
   margin: 0;
-  margin-top: 0.3125%;
+  margin-top: 0.625%;
 }
 
 .left_column {
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  width: 80%;
-  margin-bottom: 10%;
-  margin-top: 2.5%;
+  width: 60%;
+  margin-bottom: 20%;
+  margin-top: 5%;
 }
 @media (max-width: 500px) {
   .left_column {
@@ -428,12 +428,12 @@ h5 {
 }
 .left_column .preview {
   flex-basis: 60%;
-  max-width: 57.5%;
+  max-width: 55%;
   max-height: 100%;
   height: 100%;
   display: block;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   text-align: center;
   overflow: hidden;
 }
@@ -446,8 +446,8 @@ h5 {
 }
 .left_column .preview * {
   margin: 0;
-  max-width: 95%;
-  max-height: 95%;
+  max-width: 90%;
+  max-height: 90%;
   padding: 0;
 }
 .left_column .description {
@@ -460,11 +460,11 @@ h5 {
   .left_column .description {
     flex-basis: 100%;
     height: auto;
-    padding-top: 2.5%;
+    padding-top: 5%;
   }
 }
 .left_column .description * {
-  padding-bottom: 5%;
+  padding-bottom: 10%;
   text-align: left;
 }
 .left_column .description a {

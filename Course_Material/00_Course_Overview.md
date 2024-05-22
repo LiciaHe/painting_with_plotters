@@ -73,7 +73,7 @@ MODULE START
 
 MODULE END 
 ## Additional Resources
--  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. [Question 21](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q21) in this article points to several useful resources for plotter/plotter paintings. 
+-  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. [Question 17](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17) in this article points to several useful resources for plotter/plotter paintings. 
 - Coming soon 
 ## Disclaimers/Note
 1. The course primarily focuses on sharing my (Licia's) plotter painting practice.  Audiences will have to adjust according to their own setup. This is especially important regarding machine operation. Always follow instructions and safety rules provided by your machine manufacturers. 

@@ -34,7 +34,7 @@ def create_and_append_tag(soup,parent,name,attr):
     parent.append(tag)
     return tag
 
-def process_links(soup,template_loc):
+def process_links(soup,template_loc,level=2):
     links=soup.find_all("link")
     for link in links:
         href=link["href"]
@@ -43,16 +43,28 @@ def process_links(soup,template_loc):
 
         style_tag=soup.new_tag("style")
         with open(href,"r") as css_file:
-            style_tag.string=css_file.read()
+            style_string=css_file.read()
+
+
+        level_text = "../" * level
+
+        correct_font = f'src: url(\'{level_text}Straightline_full.woff\') format(\'woff\');'
+        font_reg = r'src: url.*?;'
+
+        style_string = re.sub(font_reg, correct_font, style_string)
+
+        style_tag.string = style_string
+
         link_parent=link.parent
         link_parent.append(style_tag)
         # link_parent.extract(link)
         link.extract()
+    #make sure the font href is correct
 def create_title(original_name,template_soup):
     #update title
-    title_text=name_treat(original_name)
+    # title_text=name_treat(original_name)
     title_tag=template_soup.find("title")
-    title_tag.string=title_text
+    title_tag.string="Painting With Plotters"
 
 def step_2_create_table(container, module,template_soup):
     ## producing a header
@@ -129,6 +141,7 @@ def make_front_page(original_name,template_loc,template_name,export_name):
     process_images(template_soup)
     process_hrefs(template_soup)
 
+
     with open(f'{export_loc}{export_name}.html',"w",encoding="utf-8") as exf:
         exf.write(template_soup.prettify())
 
@@ -139,6 +152,7 @@ def make_front_page(original_name,template_loc,template_name,export_name):
 
 input_loc="../Course_Material/"
 export_loc="../website/"
+
 
 template_loc=""
 template_name="front_page_template"
