@@ -1,0 +1,105 @@
+@font-face
+  font-family: 'straightlineregular'
+  src: url('Straightline_full.woff') format('woff')
+  font-weight: normal
+  font-style: normal
+
+*
+  box-sizing: border-box
+  font-family: straightlineregular
+  //min-font-size: 15px!important
+
+html, body
+  width : 100%
+  height: 100%
+  margin: 0
+  padding: 0
+  //height: auto
+
+
+//color
+$primary-color:#01090e
+$secondary-color: #eeeeee
+$background-color:white
+
+//font
+$base-font-size:1.7vw
+
+//  space
+$standard-padding:10px
+$margin: 10%
+$mobile_font_size:4vw
+//$breakpoint-phone: 768px
+$breakpoint-phone: 648
+//todo
+$mlr_margin: 100-2*$margin
+
+a
+  target: "_blank"
+  color: $primary-color
+  font-size: inherit
+
+a:hover
+  background: $primary-color
+  color: white
+
+.margin_lr
+  margin-left: $margin
+  margin-right: $margin
+
+
+
+///font
+
+
+p
+  text-align: left
+  font-size: 1*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size
+ol
+  list-style-position: inside
+  padding: 0
+  text-align: left
+  //margin-left: $margin
+  //margin-right: $margin
+  font-size: 1*$base-font-size
+
+  @media (max-width: $breakpoint-phone)
+    *
+      font-size: $mobile_font_size
+
+h1
+  text-align: center
+  font-size: 2.5*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.25
+
+h2
+  text-align: left
+  font-size: 1.5*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.15
+h3
+  text-align: left
+  font-size: 1.25*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.15
+h4
+  text-align: left
+  font-size: 1.15*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.15
+h5
+  text-align: left
+  font-size: 1.075*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.15
+
+
+
+
+//hr
+//  border: none
+//  height: 2px
+//

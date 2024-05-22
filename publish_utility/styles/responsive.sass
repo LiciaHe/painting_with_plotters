@@ -1,0 +1,71 @@
+@use "basic"
+
+.flex-container
+  display: flex
+
+
+.center-center-column
+  @extend .flex-container
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+
+.center-start-column
+  @extend .flex-container
+  align-items: center
+  justify-content: start
+  flex-direction: column
+.center-around-column
+  @extend .flex-container
+  align-items: center
+  justify-content: space-around
+  flex-direction: column
+
+.start-start-column
+  @extend .flex-container
+  align-items: start
+  justify-content: start
+  flex-direction: column
+
+.center-center-row
+  @extend .flex-container
+  align-items: center
+  justify-content: center
+  flex-direction: row
+
+.center-between-row
+  @extend .flex-container
+  align-items: center
+  justify-content: space-between
+  flex-direction: row
+
+.center-around-row
+  @extend .flex-container
+  align-items: center
+  justify-content: space-around
+  flex-direction: row
+
+.start-start-row
+  @extend .flex-container
+  align-items: start
+  justify-content: start
+  flex-direction: row
+
+.start-around-row
+  @extend .flex-container
+  align-items: start
+  justify-content: space-around
+  flex-direction: row
+
+
+
+//$mobile-font-size:4vw
+//
+//@media only screen and (max-width: 700px)
+//  *
+//    font-size: $mobile-font-size
+//  h1
+//    font-size: $mobile-font-size*2
+//
+

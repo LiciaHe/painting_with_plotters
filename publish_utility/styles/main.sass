@@ -1,0 +1,160 @@
+@import "responsive"
+@import "basic"
+
+
+.container
+  @extend .center-center-column
+  width: 100%
+  @media (max-width: $breakpoint-phone)
+    //background: #0ab2b7
+    font-size: $mobile_font_size
+
+.hor_container
+  @extend .center-center-column
+  width: 100%-2*$margin
+  margin-top: $margin/3
+  *
+    width: 100%
+    //margin-left: $margin
+    //margin-right: $margin
+.mini-tag
+  font-size: $base-font-size
+  border-bottom: 3px dotted $primary-color
+  text-align: center
+  width: 100-2*$margin
+//@extend .margin_lr
+.course-module
+  @extend .flex-container
+  align-items: start
+  justify-content: space-between
+  flex-direction: row
+  border-bottom: 2px solid #01090e
+  .module
+    flex-basis: 25%
+  .topic
+    flex-basis: 30%
+  .material
+    flex-basis: 20%
+
+
+
+
+.icon
+  width: 30%
+  @media (max-width: $breakpoint-phone)
+    width: 50%
+
+
+//multimedia
+.iframe_container
+  width: 100-2*$margin
+  height: 50vh
+  margin-left: $margin
+  margin-right: $margin
+  margin-bottom: $margin
+  @extend .center-center-column
+  overflow: hidden
+
+.responsive-iframe
+  //width: 100-2*$margin
+  width: 200vw
+  height: 200vw
+  border: none
+  max-width: 100%
+
+
+//navigation
+.nav
+  font-size: 1.25*$base-font-size
+  @media (max-width: $breakpoint-phone)
+    font-size: $mobile_font_size*1.15
+    flex-wrap: wrap
+  @extend .center-around-row
+  margin-left: $margin
+  margin-right: $margin
+  margin-top: $margin/2
+  margin-bottom: $margin/2
+  flex-wrap: wrap
+  width: 100-2*$margin
+  height: auto
+  div
+    padding: 3%
+    @media (max-width: $breakpoint-phone)
+      flex-basis: 100%
+      text-align: center
+
+
+$content_margin:$margin/8
+.full_width_content
+  width: 100%
+  margin-top: $content_margin
+  *
+    text-align: left
+    margin: 0
+    margin-top: $content_margin/4
+
+$preview_width:60%
+$des_width:100-$preview_width
+$content_margin:$margin/4
+
+.left_column
+  @extend .flex-container
+  align-items: center
+  justify-content: space-between
+  flex-direction: row
+  width: $mlr_margin
+  //max-height: 100vh
+  margin-bottom: $margin
+  margin-top: $margin/4
+
+  @media (max-width: $breakpoint-phone)
+    flex-wrap: wrap
+    justify-content: center
+    text-align: center
+  *
+    margin: 0
+    padding: 0
+
+  .preview
+    flex-basis: $preview_width
+    max-width: $preview_width -$content_margin
+    max-height: 100%
+    height: 100%
+    //padding-right: $content_margin
+    display: block
+    //padding-left: $content_margin/2
+    //padding-right: $content_margin/2
+    padding-top: $content_margin
+    padding-bottom: $content_margin
+    @extend .center-center-column
+    text-align: center
+    overflow: hidden
+
+    @media (max-width: $breakpoint-phone)
+      flex-basis: 100%
+      width: 100%
+      max-width: 100%
+    *
+      margin: 0
+      max-width: 100%-2*$content_margin
+      max-height: 100%-2*$content_margin
+      padding: 0
+
+
+
+  .description
+    flex-basis: $des_width
+    height: 100%
+    text-align: center
+    padding: 0
+    @media (max-width: $breakpoint-phone)
+      flex-basis: 100%
+      height: auto
+      padding-top: $content_margin
+    *
+      padding-bottom: $content_margin*2
+      text-align: left
+    a
+      padding: 0
+
+

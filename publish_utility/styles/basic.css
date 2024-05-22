@@ -1,0 +1,107 @@
+@font-face {
+  font-family: "straightlineregular";
+  src: url("Straightline_full.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+}
+@media (max-width: 648) {
+  p {
+    font-size: 4vw;
+  }
+}
+
+ol {
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+@media (max-width: 648) {
+  ol * {
+    font-size: 4vw;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+@media (max-width: 648) {
+  h1 {
+    font-size: 5vw;
+  }
+}
+
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+@media (max-width: 648) {
+  h2 {
+    font-size: 4.6vw;
+  }
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+@media (max-width: 648) {
+  h3 {
+    font-size: 4.6vw;
+  }
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+@media (max-width: 648) {
+  h4 {
+    font-size: 4.6vw;
+  }
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+@media (max-width: 648) {
+  h5 {
+    font-size: 4.6vw;
+  }
+}
+
+/*# sourceMappingURL=basic.css.map */
