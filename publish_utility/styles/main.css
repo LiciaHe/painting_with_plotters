@@ -35,85 +35,88 @@ a:hover {
 p {
   text-align: left;
   font-size: 1.7vw;
+  line-height: 1.955vw;
 }
 
-@media (max-width: 648) {
-  p {
-    font-size: 4vw;
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.45vw;
   }
 }
 ol {
+  line-height: 1.955vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
   font-size: 1.7vw;
 }
 
-@media (max-width: 648) {
-  ol * {
-    font-size: 4vw;
-  }
-}
 ul {
+  line-height: 1.955vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
   font-size: 1.7vw;
 }
 
-@media (max-width: 648) {
-  ul * {
-    font-size: 4vw;
-  }
-}
 h1 {
   text-align: center;
   font-size: 4.25vw;
 }
 
-@media (max-width: 648) {
-  h1 {
-    font-size: 5vw;
-  }
-}
 h2 {
   text-align: left;
   font-size: 2.55vw;
 }
 
-@media (max-width: 648) {
-  h2 {
-    font-size: 4.6vw;
-  }
-}
 h3 {
   text-align: left;
   font-size: 2.125vw;
 }
 
-@media (max-width: 648) {
-  h3 {
-    font-size: 4.6vw;
-  }
-}
 h4 {
   text-align: left;
   font-size: 1.955vw;
 }
 
-@media (max-width: 648) {
-  h4 {
-    font-size: 4.6vw;
-  }
-}
 h5 {
   text-align: left;
   font-size: 1.8275vw;
 }
 
-@media (max-width: 648) {
-  h5 {
-    font-size: 4.6vw;
+@media (max-width: 500px) {
+  h1, h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1, h2 {
+    font-size: 4.05vw;
+  }
+}
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
   }
 }
 .flex-container, .left_column, .course-module, .start-around-row, .start-start-row, .center-around-row, .nav, .center-between-row, .center-center-row, .start-start-column, .center-around-column, .center-start-column, .center-center-column, .left_column .preview, .iframe_container, .hor_container, .container {
@@ -211,93 +214,99 @@ a:hover {
 p {
   text-align: left;
   font-size: 1.7vw;
+  line-height: 1.955vw;
 }
-@media (max-width: 648) {
-  p {
-    font-size: 4vw;
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.45vw;
   }
 }
 
 ol {
+  line-height: 1.955vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
   font-size: 1.7vw;
-}
-@media (max-width: 648) {
-  ol * {
-    font-size: 4vw;
-  }
 }
 
 ul {
+  line-height: 1.955vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
   font-size: 1.7vw;
-}
-@media (max-width: 648) {
-  ul * {
-    font-size: 4vw;
-  }
 }
 
 h1 {
   text-align: center;
   font-size: 4.25vw;
 }
-@media (max-width: 648) {
-  h1 {
-    font-size: 5vw;
-  }
-}
 
 h2 {
   text-align: left;
   font-size: 2.55vw;
-}
-@media (max-width: 648) {
-  h2 {
-    font-size: 4.6vw;
-  }
 }
 
 h3 {
   text-align: left;
   font-size: 2.125vw;
 }
-@media (max-width: 648) {
-  h3 {
-    font-size: 4.6vw;
-  }
-}
 
 h4 {
   text-align: left;
   font-size: 1.955vw;
-}
-@media (max-width: 648) {
-  h4 {
-    font-size: 4.6vw;
-  }
 }
 
 h5 {
   text-align: left;
   font-size: 1.8275vw;
 }
-@media (max-width: 648) {
-  h5 {
-    font-size: 4.6vw;
+
+@media (max-width: 500px) {
+  h1, h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1, h2 {
+    font-size: 4.05vw;
+  }
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
   }
 }
 
 .container {
   width: 100%;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .container {
-    font-size: 4vw;
+    font-size: 5.5vw;
   }
 }
 
@@ -319,6 +328,7 @@ h5 {
 .course-module {
   align-items: start;
   justify-content: space-between;
+  flex-wrap: wrap;
   flex-direction: row;
   border-bottom: 2px solid #01090e;
 }
@@ -339,7 +349,7 @@ h5 {
 .icon {
   width: 30%;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .icon {
     width: 50%;
   }
@@ -371,16 +381,16 @@ h5 {
   width: 80%;
   height: auto;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .nav {
-    font-size: 4.6vw;
+    font-size: 6.325vw;
     flex-wrap: wrap;
   }
 }
 .nav div {
   padding: 3%;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .nav div {
     flex-basis: 100%;
     text-align: center;
@@ -405,7 +415,7 @@ h5 {
   margin-bottom: 10%;
   margin-top: 2.5%;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .left_column {
     flex-wrap: wrap;
     justify-content: center;
@@ -427,7 +437,7 @@ h5 {
   text-align: center;
   overflow: hidden;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .left_column .preview {
     flex-basis: 100%;
     width: 100%;
@@ -446,7 +456,7 @@ h5 {
   text-align: center;
   padding: 0;
 }
-@media (max-width: 648) {
+@media (max-width: 500px) {
   .left_column .description {
     flex-basis: 100%;
     height: auto;

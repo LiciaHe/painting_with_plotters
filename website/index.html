@@ -5,8 +5,483 @@
   <title>
    00 Course Overview
   </title>
-  <link href="main.css" rel="stylesheet"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <style>
+   @font-face {
+  font-family: "straightlineregular";
+  src: url("Straightline_full.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.955vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+}
+ol {
+  line-height: 1.955vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+ul {
+  line-height: 1.955vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h1, h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1, h2 {
+    font-size: 4.05vw;
+  }
+}
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+.flex-container, .left_column, .course-module, .start-around-row, .start-start-row, .center-around-row, .nav, .center-between-row, .center-center-row, .start-start-column, .center-around-column, .center-start-column, .center-center-column, .left_column .preview, .iframe_container, .hor_container, .container {
+  display: flex;
+}
+
+.center-center-column, .left_column .preview, .iframe_container, .hor_container, .container {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.center-start-column {
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-around-column {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.start-start-column {
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-center-row {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.center-between-row {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.center-around-row, .nav {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.start-start-row {
+  align-items: start;
+  justify-content: start;
+  flex-direction: row;
+}
+
+.start-around-row {
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@font-face {
+  font-family: "straightlineregular";
+  src: url("Straightline_full.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.955vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.45vw;
+  }
+}
+
+ol {
+  line-height: 1.955vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+ul {
+  line-height: 1.955vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h1, h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1, h2 {
+    font-size: 4.05vw;
+  }
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+
+.container {
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .container {
+    font-size: 5.5vw;
+  }
+}
+
+.hor_container {
+  width: 80%;
+  margin-top: 3.3333333333%;
+}
+.hor_container * {
+  width: 100%;
+}
+
+.mini-tag {
+  font-size: 1.7vw;
+  border-bottom: 3px dotted #01090e;
+  text-align: center;
+  width: 80%;
+}
+
+.course-module {
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: 2px solid #01090e;
+}
+.course-module .module {
+  flex-basis: 25%;
+}
+.course-module .topic {
+  flex-basis: 30%;
+}
+.course-module .material {
+  flex-basis: 20%;
+}
+
+.author {
+  text-align: center;
+}
+
+.icon {
+  width: 30%;
+}
+@media (max-width: 500px) {
+  .icon {
+    width: 50%;
+  }
+}
+
+.iframe_container {
+  width: 80%;
+  height: 50vh;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  overflow: hidden;
+}
+
+.responsive-iframe {
+  width: 200vw;
+  height: 200vw;
+  border: none;
+  max-width: 100%;
+}
+
+.nav {
+  font-size: 2.125vw;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  flex-wrap: wrap;
+  width: 80%;
+  height: auto;
+}
+@media (max-width: 500px) {
+  .nav {
+    font-size: 6.325vw;
+    flex-wrap: wrap;
+  }
+}
+.nav div {
+  padding: 3%;
+}
+@media (max-width: 500px) {
+  .nav div {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+
+.full_width_content {
+  width: 100%;
+  margin-top: 1.25%;
+}
+.full_width_content * {
+  text-align: left;
+  margin: 0;
+  margin-top: 0.3125%;
+}
+
+.left_column {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 80%;
+  margin-bottom: 10%;
+  margin-top: 2.5%;
+}
+@media (max-width: 500px) {
+  .left_column {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
+.left_column * {
+  margin: 0;
+  padding: 0;
+}
+.left_column .preview {
+  flex-basis: 60%;
+  max-width: 57.5%;
+  max-height: 100%;
+  height: 100%;
+  display: block;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  text-align: center;
+  overflow: hidden;
+}
+@media (max-width: 500px) {
+  .left_column .preview {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.left_column .preview * {
+  margin: 0;
+  max-width: 95%;
+  max-height: 95%;
+  padding: 0;
+}
+.left_column .description {
+  flex-basis: 40%;
+  height: 100%;
+  text-align: center;
+  padding: 0;
+}
+@media (max-width: 500px) {
+  .left_column .description {
+    flex-basis: 100%;
+    height: auto;
+    padding-top: 2.5%;
+  }
+}
+.left_column .description * {
+  padding-bottom: 5%;
+  text-align: left;
+}
+.left_column .description a {
+  padding: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
+  </style>
  </head>
  <body>
   <div class="container">
@@ -29,10 +504,18 @@
      is a virtual course that introduces Licia He's a method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. Through this course, I (Licia) will share how I make my plotter paintings and why I make them this way. Painting with plotters (or other types of robots) requires design efforts from different aspects: 1) the preparation of machines, 2) the selection of material, 3) the making of the design, and 4) the machine operation. This course aims to provide an in-depth presentation of Licia's research and practice in these aspects.
     </p>
     <p>
-     The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for Axidraw and Python, most of the content could apply to other machines and design environments.
+     The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for
+     <a href="https://axidraw.com/" target="_blank">
+      Axidraw
+     </a>
+     and using
+     <a href="https://www.python.org/" target="_blank">
+      Python
+     </a>
+     , most of the content could apply to other machines and design environments.
     </p>
     <p>
-     <img class="full-width-img" name="00/00_banner.jpg" src="../assets/local//00/00_banner.jpg"/>
+     <img class="full-width-img" name="00/00_banner.jpg" src="https://eyesofpandaweb.s3.us-east-2.amazonaws.com/website_public/projects/painting_with_plotters/00/00_banner.jpg"/>
     </p>
     <h2>
      Course Plan
@@ -189,7 +672,7 @@
      </h3>
      <ol class="topic">
       <li>
-       Generating individual script for colored plotting
+       Generating individual scripts for colored plotting
       </li>
       <li>
        Split instruction based on max drawing distance
@@ -198,7 +681,7 @@
        DIY Ink reservoir for technical pen
       </li>
       <li>
-       Add shake operation.
+       Add shake operation
       </li>
      </ol>
      <div class="material">
@@ -258,7 +741,7 @@
      </h3>
      <ol class="topic">
       <li>
-       Designing paint refiller
+       Designing a paint refiller
       </li>
       <li>
        Designing a painting generator
@@ -297,7 +780,7 @@
      </h3>
      <ol class="topic">
       <li>
-       A project from beginning to end
+       A project from the ideation to finish
       </li>
      </ol>
      <div class="material">
@@ -312,7 +795,7 @@
      </h3>
      <ol class="topic">
       <li>
-       Ink vs watercolor vs acrylic
+       Ink vs. watercolor vs. acrylic
       </li>
       <li>
        other creative materials
@@ -351,11 +834,11 @@
     <ul>
      <li>
       My article
-      <a href="https://www.eyesofpanda.com/project/plotter_painting_q_a/">
+      <a href="https://www.eyesofpanda.com/project/plotter_painting_q_a/" target="_blank">
        20+ Questions About My Plotter Painting Practice
       </a>
       covers many of the topics in this course in a brief, written format.
-      <a href="https://www.eyesofpanda.com/project/plotter_painting_q_a/#q21">
+      <a href="https://www.eyesofpanda.com/project/plotter_painting_q_a/#q21" target="_blank">
        Question 21
       </a>
       in this article points to several useful resources for plotter/plotter paintings.

@@ -24,13 +24,19 @@ $background-color:white
 
 //font
 $base-font-size:1.7vw
+$tablet-font-size:3vw
+$line-height-factor:1.15
+$mobile_font_size:5.5vw
+
+
 
 //  space
 $standard-padding:10px
 $margin: 10%
-$mobile_font_size:4vw
-//$breakpoint-phone: 768px
-$breakpoint-phone: 648
+
+$breakpoint-tablet: 1000px
+$breakpoint-phone: 500px
+
 //todo
 $mlr_margin: 100-2*$margin
 
@@ -52,12 +58,29 @@ a:hover
 ///font
 
 
+
 p
   text-align: left
   font-size: 1*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size
+  line-height: $line-height-factor*$base-font-size
+
+p,ol,ul
+    @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size
+      line-height: $line-height-factor*$mobile_font_size
+      *
+        font-size: $mobile_font_size
+        line-height: $line-height-factor*$mobile_font_size
+
+
+    @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size
+      line-height: $line-height-factor*$tablet-font-size
+      *
+        font-size: $tablet-font-size
+        line-height: $line-height-factor*$tablet-font-size
 ol
+  line-height: $line-height-factor*$base-font-size
   list-style-position: inside
   padding: 0
   text-align: left
@@ -65,46 +88,47 @@ ol
   //margin-right: $margin
   font-size: 1*$base-font-size
 
-  @media (max-width: $breakpoint-phone)
-    *
-      font-size: $mobile_font_size
+
 ul
+  line-height: $line-height-factor*$base-font-size
   list-style-position: inside
   padding: 0
   text-align: left
-  //margin-left: $margin
-  //margin-right: $margin
   font-size: 1*$base-font-size
 
-  @media (max-width: $breakpoint-phone)
-    *
-      font-size: $mobile_font_size
 h1
   text-align: center
   font-size: 2.5*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size*1.25
 
 h2
   text-align: left
   font-size: 1.5*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size*1.15
+
 h3
   text-align: left
   font-size: 1.25*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size*1.15
+
 h4
   text-align: left
   font-size: 1.15*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size*1.15
+
 h5
   text-align: left
   font-size: 1.075*$base-font-size
-  @media (max-width: $breakpoint-phone)
-    font-size: $mobile_font_size*1.15
+
+
+h1,h2
+    @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.35
+    @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.35
+h3,h4,h5
+    @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.15
+    @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.15
+
+
 
 
 

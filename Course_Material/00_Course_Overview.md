@@ -7,7 +7,7 @@
 
 **Painting With Plotters** is a virtual course that introduces Licia He's a method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. Through this course, I (Licia) will share how I make my plotter paintings and why I make them this way. Painting with plotters (or other types of robots) requires design efforts from different aspects: 1) the preparation of machines, 2) the selection of material, 3) the making of the design, and 4) the machine operation. This course aims to provide an in-depth presentation of Licia's research and practice in these aspects. 
 
-The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for Axidraw and Python, most of the content could apply to other machines and design environments.
+The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for [Axidraw](https://axidraw.com/) and using [Python](https://www.python.org/), most of the content could apply to other machines and design environments.
 
 <img name="00/00_banner.jpg" class="full-width-img">
 ## Course Plan
@@ -41,10 +41,10 @@ MODULE START
 2. Polygon Operation 
 3. Hatch 
 ### 6. Practice: Pen Plotting with Multiple Colors 
-1. Generating individual script for colored plotting 
+1. Generating individual scripts for colored plotting 
 2. Split instruction based on max drawing distance
 3. DIY Ink reservoir for technical pen 
-4. Add shake operation. 
+4. Add shake operation 
 ### 7. Preparing Painting Materials 
 1. Making inkwells 
 2. Preparing watercolor papers 
@@ -55,16 +55,16 @@ MODULE START
 2. Refill Distance 
 3. Manually designing a plotter painting
 ### 9: Developing A Paint Refill Station 
-1. Designing paint refiller 
+1. Designing a paint refiller 
 2. Designing a painting generator 
 ### 10: Test Before Making Your First Plotter Painting
 1. Placement of inkwells
 2. Z-axis alignment 
 3. Safety 
 ### 11: Putting It Together: Project Demonstration
-1. A project from beginning to end 
+1. A project from the ideation to finish 
 ### 12: Exploring Different Materials and Techniques
-1. Ink vs watercolor vs acrylic 
+1. Ink vs. watercolor vs. acrylic 
 2. other creative materials 
 ### 13: Conclusion and Studio Tour
 1. Virtual Studio Tour 

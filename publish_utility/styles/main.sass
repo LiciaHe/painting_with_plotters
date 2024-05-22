@@ -2,12 +2,14 @@
 @import "basic"
 
 
+
 .container
   @extend .center-center-column
   width: 100%
   @media (max-width: $breakpoint-phone)
     //background: #0ab2b7
     font-size: $mobile_font_size
+
 
 .hor_container
   @extend .center-center-column
@@ -27,6 +29,7 @@
   @extend .flex-container
   align-items: start
   justify-content: space-between
+  flex-wrap: wrap
   flex-direction: row
   border-bottom: 2px solid #01090e
   .module
