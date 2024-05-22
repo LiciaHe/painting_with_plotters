@@ -8,6 +8,7 @@
 The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for Axidraw and Python, most of the content could apply to other machines and design environments.
 ## Course Plan
 
+MODULE START 
 ### 0: Introduction to Plotter Painting: A Speed Run 
 1. Why I made this course 
 2. My plotters and why I use them for paintings 
@@ -66,9 +67,7 @@ The course contains 14 modules. Each module might include video tutorials, text,
 2. Going through my favorite plotter paintings 
 3. Additional Resources
 
-## Course Material 
-Coming Soon
-
+MODULE END 
 ## Additional Resources
 Coming Soon
 
