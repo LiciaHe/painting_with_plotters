@@ -1,2 +1,4 @@
 .obsidian/
 .idea/
+assets/local/
+*.pyc

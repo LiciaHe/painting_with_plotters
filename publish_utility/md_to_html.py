@@ -50,6 +50,7 @@ def make_front_page(original_name,template_loc,export_name):
             <h3 class="material">Material</h3>
             </div>
     ''',"html.parser")
+    container.append(header_text)
     #work on module
     current_div=None
     for tag in module:
@@ -76,11 +77,27 @@ def make_front_page(original_name,template_loc,export_name):
                 "div",
                 {"class": "material"}
             )
-            resource.text="Coming Soon"
+            place_holder=create_and_append_tag(
+                template_soup,
+                resource,
+                "p",
+                {}
+            )
+            # print(place_holder)
+            place_holder.string="Coming Soon"
 
-
-    print(end)
     container.append(end)
+
+    # produce images
+    img_tag=template_soup.findAll("img")
+    for img in img_tag:
+        if "src" in img.attrs:
+            continue
+        if debug:
+            loc=f'{local_asset_loc}/{img.attrs["name"]}'
+        else:
+            loc=f'{web_asset_loc}/{img.attrs["name"]}'
+        img.attrs["src"]=loc
 
     with open(f'{export_loc}{export_name}.html',"w",encoding="utf-8") as exf:
         exf.write(template_soup.prettify())
@@ -94,6 +111,9 @@ input_loc="../Course_Material/"
 export_loc="../website/"
 template_loc="front_page_template"
 ori_name="00_Course_Overview"
+local_asset_loc="../assets/local/"
+web_asset_loc="#todo" #aws
+debug=True
 
 make_front_page(
     "00_Course_Overview",

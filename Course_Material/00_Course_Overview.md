@@ -1,11 +1,15 @@
 
 # Painting with Plotters
 
+<h2 class="author"><a href="http://eyesofpanda.com" target="_blank">Licia He</a></h2>
+
 ## About this Course 
 
 **Painting With Plotters** is a virtual course that introduces Licia He's a method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. Through this course, I (Licia) will share how I make my plotter paintings and why I make them this way. Painting with plotters (or other types of robots) requires design efforts from different aspects: 1) the preparation of machines, 2) the selection of material, 3) the making of the design, and 4) the machine operation. This course aims to provide an in-depth presentation of Licia's research and practice in these aspects. 
 
 The course contains 14 modules. Each module might include video tutorials, text, and code snippets. Although all course materials are developed for Axidraw and Python, most of the content could apply to other machines and design environments.
+
+<img name="00/00_banner.jpg" class="full-width-img">
 ## Course Plan
 
 MODULE START 
@@ -22,7 +26,7 @@ MODULE START
 ### 2: The Plotter Language: How to Talk To A Plotter
 1. What can a plotter do 
 2. Two ways (Svg, Python Script) to communicate with Axidraws
-	1. Producing simple images from both methods
+3. Producing simple images manually
 ### 3: Developing a Plotter Painting Environment in Python 
 1. Ideal development process for my painting practice 
 2. Why I use Python
@@ -69,8 +73,16 @@ MODULE START
 
 MODULE END 
 ## Additional Resources
-Coming Soon
-
+-  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. [Question 21](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q21) in this article points to several useful resources for plotter/plotter paintings. 
+- Coming soon 
 ## Disclaimers/Note
 1. The course primarily focuses on sharing my (Licia's) plotter painting practice.  Audiences will have to adjust according to their own setup. This is especially important regarding machine operation. Always follow instructions and safety rules provided by your machine manufacturers. 
 2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machine and materials are my own. 
+
+## News/Updates
+
+- 2024-Sep *(planned)*: Course release
+- 2024-Jun *(planned)*: Video production 
+- 2024-May: The course website is online 
+- 2024-Jan: Pre-course survey is online. Thanks filling the survey!!!! I will try to incorporate points raised there into the class.   
+- 2024-Jan: The Q&A article is online.

@@ -54,6 +54,18 @@ ol {
     font-size: 4vw;
   }
 }
+ul {
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+@media (max-width: 648) {
+  ul * {
+    font-size: 4vw;
+  }
+}
 h1 {
   text-align: center;
   font-size: 4.25vw;
@@ -218,6 +230,18 @@ ol {
   }
 }
 
+ul {
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+@media (max-width: 648) {
+  ul * {
+    font-size: 4vw;
+  }
+}
+
 h1 {
   text-align: center;
   font-size: 4.25vw;
@@ -306,6 +330,10 @@ h5 {
 }
 .course-module .material {
   flex-basis: 20%;
+}
+
+.author {
+  text-align: center;
 }
 
 .icon {
