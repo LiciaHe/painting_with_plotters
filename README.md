@@ -23,7 +23,7 @@ This repository will host all the materials (code, image etc.) used for this cou
 #### Media (images and videos):
 Unless otherwise mentioned, ALL RIGHTS RESERVED. 
 #### Code and Notes:
-Unless otherwise mentioned, code and notes in this repository uses MIT license: 
+Unless otherwise mentioned, code and notes in this repository are under MIT license: 
 
 Copyright (c) [2024] [Shiqing He]
 
