@@ -3,7 +3,7 @@
 
 ## About this Course
 
-**Painting With Plotters** is a virtual course that introduces Licia He's a method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. 
+**Painting With Plotters** is a virtual course that introduces Licia He's method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. 
 
 ![](assets/web_ver/00/00_banner.jpg)
 

@@ -63,7 +63,8 @@ ol {
   list-style-position: inside;
   padding: 0;
   text-align: left;
-  font-size: 1.7vw;
+  font-size: 1.36vw;
+  margin-bottom: 0.34vw;
 }
 
 ul {
@@ -243,7 +244,8 @@ ol {
   list-style-position: inside;
   padding: 0;
   text-align: left;
-  font-size: 1.7vw;
+  font-size: 1.36vw;
+  margin-bottom: 0.34vw;
 }
 
 ul {
