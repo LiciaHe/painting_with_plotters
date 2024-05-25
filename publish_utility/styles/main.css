@@ -61,10 +61,10 @@ p {
 ol {
   line-height: 1.785vw;
   list-style-position: inside;
+  margin-bottom: 0.17vw;
   padding: 0;
   text-align: left;
-  font-size: 1.36vw;
-  margin-bottom: 0.34vw;
+  font-size: 1.615vw;
 }
 
 ul {
@@ -242,10 +242,10 @@ p {
 ol {
   line-height: 1.785vw;
   list-style-position: inside;
+  margin-bottom: 0.17vw;
   padding: 0;
   text-align: left;
-  font-size: 1.36vw;
-  margin-bottom: 0.34vw;
+  font-size: 1.615vw;
 }
 
 ul {
@@ -338,7 +338,7 @@ h5 {
   flex-basis: 25%;
 }
 .course-module .topic {
-  flex-basis: 30%;
+  flex-basis: 35%;
 }
 .course-module .material {
   flex-basis: 20%;

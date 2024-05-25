@@ -128,6 +128,17 @@ def process_hrefs(template_soup):
         a.attrs["target"]="_blank"
 
 def make_front_page(original_name,template_loc,template_name,export_name):
+    '''
+
+    Args:
+        original_name:
+        template_loc:
+        template_name:
+        export_name:
+
+    Returns:
+
+    '''
     template_soup, (start,module,end)=load_soups(original_name,template_loc+template_name)
     #replace css
     process_links(template_soup,template_loc)
