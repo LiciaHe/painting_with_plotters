@@ -111,7 +111,7 @@ def scale_pt(point,scale_x,scale_y,scale_center,in_place=False):
 def scale_path(path,scale_x,scale_y,scale_center,in_place=False):
     '''
 
-    Scale a point according to a given center and scale factors
+    Scale a path according to a given center and scale factors
     Args:
         path: a list of 2d points
         scale_x: scale factor in the x direction.
@@ -119,7 +119,7 @@ def scale_path(path,scale_x,scale_y,scale_center,in_place=False):
         scale_center: center of this scaling operation. A 2d point.
         in_place: Whether the transformation is in place or not. By default, False.
 
-    Returns: the scaled point.
+    Returns: the scaled path.
 
     '''
     if in_place:
@@ -127,6 +127,41 @@ def scale_path(path,scale_x,scale_y,scale_center,in_place=False):
             path[i]=scale_pt(pt,scale_x,scale_y,scale_center,in_place)
         return path
     return [scale_pt(pt,scale_x,scale_y,scale_center,in_place) for pt in path]
+
+def translate_pt(pt,tx,ty,in_place=False):
+    '''
+    Translate a point.
+    Args:
+        pt: A 2d point
+        tx: translation in the x direction
+        ty: translation in the y direction
+        in_place: Whether the transformation is in place or not. By default, False.
+
+    Returns: the translated point
+    '''
+    if in_place:
+        pt[0]+=tx
+        pt[1]+=ty
+        return pt
+    return [pt[0]+tx,pt[1]+ty]
+def translate_path(path,tx,ty,in_place=False):
+    '''
+
+    Scale a point according to a given center and scale factors
+    Args:
+        path: a list of 2d points
+        tx: translation in the x direction
+        ty: translation in the y direction
+        in_place: Whether the transformation is in place or not. By default, False.
+
+    Returns: the translated path.
+
+    '''
+    if in_place:
+        for i, pt in enumerate(path):
+            path[i]=translate_pt(pt,tx,ty,in_place)
+        return path
+    return [translate_pt(pt,tx,ty,in_place) for pt in path]
 
 ### EXPORT
 
@@ -230,4 +265,17 @@ def get_mm_bbox(path):
             max_y = y
 
     return min_x, min_y, max_x, max_y
+def pt_within_bbox(pt,bbox):
+    '''
+    check if a point is within a given bbox. The bbox is given in a min/max style.
+    The boundary values are not included.
+        i.e., the point sits on the edge/corner of the bbox is not considered as sitting inside the bbox.
+    Args:
+        pt: 2d point
+        bbox: a min/max style bbox
+
+    Returns: if the point is inside a bbox.
+    '''
+    min_x,max_x,min_y,max_y=bbox
+    return max_x > pt[0] > min_x and max_y > pt[1] > min_y
 
