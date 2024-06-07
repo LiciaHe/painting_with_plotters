@@ -26,7 +26,19 @@ def create_rect(x,y,w,h,closed=False):
     if closed:
         pts.append([x,y])
     return pts
+def create_c_bezier_curve_by_angle_dist(start_end,p1_angle_deg,p2_angle_deg,p1_dist_perc,p2_dist_perc):
+    '''
+    Creating the control points of a cubic bezier curve using rotation and distance.
+    Args:
+        start_end: A list or tuple of 2 points, starting point and ending point.
+        p1_angle_deg:
+        p2_angle_deg:
+        p1_dist_perc:
+        p2_dist_perc:
 
+    Returns:
+
+    '''
 ### MANIPULATE
 def rotate_pt(point, origin, angle_radian,in_place=False):
     '''
@@ -279,3 +291,24 @@ def pt_within_bbox(pt,bbox):
     min_x,max_x,min_y,max_y=bbox
     return max_x > pt[0] > min_x and max_y > pt[1] > min_y
 
+def calc_polygon_area(path):
+    '''
+    Calculate the area of a polygon.
+
+    Args:
+        path:a list of 2d point. Will be considered as a closed polygon.
+
+    Returns: area of the polygon.
+
+    '''
+    n = len(path)
+    area = 0
+
+    for i in range(n):
+        x1, y1 = path[i]
+        x2, y2 = path[(i + 1) % n]
+        area += x1 * y2
+        area -= y1 * x2
+
+    area = abs(area) / 2.0
+    return area

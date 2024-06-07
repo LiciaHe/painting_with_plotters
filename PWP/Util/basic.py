@@ -90,7 +90,7 @@ def unitConvert(val,unit,unitTo="px",ppi=96):
     Convert a given value to a different unit settings.
 
     Args:
-        val:
+        val: value to be converted
         unit: The unit of the given value
         unitTo: The unit to convert to
         ppi: pixel per inch. Default value is 96.
