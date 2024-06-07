@@ -42,12 +42,12 @@ MODULE START
 1. Developing a SVG-authoring tool
 2. Drawing simple geometries (lines, rectangles, uniform polygons)
 3. Drawing polygons, curves
-4. Authoring Python-based Axidraw instructions 
+4. Authoring Python-based Axidraw instructions (direct authoring, resume function)
 ### 5. Advanced Path Manipulation for Plotter Painting
 1. Cut shape by distance 
 2. Polygon Operation 
 3. Hatch 
-### 6. Practice: Pen Plotting with Multiple Colors 
+### 6. [Practice] Pen Plotting with Multiple Colors 
 1. Generating individual scripts for colored plotting 
 2. Split instruction based on max drawing distance
 3. DIY Ink reservoir for technical pen 
@@ -63,17 +63,23 @@ MODULE START
 3. Manually designing a plotter painting
 ### 9: Developing A Paint Refill Station 
 1. Designing a paint refiller 
-2. Designing a painting generator 
+2. Designing a painting generator (path cutting, adding refill action)
 ### 10: Test Before Making Your First Plotter Painting
 1. Placement of inkwells
 2. Z-axis alignment 
-3. Safety 
-### 11: Putting It Together: Project Demonstration
-1. A project from the ideation to finish 
+3. Safety
+### 11: [Demo] Putting It Together: From the Ideation to Plot 
+1. Demo Project 1: Color Testing
+2. Demo Project 2: The Petal Algorithm
 ### 12: Exploring Different Materials and Techniques
 1. Ink vs. watercolor vs. acrylic 
 2. other creative materials 
-### 13: Conclusion and Studio Tour
+### 13: [Bonus] Preserving and Processing Plotted Works
+1. Photographing your work.
+2. Scanning your work.
+3. Automatically generating supporting files of your work. 
+4. Naming your file.
+### 14: Conclusion and Studio Tour
 1. Virtual Studio Tour 
 2. Going through my favorite plotter paintings 
 3. Additional Resources
@@ -82,12 +88,13 @@ MODULE END
 
 ## Additional Resources
 - [Github Repository for this course](https://github.com/LiciaHe/painting_with_plotters)
--  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. [Question 17](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17) in this article points to several useful resources for plotter/plotter paintings.
-- Coming soon 
+-  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. 
+  - [Question 17](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17) in this article points to several useful resources for plotter/plotter paintings.
+- More coming soon 
 
 ## Disclaimers/Note
 1. The course primarily focuses on sharing my (Licia's) plotter painting practice.  Audiences will have to adjust according to their own setup. This is especially important regarding machine operation. Always follow instructions and safety rules provided by your machine manufacturers. 
-2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machine and materials are my own. 
+2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machines, brands, and materials are my own. 
 
 ## News/Updates
 

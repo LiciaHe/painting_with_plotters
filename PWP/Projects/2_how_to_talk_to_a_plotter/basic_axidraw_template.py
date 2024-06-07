@@ -51,10 +51,11 @@ def move_and_draw_path(ad,move_to_pt,path):
     ad.penup()
     mx,my=move_to_pt
     ad.moveto(mx, my)
-
+    ad.pendown()
     for pt in path:
         px,py=pt
-        ad.lineto(px,py)
+        ad.moveto(px,py)
+    ad.penup()
 
 def end(ad):
     '''
