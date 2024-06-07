@@ -13,8 +13,9 @@ Learning Objectives:
 8. Plotting through Python. 
 9Comparing the difference between two methods. 
 
-
-
+Link To Materials:
+1. Video 
+2. Files 
 
 ## The Plotter Language
 
@@ -89,4 +90,5 @@ Rectangle:
 
 ### Using the pyaxidraw interactive mode
 Authoring the init_test.py 
-### Manually 
+### Manually authoring an instruction
+Authoring basic_axidraw_template.py
