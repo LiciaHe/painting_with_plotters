@@ -166,6 +166,44 @@ class SvgGenerator(SettingAndStorageGenerator):
             with open(save_loc, 'w') as saveFile:
                 saveFile.write(convert_to_export_ready_svg(svg_soup))
         return
+    def assign_color_to_a_tool(self,tool,tool_idx):
+        '''
+        Given a tool and its index, generate a random color fill the "stroke" and "fill" value.
+
+
+        Args:
+            tool: a dictionary
+            tool_idx: an index of the tool
+
+        Returns: None
+
+        '''
+        color=UC.make_random_hex()
+        tool["stroke"]=f'#{color}'
+        tool["fill"] = "none"
+
+    def init_tools(self):
+        '''
+        Initiate a collection of tools (for modifying the attributes of svg paths).
+        Required values in basic_settings:
+        1) tools_ct: how many tools to create
+        2) stroke-width
+        Optional values:
+        1) append_fill_to_path: a boolean value that controls whether to add fills to svg for easy visualization. By default, False.
+
+        Returns:
+        '''
+
+        self.tools_ct=self.get_value_from_basic_settings("tools_ct")
+        self.stroke_width=round(UB.unitConvert(self.get_value_from_basic_settings("stroke-width"),self.unit),self.precision)
+        self.tools=[]
+
+        for tool_idx in range(self.tools_ct):
+            tool={
+                "stroke-width":self.stroke_width
+            }
+            self.assign_color_to_a_tool(tool,tool_idx)
+            self.tools.append(tool)
 
     def add_path_to_svg(self,svg_idx,path,tool_idx):
         '''
@@ -182,16 +220,39 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         path_attrs={
             "d":export_path_to_string(path,self.precision),
-            "stroke":"black",
-            "stroke-width":1,
         }
-        create_tag(
+        tool=self.tools[tool_idx]
+        path_attrs.update(tool)
+
+        #TODO: handle fill
+        path_tag=create_tag(
             soup_base=svg_soup,
             parent_tag=svg_soup.g,
             tag_name="path",
             attrs=path_attrs
         )
+        return path_tag
+    def create(self):
+        '''
+        A function that create a design (paths, and attributes related to these paths). Needs to be implemented by individual instances.
 
+        Returns: a list of Path instances.
+        '''
+
+        raise NotImplementedError
+    def generate(self):
+        '''
+        The default pipeline for using this generator.
+        Require the implementation of the create() function, which returns a list of paths and their required attributes.
+        Initiate svgs, process these path information into svg, export the svgs.
+
+        Returns:
+        '''
+        self.main_svg,self.main_svg_idx=self.init_svg(additional_name="main")
+        paths=self.create()
+        for path_obj in paths:
+
+        self.export_svgs()
 
 
     precision=2
@@ -200,6 +261,7 @@ class SvgGenerator(SettingAndStorageGenerator):
         self.extract_dimension_from_settings()
         self.svg_storage=[]
         self.svg_names={}
+        self.init_tools()
 
 
 
