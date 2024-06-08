@@ -10,3 +10,15 @@ Practice inspiration:
 Drawing
 1974 (made)
 https://collections.vam.ac.uk/item/O1193781/desordres-drawing-vera-molnar/desordres-drawing-molnar-vera/?carousel-image=2011EY3129
+
+
+
+1. extract dimensions
+2. initiate svg (beautiful soup) 
+3. export svg 
+6. Generate a rectangle (geometry)
+7. produce d string
+
+4. append element to svg (create a path)
+5. convert to svg ready. 
+
