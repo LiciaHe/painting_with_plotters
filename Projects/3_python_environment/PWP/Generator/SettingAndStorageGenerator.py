@@ -34,7 +34,7 @@ class SettingAndStorageGenerator:
             return self.parameters[key]
         return None
 
-
+    random_bits_ct=8
 
     def create_save_name(self,file_extension,additional_tag=""):
         '''
@@ -59,7 +59,7 @@ class SettingAndStorageGenerator:
     def get_full_save_loc(self,file_extension,additional_tag=""):
         return f'{self.dated_folder}{self.create_save_name(file_extension,additional_tag)}'
 
-    random_bits_ct=3
+
 
     def set_random_seed(self):
         '''
@@ -69,8 +69,24 @@ class SettingAndStorageGenerator:
 
         Returns:the random seed.
         '''
-        
+        seed = f'{self.time_tag}'
+        if hasattr(self,"batch_name"):
+            seed+= f'_{self.batch_name}'
+        if hasattr(self,"seed"):
+            seed=self.seed
+        if self.get_value_from_basic_settings("seed"):
+            seed=self.get_value_from_basic_settings("seed")
+
+        self.seed=seed
         random.seed(a=self.seed)
+    def export_seed(self):
+        '''
+        Export the seed to a txt file
+        Returns:None
+        '''
+        with open(f'{self.dated_folder}seed.txt',"w") as sf:
+            sf.write(str(self.seed))
+
 
     def init_storage(self):
         '''
@@ -81,9 +97,8 @@ class SettingAndStorageGenerator:
         #get export loc
         export_loc=self.get_value_from_basic_settings("export_loc")
         if export_loc:
-            self.save_loc=f'{export_loc}/{self.name}/'
-        else:
-            self.save_loc=f'{self.name}/'
+            UB.mkdir(export_loc)
+        self.save_loc = f'{export_loc}{self.name}/'
         UB.mkdir(self.save_loc)
 
         self.dated_folder = f'{self.save_loc}{str(datetime.datetime.now().strftime("%Y-%m-%d"))}/'
@@ -98,10 +113,8 @@ class SettingAndStorageGenerator:
             UB.mkdir(self.dated_folder)
 
         self.time_tag = str(datetime.datetime.now().strftime("%H%M%S"))
-
-
-
-
+        self.dated_folder+=f'{self.time_tag}/'
+        UB.mkdir(self.dated_folder)
 
 
 
@@ -123,3 +136,4 @@ class SettingAndStorageGenerator:
         self.parameters=self.settings["parameters"]
         self.init_storage()
         self.set_random_seed()
+        self.export_seed()
