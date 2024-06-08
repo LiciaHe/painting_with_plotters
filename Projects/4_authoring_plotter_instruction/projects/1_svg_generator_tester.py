@@ -52,3 +52,9 @@ class PipelineTester(SvgGenerator):
             filled=True
         )
         return [path_0,path_1]
+
+generator=PipelineTester(
+    settings=settings,
+    split_to_tool_svgs=True
+)
+generator.generate()

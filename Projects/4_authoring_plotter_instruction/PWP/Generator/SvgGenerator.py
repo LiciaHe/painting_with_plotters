@@ -205,7 +205,8 @@ class SvgGenerator(SettingAndStorageGenerator):
             self.assign_color_to_a_tool(tool,tool_idx)
             self.tools.append(tool)
 
-    def add_path_to_svg(self,svg_idx,path,tool_idx):
+    tool_attr_keys_svg=["stroke","stroke-width"]
+    def add_path_to_svg(self,svg_idx,path_obj):
         '''
         Add a path (list of 2d points)
         Args:
@@ -219,12 +220,16 @@ class SvgGenerator(SettingAndStorageGenerator):
         svg_soup=self.svg_storage[svg_idx]
 
         path_attrs={
-            "d":export_path_to_string(path,self.precision),
+            "d":export_path_to_string(path_obj.path,self.precision),
+            "fill":"none"
         }
-        tool=self.tools[tool_idx]
-        path_attrs.update(tool)
+        tool_reference=self.tools[path_obj.tool_idx]
+        for key in self.tool_attr_keys_svg:
+            path_attrs[key]=tool_reference[key]
 
-        #TODO: handle fill
+        if path_obj.filled:
+            path_attrs["fill"]=path_attrs["stroke"]
+
         path_tag=create_tag(
             soup_base=svg_soup,
             parent_tag=svg_soup.g,
@@ -240,6 +245,8 @@ class SvgGenerator(SettingAndStorageGenerator):
         '''
 
         raise NotImplementedError
+
+    split_to_tool_svgs=False
     def generate(self):
         '''
         The default pipeline for using this generator.
@@ -248,15 +255,30 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         Returns:
         '''
+
         self.main_svg,self.main_svg_idx=self.init_svg(additional_name="main")
+        if self.split_to_tool_svgs:
+            # create a svg for each tool
+            for i,tool in enumerate(self.tools):
+                svg,svg_idx=self.init_svg(additional_name=f'tool_{i}')
+                tool["svg_idx"]=svg_idx
+
+
+
         paths=self.create()
         for path_obj in paths:
+            self.add_path_to_svg(self.main_svg_idx,path_obj)
+            if self.split_to_tool_svgs:
+                #append the path to the corresponding tool svg
+                tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
+                self.add_path_to_svg(tool_svg_idx, path_obj)
 
         self.export_svgs()
 
 
     precision=2
     def __init__(self,settings, **kwargs):
+
         super().__init__(settings=settings,**kwargs)
         self.extract_dimension_from_settings()
         self.svg_storage=[]
