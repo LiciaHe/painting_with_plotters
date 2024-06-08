@@ -206,7 +206,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             self.tools.append(tool)
 
     tool_attr_keys_svg=["stroke","stroke-width"]
-    def add_path_to_svg(self,svg_idx,path_obj):
+    def add_path_to_svg(self,svg_idx,path_coordinate,tool_idx,filled):
         '''
         Add a path (list of 2d points)
         Args:
@@ -220,14 +220,14 @@ class SvgGenerator(SettingAndStorageGenerator):
         svg_soup=self.svg_storage[svg_idx]
 
         path_attrs={
-            "d":export_path_to_string(path_obj.path,self.precision),
+            "d":export_path_to_string(path_coordinate,self.precision),
             "fill":"none"
         }
-        tool_reference=self.tools[path_obj.tool_idx]
+        tool_reference=self.tools[tool_idx]
         for key in self.tool_attr_keys_svg:
             path_attrs[key]=tool_reference[key]
 
-        if path_obj.filled:
+        if filled:
             path_attrs["fill"]=path_attrs["stroke"]
 
         path_tag=create_tag(
@@ -247,33 +247,48 @@ class SvgGenerator(SettingAndStorageGenerator):
         raise NotImplementedError
 
     split_to_tool_svgs=False
-    def generate(self):
-        '''
-        The default pipeline for using this generator.
-        Require the implementation of the create() function, which returns a list of paths and their required attributes.
-        Initiate svgs, process these path information into svg, export the svgs.
 
+    def prepare_svgs(self):
+        '''
+        Create main svg and tool svgs (if split_to_tool_svgs is true).
         Returns:
-        '''
 
+        '''
         self.main_svg,self.main_svg_idx=self.init_svg(additional_name="main")
         if self.split_to_tool_svgs:
             # create a svg for each tool
             for i,tool in enumerate(self.tools):
                 svg,svg_idx=self.init_svg(additional_name=f'tool_{i}')
                 tool["svg_idx"]=svg_idx
+    def process_and_append_paths_to_svgs(self,paths):
+        '''
+        Given a list of path objects, process them and append them as <path> to svgs.
+        Args:
+            paths: a list of Path object.
 
+        Returns:
 
-
-        paths=self.create()
+        '''
         for path_obj in paths:
-            self.add_path_to_svg(self.main_svg_idx,path_obj)
+            self.add_path_to_svg(self.main_svg_idx, path_obj.path, path_obj.tool_idx, path_obj.filled)
             if self.split_to_tool_svgs:
                 #append the path to the corresponding tool svg
                 tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
-                self.add_path_to_svg(tool_svg_idx, path_obj)
+                self.add_path_to_svg(tool_svg_idx, path_obj.path,path_obj.tool_idx,path_obj.filled)
+    def generate(self):
+        '''
+        The default pipeline for using this generator.
+        Require the implementation of the create() function, which returns a list of paths and their required attributes.
+        Initiate svgs, process these path information into svg, export the svgs.
 
+        Returns: paths obtained from the create() function
+        '''
+        paths=self.create()
+
+        self.prepare_svgs()
+        self.process_and_append_paths_to_svgs(paths)
         self.export_svgs()
+        return paths
 
 
     precision=2

@@ -21,4 +21,12 @@ https://collections.vam.ac.uk/item/O1193781/desordres-drawing-vera-molnar/desord
 
 4. append element to svg (create a path)
 5. convert to svg ready. 
+5. create tool management system (attributes and color)
+
+6. creative pipeline (creating, generating, exporting), 
+create the Path class 
+
+7. main svg, and one svg for each tool
+8. instruction generator
+
 
