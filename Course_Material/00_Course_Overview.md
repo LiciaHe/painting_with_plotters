@@ -38,13 +38,13 @@ MODULE START
 1. Ideal development process for my painting practice 
 2. Why I use Python
 3. Developing a setting and storage management system in Python
-### 4: Authoring Plotter Instruction
+### 4: Authoring Plotter Instructions
 1. Developing a SVG-authoring tool
 2. Drawing simple geometries (lines, rectangles, uniform polygons)
-3. Drawing polygons, curves
-4. Authoring Python-based Axidraw instructions (direct authoring, resume function)
+3. Authoring Python-based Axidraw instructions (direct authoring, resume function)
 ### 5. Advanced Path Manipulation for Plotter Painting
-1. Cut shape by distance 
+1. Drawing Curves
+2. Cut shape by distance 
 2. Polygon Operation 
 3. Hatch 
 ### 6. [Practice] Pen Plotting with Multiple Colors 

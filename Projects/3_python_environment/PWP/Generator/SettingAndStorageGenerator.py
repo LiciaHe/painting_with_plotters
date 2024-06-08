@@ -34,8 +34,23 @@ class SettingAndStorageGenerator:
             return self.parameters[key]
         return None
 
-    random_bits_ct=8
+    def get_random_value_from_parameters(self,key):
+        '''
+        Given a key, find the value range stored in self.parameteters, return a random value in the range.
+        Args:
+            key: key to search
 
+        Returns: a random value within the range associated with the searched key
+        '''
+        rg=self.get_value_from_parameters(key)
+        if not rg or len(rg)!=2:
+            print(f'Cannot get random value from the give range: {rg}')
+            raise ValueError
+
+        return random.uniform(rg[0],rg[1])
+
+
+    random_bits_ct=8
     def create_save_name(self,file_extension,additional_tag=""):
         '''
         Create a string that contains batch name (if it exists), the time_tag (start of the project), and some random bits.
@@ -55,7 +70,6 @@ class SettingAndStorageGenerator:
 
 
         return f'{name}{self.time_tag}_{random.getrandbits(self.random_bits_ct)}.{file_extension}'
-
     def get_full_save_loc(self,file_extension,additional_tag=""):
         return f'{self.dated_folder}{self.create_save_name(file_extension,additional_tag)}'
 
