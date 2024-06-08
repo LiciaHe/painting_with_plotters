@@ -1,0 +1,17 @@
+<svg height="6in"   width="6in"  viewBox="0 0 576 576" xmlns="http://www.w3.org/2000/svg">
+
+
+    <path
+    fill="yellow"
+    stroke="blue"
+    opacity="0.3"
+    d="M 96,96L 480,96L 480,480L 96,480L 96,96" />
+
+    <g id="main_g" transform="translate(96,96)">
+      <path
+        fill="none"
+        stroke="red"
+
+        d="M 0,0L 384,384" />
+    </g>
+</svg>

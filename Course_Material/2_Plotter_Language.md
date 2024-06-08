@@ -68,6 +68,10 @@ On a 6x6 inch paper with 1 inch margin
 
 #### Plotting SVG files
 ##### Plotting with Inkscape
+1. SVG width/height settings have to be inches or mm
+2. Overlapping lines, repeating lines will be draw multiple times 
+3. Lots of settings
+
 ##### Plotting with pyaxidraw 
 
 ### Constructing SVG files manually
@@ -75,20 +79,24 @@ On a 6x6 inch paper with 1 inch margin
 - Determine the coordinates of each element
 
 PPI = 96
+
 SVG Size:
 - width and Height: 6 x 6 inch (576 px x 576 px) 
 - viewBox: 0 0 576 576 #has to be pixel. 
+
 Line:
 - inch: [[1,1],[5,5]]
 - px:[[96,96],[480,480]]
+
 Rectangle:
-- inch: [[1,1],[5,1],[5,5],[1,5]]
-- px:[[96,96],[480,96],[480,480],[96,480]]
+- inch: [[1,1],[5,1],[5,5],[1,5],[1,1]]
+- px:[[96,96],[480,96],[480,480],[96,480],[96,96]]
 
 - Using the <path> element
 - Constructing the svg with/without a <g> element (translation)
 
 ### Using the pyaxidraw interactive mode
 Authoring the init_test.py 
+
 ### Manually authoring an instruction
 Authoring basic_axidraw_template.py
