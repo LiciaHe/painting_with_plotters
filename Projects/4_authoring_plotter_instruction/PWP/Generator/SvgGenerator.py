@@ -117,13 +117,14 @@ class SvgGenerator(SettingAndStorageGenerator):
             self.width-self.margins["l"]-self.margins["r"],
             self.height-self.margins["t"]-self.margins["b"],
         ] #width/height without margin, or content size
-    def init_svg(self,additional_name=""):
+    def init_svg(self,additional_tag=""):
         '''
         Initiate a svg using default dimensions.
         Append the svg to self.svg_storage
 
         Args:
-            additional_name: If a non-empty string name is provided, store the value in self.svg_names and use index of the svg as the key.
+            additional_tag: If a non-empty string name is provided,
+            store the value in self.svg_names and use index of the svg as the key.
 
         Returns: the svg soup, and the index of the svg (in self.svg_storage)
         '''
@@ -145,8 +146,8 @@ class SvgGenerator(SettingAndStorageGenerator):
         )
         self.svg_storage.append(svg_soup)
         svg_idx=len(self.svg_storage)-1
-        if additional_name:
-            self.svg_names[str(svg_idx)]=additional_name
+        if additional_tag:
+            self.svg_names[str(svg_idx)]=additional_tag
 
         return svg_soup,svg_idx
     def export_svgs(self):
@@ -254,11 +255,11 @@ class SvgGenerator(SettingAndStorageGenerator):
         Returns:
 
         '''
-        self.main_svg,self.main_svg_idx=self.init_svg(additional_name="main")
+        self.main_svg,self.main_svg_idx=self.init_svg(additional_tag="main")
         if self.split_to_tool_svgs:
             # create a svg for each tool
             for i,tool in enumerate(self.tools):
-                svg,svg_idx=self.init_svg(additional_name=f'tool_{i}')
+                svg,svg_idx=self.init_svg(additional_tag=f'tool_{i}')
                 tool["svg_idx"]=svg_idx
     def process_and_append_paths_to_svgs(self,paths):
         '''

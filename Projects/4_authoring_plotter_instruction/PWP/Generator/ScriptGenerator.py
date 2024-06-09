@@ -7,20 +7,60 @@ The "generate()" function processes the information, create svg files for visual
 
 from ..Generator.SvgGenerator import SvgGenerator
 
+class ScriptWriter:
+    def __init__(self,addr):
+
 class ScriptGenerator(SvgGenerator):
 
-    def prepare_script_writers(self):
+    def init_script_writer(self,additional_tag=""):
         '''
-        Initiate writers for python script.
-        Import initial content from template
+        Initiate an empty writer (an io.TextIoWrapper) object.
+
+        Args:
+            additional_tag: If a non-empty string name is provided,
+            store the value in self.script_names and use index of the writer as the key.
 
         Returns:
 
         '''
-        self.axidraw_writers=[]
-        self.axidraw_names={}
-        
+        writer_addr=self.get_full_save_loc(file_extension="py",additional_tag=additional_tag)
+        writer=open(writer_addr,"w")
+        self.script_writers.append(writer)
+        writer_idx=len(self.script_writers)-1
+        if additional_tag:
+            self.script_names[str(writer_idx)]=additional_tag
+        return writer_idx
 
+    split_to_tool_pys=False
+    def prepare_script_writers(self):
+        '''
+        Initiate writers for python script.
+
+        Create a main script writer,
+        and one for each tool if self.split_to_tool_pys is True.
+
+        Returns:
+
+        '''
+        self.script_writers=[]
+        self.script_names={}
+        # initiate main
+        self.main_script_idx=self.init_script_writer(additional_tag="main")
+        if self.split_to_tool_pys:
+            for i,tool in enumerate(self.tools):
+                script_idx=self.init_script_writer(additional_tag=f'tool_{i}')
+                tool["script_idx"] = script_idx
+
+
+    def process_and_append_paths_to_script(self,paths):
+        '''
+        Given a list of path objects, process them and append them to the script writer.
+        Args:
+            paths: a list of Path object.
+
+        Returns:
+
+        '''
 
     def generate(self):
         '''
@@ -45,3 +85,5 @@ class ScriptGenerator(SvgGenerator):
         '''
         paths=super().generate()
         self.prepare_script_writers()
+        self.process_and_append_paths_to_script(paths)
+        # self.export_paths()
