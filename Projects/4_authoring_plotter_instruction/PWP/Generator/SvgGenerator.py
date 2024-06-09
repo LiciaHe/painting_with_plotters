@@ -103,7 +103,7 @@ class SvgGenerator(SettingAndStorageGenerator):
         #extract and process width and height
         for key in ["width","height"]:
             val=self.get_value_from_basic_settings(key)
-            converted_val=round(UB.unitConvert(val,self.unit,"px"),self.precision)
+            converted_val=round(UB.convert_unit(val,self.unit,"px"),self.precision)
             setattr(self,key,converted_val)
 
         #extract and process margin
@@ -111,7 +111,7 @@ class SvgGenerator(SettingAndStorageGenerator):
         self.margins={}
         for key in margins_unit:
             val=margins_unit[key]
-            self.margins[key]=round(UB.unitConvert(val,self.unit,"px"),self.precision)
+            self.margins[key]=round(UB.convert_unit(val,self.unit,"px"),self.precision)
 
         self.wh_m=[
             self.width-self.margins["l"]-self.margins["r"],
@@ -196,7 +196,7 @@ class SvgGenerator(SettingAndStorageGenerator):
         '''
 
         self.tools_ct=self.get_value_from_basic_settings("tools_ct")
-        self.stroke_width=round(UB.unitConvert(self.get_value_from_basic_settings("stroke-width"),self.unit),self.precision)
+        self.stroke_width=round(UB.convert_unit(self.get_value_from_basic_settings("stroke-width"),self.unit),self.precision)
         self.tools=[]
 
         for tool_idx in range(self.tools_ct):

@@ -18,6 +18,9 @@ settings={
         "margins": {"l": 1, "r": 1, "t": 1, "b": 1},
         "tools_ct":4,
         "stroke-width":0.05,
+        "script_options":{
+            "port":"kitty"
+        }
     }
 }
 
@@ -53,6 +56,7 @@ class PipelineTester(ScriptGenerator):
 
 generator=PipelineTester(
     settings=settings,
-    split_to_tool_svgs=False
+    split_to_tool_svgs=False,
+    split_to_tool_pys=True
 )
 generator.generate()

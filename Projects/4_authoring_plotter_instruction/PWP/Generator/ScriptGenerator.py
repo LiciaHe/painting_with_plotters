@@ -6,9 +6,120 @@ The "generate()" function processes the information, create svg files for visual
 '''
 
 from ..Generator.SvgGenerator import SvgGenerator
+import json
+import importlib.resources
+from ..Util import basic as UB
 
 class ScriptWriter:
-    def __init__(self,addr):
+    '''
+    A class that handles script writer (a io.TextWrapper) object.
+    Stores information such as
+    - processed_paths
+    - options
+    - other attributes
+    '''
+    def update_options(self,options):
+        '''
+        Update the axidraw configs
+        Args:
+            options: a dictionary that will overwrite the default pyaxidraw options.
+
+        Returns:
+
+        '''
+        self.options.update(options)
+    def __init__(self,writer_addr):
+        self.writer_addr=writer_addr
+        self.writer=open(writer_addr,"w")
+        self.options={
+            "model": 2,  # 1 for SE/A4, 2 for SE/A3, 5 for SE/A1
+            # "penlift": 3,# If the plotter has the brushless servo upgrade, use 3. Otherwise, omit this or use default value 1.
+            "pen_pos_up": 80,  # Pen height when the pen is up (Z axis). 0-100.
+            "pen_pos_down": 0,  # Pen height when the pen is down (Z axis). 0-100.
+            "pen_rate_lower": 75,  # Rate for z-axis movement (0-100)
+            "pen_rate_raise": 75,  # Rate for z-axis movement (0-100)
+            "accel": 90,  # accelerate rate(1-100)
+            "unit": 0,  # 0 for inch, 1 for cm, 2 for mm. Default 0
+            "speed_pendown": 80,  # Maximum XY speed when the pen is down (0-100)
+            "speed_penup": 80  # Maximum XY speed when the pen is up (0-100)
+        }
+        self.paths=[]# used to store paths included in this writer.
+    def process_and_append_path(self,path_obj):
+        '''
+        Given a path object, generate the unit converted path, store the path in self.paths
+        Args:
+            path_obj:
+
+        Returns:
+
+        '''
+        self.paths.append(path_obj)
+        unit_to=["inch","cm","mm"][self.options["unit"]]
+        path_obj.convert_to_unit(unit_to)
+
+    def produce_options_str(self):
+        '''
+        Convert the options into a string to be written to the final script.
+
+        Returns: a string that contains information stored in the options.
+
+        '''
+        option_strs=f'options = {json.dumps(self.options)}'
+        return option_strs
+    def produce_paths_str(self):
+        '''
+        Convert the coordinate information stored in individual path objects into a string.
+
+        Returns: a string that contains all the path information.
+
+        '''
+        path_str='paths=['
+        for i,path_obj in enumerate(self.paths):
+            path_str+=str(path_obj.unit_path)
+            if i!=len(self.paths)-1:
+                path_str+=","
+
+        path_str+="]"
+
+        path_str = path_str.replace("'", "")
+        return path_str
+
+    def export(self):
+        '''
+
+        Assemble path and option information into a script.
+        Close the writer.
+
+        Information:
+        - paths: a list of paths, formatted into string
+        - options:
+
+        Returns:
+
+        '''
+        if len(self.paths)<1:
+            # This writer does not have any content to write
+            self.writer.close()
+            # try to remove the empty python file.
+            UB.rmfile(self.writer_addr)
+            return
+
+        with importlib.resources.open_text('PWP.static', "axidraw_template.py") as file:
+        # with open("../static/axidraw_template.py","r") as tf:
+            template_content=file.read()
+
+        content_to_write=[
+            self.produce_options_str(),
+            self.produce_paths_str(),
+            template_content
+        ]
+
+        for content in content_to_write:
+            self.writer.write("\n")
+            self.writer.write(content)
+            self.writer.write("\n")
+
+        self.writer.close()
 
 class ScriptGenerator(SvgGenerator):
 
@@ -24,11 +135,13 @@ class ScriptGenerator(SvgGenerator):
 
         '''
         writer_addr=self.get_full_save_loc(file_extension="py",additional_tag=additional_tag)
-        writer=open(writer_addr,"w")
+        writer=ScriptWriter(writer_addr)
         self.script_writers.append(writer)
         writer_idx=len(self.script_writers)-1
-        if additional_tag:
-            self.script_names[str(writer_idx)]=additional_tag
+
+        if self.get_value_from_basic_settings("script_options"):
+            writer.update_options(self.get_value_from_basic_settings("script_options"))
+
         return writer_idx
 
     split_to_tool_pys=False
@@ -43,7 +156,7 @@ class ScriptGenerator(SvgGenerator):
 
         '''
         self.script_writers=[]
-        self.script_names={}
+        # self.script_names={}
         # initiate main
         self.main_script_idx=self.init_script_writer(additional_tag="main")
         if self.split_to_tool_pys:
@@ -61,7 +174,18 @@ class ScriptGenerator(SvgGenerator):
         Returns:
 
         '''
+        main_writer=self.script_writers[self.main_script_idx]
 
+        for path_obj in paths:
+            main_writer.process_and_append_path(path_obj)
+            if self.split_to_tool_pys:
+                tool=self.tools[path_obj.tool_idx]
+                tool_writer=self.script_writers[tool["script_idx"]]
+                tool_writer.process_and_append_path(path_obj)
+
+    def export_scripts(self):
+        for script_writer in self.script_writers:
+            script_writer.export()
     def generate(self):
         '''
         The default pipeline for using this generator.
@@ -86,4 +210,4 @@ class ScriptGenerator(SvgGenerator):
         paths=super().generate()
         self.prepare_script_writers()
         self.process_and_append_paths_to_script(paths)
-        # self.export_paths()
+        self.export_scripts()

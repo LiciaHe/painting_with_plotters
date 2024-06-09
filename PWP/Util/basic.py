@@ -85,7 +85,7 @@ def get_slug(input_string):
     '''
     return "_".join(input_string.lower().strip().split(" "))
 
-def unitConvert(val,unit,unitTo="px",ppi=96):
+def convert_unit(val,unit,unitTo="px",ppi=96):
     '''
     Convert a given value to a different unit settings.
 

@@ -21,7 +21,7 @@ def mkdir(path):
         os.mkdir(path)
         return True
     return False
-def unitConvert(val,unit,unitTo="px",ppi=96):
+def convert_unit(val,unit,unitTo="px",ppi=96):
     '''
     Convert a given value to a different unit settings.
 
@@ -59,3 +59,17 @@ def unitConvert(val,unit,unitTo="px",ppi=96):
     print(val,unitFrom,unitTo,ppi, "The given parameters cannot be converted.")
 
     raise ValueError
+
+def rmfile(filePath):
+    '''
+    Given a path to a file, try to remove the file. Will catch errors and print them instead of throwing the error.
+    Args:
+        filePath: path to file
+
+    Returns:
+
+    '''
+    try:
+        os.remove(filePath)
+    except OSError as e:
+        print("Error: %s - %s." % (e.filename, e.strerror))
