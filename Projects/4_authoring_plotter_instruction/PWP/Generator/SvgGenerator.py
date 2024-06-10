@@ -157,6 +157,12 @@ class SvgGenerator(SettingAndStorageGenerator):
         Returns:
         '''
         for i,svg_soup in enumerate(self.svg_storage):
+
+            if not svg_soup.find_all("path"):
+                # the svg does not contain any <path> element.
+                # skip the exporting process.
+                continue
+
             additional_tag=""
             if str(i) in self.svg_names:
                 additional_tag=self.svg_names[str(i)]
@@ -205,7 +211,14 @@ class SvgGenerator(SettingAndStorageGenerator):
             }
             self.assign_color_to_a_tool(tool,tool_idx)
             self.tools.append(tool)
+    def get_random_tool_idx(self):
+        '''
 
+        Generate a random integer that represent the index of a tool.
+        Returns:
+
+        '''
+        return random.randint(0,self.tools_ct-1)  #randint is inclusive for its upper limit.
     tool_attr_keys_svg=["stroke","stroke-width"]
     def add_path_to_svg(self,svg_idx,path_coordinate,tool_idx,filled):
         '''
@@ -271,11 +284,12 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         '''
         for path_obj in paths:
-            self.add_path_to_svg(self.main_svg_idx, path_obj.path, path_obj.tool_idx, path_obj.filled)
+            self.add_path_to_svg(self.main_svg_idx, path_obj.coordinates, path_obj.tool_idx, path_obj.filled)
             if self.split_to_tool_svgs:
                 #append the path to the corresponding tool svg
                 tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
-                self.add_path_to_svg(tool_svg_idx, path_obj.path,path_obj.tool_idx,path_obj.filled)
+                self.add_path_to_svg(tool_svg_idx, path_obj.coordinates,path_obj.tool_idx,path_obj.filled)
+
     def generate(self):
         '''
         The default pipeline for using this generator.

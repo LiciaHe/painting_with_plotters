@@ -3,7 +3,7 @@ sys.path.insert(1,"../")
 
 from PWP.Generator.SvgGenerator import SvgGenerator
 from PWP.Util import geometry as UG
-from PWP.Generator.Path import Path
+from PWP.Util.Path import Path
 
 settings={
     "name":"1_svg_tester",

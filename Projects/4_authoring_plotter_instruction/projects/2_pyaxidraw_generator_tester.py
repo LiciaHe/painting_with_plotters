@@ -3,7 +3,7 @@ sys.path.insert(1,"../")
 
 from PWP.Generator.ScriptGenerator import ScriptGenerator
 from PWP.Util import geometry as UG
-from PWP.Generator.Path import Path
+from PWP.Util.Path import Path
 
 settings={
     "name":"2_pyaxidraw_tester",
@@ -56,7 +56,7 @@ class PipelineTester(ScriptGenerator):
 
 generator=PipelineTester(
     settings=settings,
-    split_to_tool_svgs=False,
+    split_to_tool_svgs=True,
     split_to_tool_pys=True
 )
 generator.generate()

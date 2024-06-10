@@ -44,7 +44,7 @@ class ScriptWriter:
             "speed_penup": 80  # Maximum XY speed when the pen is up (0-100)
         }
         self.paths=[]# used to store paths included in this writer.
-    def process_and_append_path(self,path_obj):
+    def process_and_append_path(self,path_obj,margins):
         '''
         Given a path object, generate the unit converted path, store the path in self.paths
         Args:
@@ -55,7 +55,7 @@ class ScriptWriter:
         '''
         self.paths.append(path_obj)
         unit_to=["inch","cm","mm"][self.options["unit"]]
-        path_obj.convert_to_unit(unit_to)
+        path_obj.create_margined_unit_path(unit_to,margins)
 
     def produce_options_str(self):
         '''
@@ -66,6 +66,9 @@ class ScriptWriter:
         '''
         option_strs=f'options = {json.dumps(self.options)}'
         return option_strs
+
+    precision=4
+    
     def produce_paths_str(self):
         '''
         Convert the coordinate information stored in individual path objects into a string.
@@ -75,7 +78,8 @@ class ScriptWriter:
         '''
         path_str='paths=['
         for i,path_obj in enumerate(self.paths):
-            path_str+=str(path_obj.unit_path)
+            rounded_list = [[round(val, self.precision) for val in pt] for pt in path_obj.unit_path]
+            path_str+=str(rounded_list)
             if i!=len(self.paths)-1:
                 path_str+=","
 
@@ -177,11 +181,11 @@ class ScriptGenerator(SvgGenerator):
         main_writer=self.script_writers[self.main_script_idx]
 
         for path_obj in paths:
-            main_writer.process_and_append_path(path_obj)
+            main_writer.process_and_append_path(path_obj,self.margins)
             if self.split_to_tool_pys:
                 tool=self.tools[path_obj.tool_idx]
                 tool_writer=self.script_writers[tool["script_idx"]]
-                tool_writer.process_and_append_path(path_obj)
+                tool_writer.process_and_append_path(path_obj,self.margins)
 
     def export_scripts(self):
         for script_writer in self.script_writers:
