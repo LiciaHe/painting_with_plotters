@@ -42,12 +42,12 @@ class PipelineTester(SvgGenerator):
             30,30,self.wh_m[0]-60,self.wh_m[1]-60,True
         )
         path_0=Path(
-            path=boundary_rect,
+            coordinates=boundary_rect,
             tool_idx=0,
             filled=False
         )
         path_1=Path(
-            path=rect_1,
+            coordinates=rect_1,
             tool_idx=1,
             filled=True
         )

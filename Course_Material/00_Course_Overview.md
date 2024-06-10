@@ -44,14 +44,14 @@ MODULE START
 3. Authoring Python-based Axidraw instructions (direct authoring, resume function)
 ### 5. Advanced Path Manipulation for Plotter Painting
 1. Drawing Curves
-2. Cut shape by distance 
+2. Cut paths by distance 
 2. Polygon Operation 
 3. Hatch 
 ### 6. [Practice] Pen Plotting with Multiple Colors 
 1. Generating individual scripts for colored plotting 
 2. Split instruction based on max drawing distance
-3. DIY Ink reservoir for technical pen 
-4. Add shake operation 
+4. Add resume, registration, and shake operation 
+5. DIY Ink reservoir for technical pen
 ### 7. Preparing Painting Materials 
 1. Making inkwells 
 2. Preparing watercolor papers 
@@ -94,7 +94,11 @@ MODULE END
 
 ## Disclaimers/Note
 1. The course primarily focuses on sharing my (Licia's) plotter painting practice.  Audiences will have to adjust according to their own setup. This is especially important regarding machine operation. Always follow instructions and safety rules provided by your machine manufacturers. 
-2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machines, brands, and materials are my own. 
+2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machines, brands, and materials are my own.
+
+## LICENSE: 
+Media (images and videos): Unless otherwise mentioned, ALL RIGHTS RESERVED.
+Code and Notes: Unless otherwise mentioned, code and notes in this repository are under MIT LICENSE
 
 ## News/Updates
 
