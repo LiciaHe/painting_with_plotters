@@ -297,6 +297,37 @@ def cut_path_to_paths_by_dist(path,dist_lim):
         #Return a copy of the the uncut path.
         return [[pt.copy() for pt in path]]
 
+    to_process=path.copy()
+    to_process.reverse()
+    current_pt=to_process.pop()
+    next_pt=to_process.pop()
+    current_seg=[current_pt]
+    current_dist=0
+    while len(to_process)>0:
+        dist=math.dist(current_pt,next_pt)
+        if current_dist+dist<=dist_lim:
+            #can append the next point to the current seg
+            current_seg.append(next_pt)
+            current_dist+=dist
+            current_pt=next_pt
+            next_pt=to_process.pop()
+        else:
+            #need to produce a break point and start the next seg.
+            break_pt=get_pt_on_line_by_dist(current_pt,next_pt,dist_lim-current_dist)
+            current_seg.append(break_pt)
+            path_segments.append(current_seg)
+            current_seg=[break_pt]
+            current_pt=break_pt
+            current_dist=0
+
+    if current_seg!=path_segments[-1]:
+        path_segments.append(current_seg)
+    if current_pt!=next_pt:
+        path_segments+=cut_line_by_dist(current_pt,next_pt,dist_lim)
+
+
+    return path_segments
+
 
 
 

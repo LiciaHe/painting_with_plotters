@@ -69,16 +69,7 @@ class PathManipulation(ScriptGenerator):
                     tool_idx=i%self.tools_ct
                 )
             )
-    def create(self):
-        '''
-        1. Cut a line (2 point) into sections
-        2. Cut a path (multiple points) into sections
-        3. Boolean Operation
-        4. Hatch
-        5. Drawing a curve
-        Returns: a list of paths
-        '''
-        paths=[]
+    def test_lines(self,paths):
         line=[[0,0],[self.wh_m[0],0]]
         line_path=Path(
             coordinates=line,
@@ -117,11 +108,7 @@ class PathManipulation(ScriptGenerator):
         line_segments=UG.cut_line_by_dist(*line_to_cut,100)
         self.create_colored_paths(line_segments,paths)
 
-
-        # cut a path into 4 sections
-        rectangle=UG.create_rect(
-            0,400,100,100,True
-        )
+    def test_rectangles_cuts(self,rectangle,paths):
         paths.append(
             Path(
                 coordinates=rectangle,
@@ -144,6 +131,28 @@ class PathManipulation(ScriptGenerator):
         rect_to_cut=UG.translate_path(rectangle,rect_tx*3,0)
         rect_cut_segments=UG.cut_path_to_paths_by_dist(rect_to_cut,60)
         self.create_colored_paths(rect_cut_segments, paths)
+    def create(self):
+        '''
+        1. Cut a line (2 point) into sections
+        2. Cut a path (multiple points) into sections
+        3. Boolean Operation
+        4. Hatch
+        5. Drawing a curve
+        Returns: a list of paths
+        '''
+        paths=[]
+        self.test_lines(paths)
+
+        # cut a path into 4 sections
+        rectangle=UG.create_rect(
+            0,400,100,100,True
+        )
+        self.test_rectangles_cuts(rectangle,paths)
+
+        # rect_to_seg=UG.translate_path(rectangle,0,150)
+        # rect_segs=UG.cut_path_to_paths_by_dist(rect_to_seg,60)
+        # self.create_colored_paths(rect_segs,paths)
+
 
         return paths
 

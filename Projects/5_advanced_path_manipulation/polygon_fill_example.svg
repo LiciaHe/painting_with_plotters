@@ -1,0 +1,20 @@
+<svg height="1123.2px" viewBox="0 0 796.8 1123.2" width="796.8px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/2000/xlink">
+
+ <g transform="translate(96,96)">
+  <path d="M0,0 L200,0 L200,200 L0,200 L0,0" fill="none" stroke="#e09253" stroke-width="4.8"/>
+  <path d="M100,0 L250,100 L100,250 L100,0" fill="none" stroke="#eeff53" stroke-width="4.8"/>
+ </g>
+ 
+ <g transform="translate(96,400)">
+  <path d="M0,0 L200,0 L200,200 L0,200 L0,0M100,0 L250,100 L100,250 L100,0" fill="none" stroke="#e09253" stroke-width="4.8"/>
+ </g>
+ 
+ <g transform="translate(96,800)">
+  <path d="M0,0 L200,0 L200,200 L0,200 L0,0M100,0 L250,100 L100,250 L100,0" fill="blue" fill-rule="nonzero" stroke="#e09253" stroke-width="4.8"/>
+ </g>
+ 
+ <g transform="translate(400,800)">
+  <path d="M0,0 L200,0 L200,200 L0,200 L0,0M100,0 L250,100 L100,250 L100,0" fill="blue" fill-rule="evenodd" stroke="#e09253" stroke-width="4.8"/>
+ </g>
+ 
+</svg>
