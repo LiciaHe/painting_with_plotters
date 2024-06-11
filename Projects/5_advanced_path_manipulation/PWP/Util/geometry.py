@@ -357,6 +357,69 @@ def get_center_of_path(path):
     wh_bbox=get_wh_bbox(path)
     return get_center_from_wh_bbox(wh_bbox)
 
+def get_cubic_bezier_point_by_t(t, P0, P1, P2, P3):
+    '''
+    Get a point on bezier curve based on t
+    Args:
+        t: a number between 0 and 1
+        P0: start point
+        P1: control point 0
+        P2: control point 1
+        P3: end point
+
+    Returns: a point on the bezier curve
+
+    '''
+    x = (1-t)**3 * P0[0] + 3*(1-t)**2 * t * P1[0] + 3*(1-t) * t**2 * P2[0] + t**3 * P3[0]
+    y = (1-t)**3 * P0[1] + 3*(1-t)**2 * t * P1[1] + 3*(1-t) * t**2 * P2[1] + t**3 * P3[1]
+    return [x, y]
+
+def approximate_cubic_bezier_curve_length(P0, P1, P2, P3,step=10):
+    '''
+    Approximate the length of a cubic bezier curve by generating 10 points in the curve and calculate the length.
+    Args:
+        P0: start point
+        P1: control point 0
+        P2: control point 1
+        P3: end point
+
+    Returns: approximated value of the curve length
+    '''
+    path=[]
+    for i in range(0,100+step,step):
+        t=i/100
+        pt = get_cubic_bezier_point_by_t(
+            t,
+            P0, P1, P2, P3
+        )
+        path.append(pt)
+    return calc_path_length(path)
+
+def create_cubic_bezier_curves_with_eq_segs(P0, P1, P2, P3,seg_length=5):
+    '''
+    Create a (line-approximated) cubic bezier curve with equal-length segments.
+    Create a rough estimation of the curve length in order to find the t value.
+    Args:
+        P0: start point
+        P1: control point 0
+        P2: control point 1
+        P3: end point
+        seg_length: The approximate size of each segment.
+
+    Returns: a cubic bezier path.
+
+    '''
+    path_length=approximate_cubic_bezier_curve_length(P0, P1, P2, P3)
+    section_ct=math.ceil(path_length/seg_length)
+    t_per_section=1/section_ct
+    t=0
+    path=[]
+    for i in range(section_ct+1):
+        pt = get_cubic_bezier_point_by_t(t,P0, P1, P2, P3)
+        t=min(1,t+t_per_section)
+        path.append(pt)
+    return path
+
 def calc_polygon_area(path):
     '''
     Calculate the area of a polygon.

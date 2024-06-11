@@ -187,11 +187,6 @@ class PathManipulation(ScriptGenerator):
 
     def create(self):
         '''
-        1. Cut a line (2 point) into sections
-        2. Cut a path (multiple points) into sections
-        3. Boolean Operation
-        4. Hatch
-        5. Drawing a curve
         Returns: a list of paths
         '''
         paths=[]
