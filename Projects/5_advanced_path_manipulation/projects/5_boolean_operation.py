@@ -1,4 +1,4 @@
-import sys
+import sys,math
 sys.path.insert(1,"../")
 
 from PWP.Generator.ScriptGenerator import ScriptGenerator
@@ -7,7 +7,7 @@ from PWP.Util import geometry as UG
 from PWP.Util import clipper_helper as UC
 
 settings={
-    "name":"4_path_manipulation",
+    "name":"5_boolean_operation",
     "parameters":{
     },
     "basic_settings":{
@@ -71,77 +71,13 @@ class PathManipulation(ScriptGenerator):
                     filled=filled
                 )
             )
-    def test_lines(self,paths):
-        line=[[0,0],[self.wh_m[0],0]]
-        line_path=Path(
-            coordinates=line,
-            tool_idx=0
-        )
-        paths.append(line_path)
 
-        ## cut the path into 4 sections
-        four_section_lines=[[0,100],[self.wh_m[0],100]]
-        for i in range(4):
-            start_pt=UG.get_pt_on_line_by_perc(
-                pt0=four_section_lines[0],
-                pt1=four_section_lines[1],
-                dist_perc=i*0.25
-            )
-            end_pt=UG.get_pt_on_line_by_perc(
-                pt0=four_section_lines[0],
-                pt1=four_section_lines[1],
-                dist_perc=(i+1)*0.25
-            )
-            paths.append(
-                Path(
-                    coordinates=[start_pt,end_pt],
-                    tool_idx=i
-                )
-
-            )
-
-
-        # split line into sections shorter than 100px
-        line_to_split=UG.translate_path(line,0,200)
-        line_splited=UG.split_line_by_dist(*line_to_split,100)
-        paths+=self.annotate_a_path(line_splited,1)
-
-        line_to_cut=UG.translate_path(line,0,300)
-        line_segments=UG.cut_line_by_dist(*line_to_cut,100)
-        self.create_colored_paths(line_segments,paths)
-
-    def test_rectangles_cuts(self,paths):
-        rectangle=UG.create_rect(
-            0,400,100,100,True
-        )
-        paths.append(
-            Path(
-                coordinates=rectangle,
-                tool_idx=0
-            )
-        )
-
-        rect_tx=150
-        # split a rectangle into lines shorter than 60 px
-        rect_to_split=UG.translate_path(rectangle,rect_tx,0)
-        rect_splited=UG.split_path_by_dist(rect_to_split,60)
-        paths+=self.annotate_a_path(rect_splited,2)
-
-        # cut a rectangle into lines shorter than 60 px
-        rect_to_cut=UG.translate_path(rectangle,rect_tx*2,0)
-        rect_cut_segments=UG.cut_path_to_lines_by_dist(rect_to_cut,60)
-        self.create_colored_paths(rect_cut_segments, paths)
-
-        #cut a rectangle into paths shorter than 60 px
-        rect_to_cut=UG.translate_path(rectangle,rect_tx*3,0)
-        rect_cut_segments=UG.cut_path_to_paths_by_dist(rect_to_cut,60)
-        self.create_colored_paths(rect_cut_segments, paths)
     def test_boolean(self,path_storage):
         rectangle=UG.create_rect(
-            0,600,80,80,True
+            0,0,80,80,True
         )
         hexagon=UG.create_uniform_polygon(
-            50,600,45,6,True
+            50,0,45,6,True
         )
         path_storage.append(
             Path(
@@ -168,16 +104,86 @@ class PathManipulation(ScriptGenerator):
             )
             self.create_colored_paths(clipper_results,path_storage,filled=True)
 
-        # create a hacth
-
     def test_hatch(self,path_storage):
-        circle=UG.create_uniform_polygon(50,800,50,30,True)
+
+        coordinates=[]
+        circle=UG.scale_path(UG.create_uniform_polygon(50,200,50,30,True),scale_x=1.1,scale_y=0.9,scale_center=[50,200])
         path_storage.append(
             Path(
                 circle,
                 0
             )
         )
+        cell_width=220
+        cell_height=200
+        coordinates.append(circle)
+
+        # produce bounding box and larger bounding box
+        c1=UG.translate_path(circle,cell_width,0)
+        # create bounding box
+        bbox=UG.get_wh_bbox(c1)
+        # x,y,w,h=bbox
+        bbox_rect=UG.create_rect(*bbox,True)
+
+        #create a larger bbox
+        max_wh=max(bbox[2:])*2**0.5
+        lg_bbox=UG.get_wh_bbox_from_center(
+            center=UG.get_center_from_wh_bbox(bbox),
+            width=max_wh,
+            height=max_wh,
+        )
+        lg_rect=UG.create_rect(*lg_bbox,True)
+        coordinates.append(c1)
+        coordinates.append(bbox_rect)
+        coordinates.append(lg_rect)
+
+        # fill the larger box with lines
+
+        c2=UG.translate_path(circle,cell_width*2,0)
+        lg_rect2=UG.translate_path(lg_rect,cell_width,0)
+        coordinates.append(c2)
+        coordinates.append(lg_rect2)
+
+
+        lines=[]
+        line=[lg_rect2[0],lg_rect2[1]]
+
+        box_center=UG.get_center_of_path(lg_rect2)
+        gap=10
+        rot_radians=math.radians(120)
+        lines.append(
+            UG.rotate_path(line,origin=box_center,angle_radian=rot_radians)
+        )
+
+
+        rep_ct=math.ceil(lg_bbox[3]/gap)
+        for i in range(rep_ct):
+            line=UG.translate_path(line,0,gap)
+            lines.append(UG.rotate_path(line,origin=box_center,angle_radian=rot_radians))
+
+        coordinates+=lines
+
+        c3=UG.translate_path(circle,0,cell_height,False)
+        fill_lines=UC.fill_with_line(
+            path=c3,
+            gap=gap,
+            rot_radians=rot_radians,
+        )
+        coordinates+=fill_lines
+
+        self.create_colored_paths(coordinates,path_storage)
+
+        c4=UG.translate_path(circle,cell_width,cell_height,False)
+        fill_lines_4=UC.fill_with_line(
+            path=c4,
+            gap=self.stroke_width,
+            rot_radians=rot_radians,
+        )
+        for l in fill_lines_4:
+            path_storage.append(
+                Path(l,0)
+            )
+
 
     def create(self):
         '''
@@ -189,14 +195,10 @@ class PathManipulation(ScriptGenerator):
         Returns: a list of paths
         '''
         paths=[]
-        self.test_lines(paths)
-        self.test_rectangles_cuts(paths)
         self.test_boolean(paths)
         self.test_hatch(paths)
 
         return paths
-
-
 
 
 generator=PathManipulation(

@@ -182,6 +182,20 @@ def rotate_path(path,origin, angle_radian,in_place=False):
             path[i]=rotate_pt(pt,origin,angle_radian,in_place)
         return path
     return [rotate_pt(pt,origin,angle_radian,in_place) for pt in path]
+def rotate_line_by_center(line,angle_radian,in_place=False):
+    '''
+    Rotate a line based on its center
+    Args:
+        line: 2 points
+        angle_radian: an angle in radians.
+        in_place: whether the operation happens in place. False by default.
+
+    Returns:a rotated line
+    '''
+    pt0,pt1=line
+    center=pt1[0]-pt0[0],pt1[1]-pt0[0]
+
+    return rotate_path(line,center,angle_radian,in_place)
 def round_pt(point,precision=2,in_place=False):
     '''
     Round a point to the given precision
@@ -295,7 +309,7 @@ def get_mm_bbox(path):
         if y > max_y:
             max_y = y
 
-    return min_x, min_y, max_x, max_y
+    return min_x, max_x, min_y, max_y
 def pt_within_bbox(pt,bbox):
     '''
     check if a point is within a given bbox. The bbox is given in a min/max style.
@@ -320,7 +334,17 @@ def get_center_from_wh_bbox(wh_bbox):
     '''
     x,y,w,h=wh_bbox
     return [x+w/2,y+h/2]
+def get_wh_bbox_from_center(center,width,height):
+    '''
+    Given a center (x,y) and width, height, calculate the x and y.
+    Args:
+        center: x,y
+        width: a number
+        height: a number
 
+    Returns: x,y,w,h
+    '''
+    return [center[0]-width/2,center[1]-height/2,width,height]
 def get_center_of_path(path):
     '''
     Calculate the center of a path

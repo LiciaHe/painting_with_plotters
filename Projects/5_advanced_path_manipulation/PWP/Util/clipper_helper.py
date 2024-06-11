@@ -1,4 +1,5 @@
 import pyclipper,math
+from ..Util import geometry as UG
 
 OFFSETTYPES={
     "CLOSEDPOLYGON":pyclipper.ET_CLOSEDPOLYGON,
@@ -64,16 +65,51 @@ def make_clipper(subj_path,clip_path,clipper_type_string,subj_fill="positive",cl
     return result_paths
 
 
-def fill_with_line(path,gap,angle_deg=0,fill_type="positive"):
+def fill_with_line(path,gap,rot_radians=0,fill_type="positive"):
     '''
     Given a path, produce hatch lines that fill the space.
     Args:
         path: A list of 2d points.
         gap: distance between the hatch line
-        angle_deg: angle of the line. By default, horizontal (0)
+        rot_radians: angle of the line. By default, horizontal (0)
         fill_type: the fill type of the subject (path)
 
 
     Returns:
 
     '''
+    #generate original bbox and large bbox
+    bbox = UG.get_wh_bbox(path)
+    max_wh = max(bbox[2:]) * 2 ** 0.5
+    lg_bbox = UG.get_wh_bbox_from_center(
+        center=UG.get_center_from_wh_bbox(bbox),
+        width=max_wh,
+        height=max_wh,
+    )
+    x,y,w,h=lg_bbox
+    box_center=UG.get_center_from_wh_bbox(lg_bbox)
+
+    #generate rotated lines
+    lines = []
+    line = [[x,y],[x+w,y]]
+    lines.append(
+        UG.rotate_path(line, origin=box_center, angle_radian=rot_radians)
+    )
+
+    rep_ct = math.ceil(lg_bbox[3] / gap)
+    for i in range(rep_ct):
+        line = UG.translate_path(line, 0, gap)
+        lines.append(UG.rotate_path(line, origin=box_center, angle_radian=rot_radians))
+
+    #cut lines into the shape.
+    result_fills=[]
+    for line in lines:
+        result_fills+=make_clipper(
+            subj_path=line,
+            clip_path=path,
+            clipper_type_string="intersection",
+            close_result=False,
+            subj_closed=False,
+            clip_fill=fill_type
+        )
+    return result_fills
