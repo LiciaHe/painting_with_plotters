@@ -274,7 +274,6 @@ def cut_path_to_lines_by_dist(path,dist_lim):
         ])
     return line_segments
 
-
 def cut_path_to_paths_by_dist(path,dist_lim):
 
     '''

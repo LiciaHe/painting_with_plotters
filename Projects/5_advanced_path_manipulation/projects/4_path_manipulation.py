@@ -4,6 +4,7 @@ sys.path.insert(1,"../")
 from PWP.Generator.ScriptGenerator import ScriptGenerator
 from PWP.Util.Path import Path
 from PWP.Util import geometry as UG
+from PWP.Util import clipper_helper as UC
 
 settings={
     "name":"4_path_manipulation",
@@ -60,13 +61,14 @@ class PathManipulation(ScriptGenerator):
 
 
 
-    def create_colored_paths(self,list_of_coors,path_storage):
+    def create_colored_paths(self,list_of_coors,path_storage,filled=False):
 
         for i,coordinates in enumerate(list_of_coors):
             path_storage.append(
                 Path(
                     coordinates=coordinates,
-                    tool_idx=i%self.tools_ct
+                    tool_idx=i%self.tools_ct,
+                    filled=filled
                 )
             )
     def test_lines(self,paths):
@@ -108,7 +110,10 @@ class PathManipulation(ScriptGenerator):
         line_segments=UG.cut_line_by_dist(*line_to_cut,100)
         self.create_colored_paths(line_segments,paths)
 
-    def test_rectangles_cuts(self,rectangle,paths):
+    def test_rectangles_cuts(self,paths):
+        rectangle=UG.create_rect(
+            0,400,100,100,True
+        )
         paths.append(
             Path(
                 coordinates=rectangle,
@@ -131,6 +136,39 @@ class PathManipulation(ScriptGenerator):
         rect_to_cut=UG.translate_path(rectangle,rect_tx*3,0)
         rect_cut_segments=UG.cut_path_to_paths_by_dist(rect_to_cut,60)
         self.create_colored_paths(rect_cut_segments, paths)
+    def test_boolean(self,path_storage):
+        rectangle=UG.create_rect(
+            0,600,80,80,True
+        )
+        hexagon=UG.create_uniform_polygon(
+            50,600,45,6,True
+        )
+        path_storage.append(
+            Path(
+                coordinates=rectangle,
+                tool_idx=0
+            )
+        )
+        path_storage.append(
+            Path(
+                coordinates=hexagon,
+                tool_idx=1
+            )
+        )
+        cell_w=120
+        clip_types=["intersection","union","difference","xor"]
+        for i, ct in enumerate(clip_types):
+            tx=(i+1)*cell_w
+            subj=UG.translate_path(rectangle,tx,0)
+            clip=UG.translate_path(hexagon,tx,0)
+            clipper_results=UC.make_clipper(
+                subj_path=subj,
+                clip_path=clip,
+                clipper_type_string=ct
+            )
+            self.create_colored_paths(clipper_results,path_storage,filled=True)
+
+        # create a hacth
     def create(self):
         '''
         1. Cut a line (2 point) into sections
@@ -144,14 +182,9 @@ class PathManipulation(ScriptGenerator):
         self.test_lines(paths)
 
         # cut a path into 4 sections
-        rectangle=UG.create_rect(
-            0,400,100,100,True
-        )
-        self.test_rectangles_cuts(rectangle,paths)
+        self.test_rectangles_cuts(paths)
 
-        # rect_to_seg=UG.translate_path(rectangle,0,150)
-        # rect_segs=UG.cut_path_to_paths_by_dist(rect_to_seg,60)
-        # self.create_colored_paths(rect_segs,paths)
+        self.test_boolean(paths)
 
 
         return paths
