@@ -49,6 +49,20 @@ def create_uniform_polygon(x,y,r,side_ct,closed=False):
     if closed:
         polygon.append(polygon[0].copy())
     return polygon
+def create_c_bezier_curve_by_angle_dist(start_end,p1_angle_deg,p2_angle_deg,p1_dist_perc,p2_dist_perc):
+    '''
+    Creating the control points of a cubic bezier curve using rotation and distance.
+    Args:
+        start_end: A list or tuple of 2 points, starting point and ending point.
+        p1_angle_deg:
+        p2_angle_deg:
+        p1_dist_perc:
+        p2_dist_perc:
+
+    Returns:
+
+    '''
+
 ### MANIPULATE
 def scale_pt(point,scale_x,scale_y,scale_center,in_place=False):
     '''
@@ -127,6 +141,63 @@ def translate_path(path,tx,ty,in_place=False):
             path[i]=translate_pt(pt,tx,ty,in_place)
         return path
     return [translate_pt(pt,tx,ty,in_place) for pt in path]
+def rotate_pt(point, origin, angle_radian,in_place=False):
+    '''
+        Rotate a point counterclockwise by a given angle around a given origin.
+        The angle should be given in radians.
+    Args:
+        point: A 2d point
+        origin: A 2d point to be rotated around
+        angle_radian: a radian format angle
+        in_place: whether to return a new point or to manipulate the original point. False by default
+
+    Returns: the rotated point.
+    '''
+    ox, oy = origin
+    px, py = point
+
+    qx = ox + math.cos(angle_radian) * (px - ox) - math.sin(angle_radian) * (py - oy)
+    qy = oy + math.sin(angle_radian) * (px - ox) + math.cos(angle_radian) * (py - oy)
+
+    if in_place:
+        point[0]=qx
+        point[1]=qy
+        return point
+    else:
+        return [qx, qy]
+def rotate_path(path,origin, angle_radian,in_place=False):
+    '''
+    Rotate a path counterclockwise by a given angle around a given origin.
+        The angle should be given in radians.
+    Args:
+        path: A list of 2d points
+        origin: A 2d point to be rotated around
+        angle_radian: a radian format angle
+        in_place: whether to return a new point or to manipulate the original point. False by default
+
+    Returns: the rotated path
+    '''
+    if in_place:
+        for i, pt in enumerate(path):
+            path[i]=rotate_pt(pt,origin,angle_radian,in_place)
+        return path
+    return [rotate_pt(pt,origin,angle_radian,in_place) for pt in path]
+def round_pt(point,precision=2,in_place=False):
+    '''
+    Round a point to the given precision
+    Args:
+        point: 2d point
+        precision: by default, 2
+        in_place: whether the action is in place. By default, False
+
+    Returns: a rounded point.
+    '''
+    if in_place:
+        point[0]=round(point[0],precision)
+        point[1]=round(point[1],precision)
+        return point
+    return [round(xy,precision) for xy in point]
+
 ###CALCULATE/GET
 def get_pt_on_line_by_perc(pt0,pt1,dist_perc):
     '''
@@ -179,6 +250,110 @@ def calc_path_length(path):
     for i in range(1,len(path)):
         l+=math.dist(path[i-1],path[i])
     return l
+def get_wh_bbox(path):
+    '''
+    given a path, return the bounding box in the width-height style
+    Args:
+        path: a list of 2d points
+
+    Returns: (x,y,w,h) of the path.
+    '''
+    return convert_mmbbox_to_whbbox(get_mm_bbox(path))
+def convert_mmbbox_to_whbbox(mm_bbox):
+    '''
+    Convert a min/max bbox to a width/height bbox
+    Args:
+        mm_bbox: (min_x,max_x,min_y, max_y)
+
+    Returns: (x,y,w,h)
+    '''
+    return [mm_bbox[0], mm_bbox[2], mm_bbox[1] - mm_bbox[0], mm_bbox[3] - mm_bbox[2]]
+def get_mm_bbox(path):
+    '''
+
+    Given a path, return the bounding box in the min-max style.
+    Args:
+        path: a list of 2d points
+
+    Returns: (min_x,max_x,min_y, max_y) of the path. (0,0,0,0) if the path is empty.
+
+    '''
+    if not path:
+        return 0, 0, 0, 0
+
+    min_x = min_y = float('inf')
+    max_x = max_y = float('-inf')
+
+    for point in path:
+        x, y = point
+        if x < min_x:
+            min_x = x
+        if y < min_y:
+            min_y = y
+        if x > max_x:
+            max_x = x
+        if y > max_y:
+            max_y = y
+
+    return min_x, min_y, max_x, max_y
+def pt_within_bbox(pt,bbox):
+    '''
+    check if a point is within a given bbox. The bbox is given in a min/max style.
+    The boundary values are not included.
+        i.e., the point sits on the edge/corner of the bbox is not considered as sitting inside the bbox.
+    Args:
+        pt: 2d point
+        bbox: a min/max style bbox
+
+    Returns: if the point is inside a bbox.
+    '''
+    min_x,max_x,min_y,max_y=bbox
+    return max_x > pt[0] > min_x and max_y > pt[1] > min_y
+def get_center_from_wh_bbox(wh_bbox):
+    '''
+    Given a bounding box in the width/height format, return its center.
+    Args:
+        wh_bbox: [x,y,w,h]
+
+    Returns: center of the bounding box (a 2d point)
+
+    '''
+    x,y,w,h=wh_bbox
+    return [x+w/2,y+h/2]
+
+def get_center_of_path(path):
+    '''
+    Calculate the center of a path
+    Args:
+        path: a list of 2D coordinates
+
+    Returns: center of the bounding box (a 2d point)
+
+    '''
+    wh_bbox=get_wh_bbox(path)
+    return get_center_from_wh_bbox(wh_bbox)
+
+def calc_polygon_area(path):
+    '''
+    Calculate the area of a polygon.
+
+    Args:
+        path:a list of 2d point. Will be considered as a closed polygon.
+
+    Returns: area of the polygon.
+
+    '''
+    n = len(path)
+    area = 0
+
+    for i in range(n):
+        x1, y1 = path[i]
+        x2, y2 = path[(i + 1) % n]
+        area += x1 * y2
+        area -= y1 * x2
+
+    area = abs(area) / 2.0
+    return area
 
 ### SPLIT AND CUT
 def split_line_by_dist(start_pt,end_pt,dist_lim):
@@ -225,7 +400,6 @@ def cut_line_by_dist(start_pt,end_pt,dist_lim):
             line_split[i],
         ])
     return line_segments
-
 
 def split_path_by_dist(path,dist_lim):
     '''

@@ -251,7 +251,6 @@ def get_wh_bbox(path):
     Returns: (x,y,w,h) of the path.
     '''
     return convert_mmbbox_to_whbbox(get_mm_bbox(path))
-
 def convert_mmbbox_to_whbbox(mm_bbox):
     '''
     Convert a min/max bbox to a width/height bbox
@@ -302,7 +301,6 @@ def pt_within_bbox(pt,bbox):
     '''
     min_x,max_x,min_y,max_y=bbox
     return max_x > pt[0] > min_x and max_y > pt[1] > min_y
-
 def calc_polygon_area(path):
     '''
     Calculate the area of a polygon.

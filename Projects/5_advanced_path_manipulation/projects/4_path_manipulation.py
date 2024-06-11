@@ -169,6 +169,16 @@ class PathManipulation(ScriptGenerator):
             self.create_colored_paths(clipper_results,path_storage,filled=True)
 
         # create a hacth
+
+    def test_hatch(self,path_storage):
+        circle=UG.create_uniform_polygon(50,800,50,30,True)
+        path_storage.append(
+            Path(
+                circle,
+                0
+            )
+        )
+
     def create(self):
         '''
         1. Cut a line (2 point) into sections
@@ -180,12 +190,9 @@ class PathManipulation(ScriptGenerator):
         '''
         paths=[]
         self.test_lines(paths)
-
-        # cut a path into 4 sections
         self.test_rectangles_cuts(paths)
-
         self.test_boolean(paths)
-
+        self.test_hatch(paths)
 
         return paths
 

@@ -62,3 +62,18 @@ def make_clipper(subj_path,clip_path,clipper_type_string,subj_fill="positive",cl
             scaled_back_path.append(scaled_back_path[0].copy())
         result_paths.append(scaled_back_path)
     return result_paths
+
+
+def fill_with_line(path,gap,angle_deg=0,fill_type="positive"):
+    '''
+    Given a path, produce hatch lines that fill the space.
+    Args:
+        path: A list of 2d points.
+        gap: distance between the hatch line
+        angle_deg: angle of the line. By default, horizontal (0)
+        fill_type: the fill type of the subject (path)
+
+
+    Returns:
+
+    '''
