@@ -185,6 +185,27 @@ class PathManipulation(ScriptGenerator):
             )
 
 
+    def test_offset(self,path_storage):
+
+        curve=UG.create_uniform_polygon(30,600,30,30,False)[:15]
+        path_storage.append(
+            Path(curve, 0)
+        )
+        cell_width=100
+        offset_width=5
+        values_to_test=["CLOSEDPOLYGON","CLOSEDLINE","OPENROUND","OPENSQUARE","OPENBUTT"]
+        for i,v in enumerate(values_to_test):
+            c=UG.translate_path(curve,cell_width*(i+1),0)
+            offsets=UC.make_offset(
+                c,
+                offset_width,
+                 offset_type=v
+            )
+            self.create_colored_paths(
+                [c]+offsets,path_storage,filled=False
+            )
+
+
     def create(self):
         '''
         Returns: a list of paths
@@ -192,6 +213,7 @@ class PathManipulation(ScriptGenerator):
         paths=[]
         self.test_boolean(paths)
         self.test_hatch(paths)
+        self.test_offset(paths)
 
         return paths
 

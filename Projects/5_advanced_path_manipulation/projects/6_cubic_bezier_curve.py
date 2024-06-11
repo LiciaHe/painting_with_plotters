@@ -121,9 +121,15 @@ class PathManipulation(ScriptGenerator):
         # produce bezier curve in relation to length
         pts_2 = self.create_control_points_by_row(2)
         self.visualize_skeleton(*pts_2, path_storage)
-        bc_2 = UG.create_cubic_bezier_curves_with_eq_segs(*pts_2,seg_length=20)
+        bc_2 = UG.create_cubic_bezier_curve(*pts_2,seg_length=20)
         self.annotate_a_path(bc_2, 3, path_storage)
 
+        pts_3 = self.create_control_points_by_row(3)
+        pts_3=UG.scale_path(pts_3,1.5,1,pts_3[0])
+
+        self.visualize_skeleton(*pts_3, path_storage)
+        bc_3 = UG.create_cubic_bezier_curve(*pts_3,seg_length=20)
+        self.annotate_a_path(bc_3, 3, path_storage)
 
         return path_storage
 

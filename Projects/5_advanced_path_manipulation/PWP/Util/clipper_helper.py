@@ -113,3 +113,33 @@ def fill_with_line(path,gap,rot_radians=0,fill_type="positive"):
             clip_fill=fill_type
         )
     return result_fills
+
+
+def make_offset(subj_path,offset_width,offset_type="OPENSQUARE",joint_type="SQUARE",close_result=True):
+    '''
+    Given a path, offset it.
+    See     http://www.angusj.com/delphi/clipper/documentation/Docs/Units/ClipperLib/Types/EndType.htm
+    http://www.angusj.com/delphi/clipper/documentation/Docs/Units/ClipperLib/Types/JoinType.htm
+
+    Args:
+        subj_path: a list of 2d points
+        offset_width: how much to offset.
+        offsetType: one of the following values: CLOSEDPOLYGON, CLOSEDLINE, OPENROUND,OPENSQUARE, OPENBUTT
+        jointType: one of MITER, ROUND, SQUARE
+        close_result: whether to close the result. Default True.
+
+    Returns: The result of the offset. A list of paths.
+    '''
+
+    offset_width=int(offset_width)
+    offsetType=OFFSETTYPES[offset_type.upper()]
+    jointType=JOINTTYPES[joint_type.upper()]
+    pco = pyclipper.PyclipperOffset()
+    sub_s=pyclipper.scale_to_clipper(subj_path)
+    pco.AddPath(sub_s,jointType, offsetType)
+    solution = pco.Execute(pyclipper.scale_to_clipper(offset_width))
+    scaled_solution=pyclipper.scale_from_clipper(solution)
+    for ss in scaled_solution:
+        if close_result and len(ss)>0:
+            ss.append(ss[0].copy())
+    return scaled_solution

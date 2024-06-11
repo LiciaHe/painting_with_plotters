@@ -395,7 +395,7 @@ def approximate_cubic_bezier_curve_length(P0, P1, P2, P3,step=10):
         path.append(pt)
     return calc_path_length(path)
 
-def create_cubic_bezier_curves_with_eq_segs(P0, P1, P2, P3,seg_length=5):
+def create_cubic_bezier_curve(P0, P1, P2, P3,seg_length=5):
     '''
     Create a (line-approximated) cubic bezier curve with equal-length segments.
     Create a rough estimation of the curve length in order to find the t value.
