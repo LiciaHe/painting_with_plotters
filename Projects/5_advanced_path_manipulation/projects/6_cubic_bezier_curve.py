@@ -125,8 +125,6 @@ class PathManipulation(ScriptGenerator):
         self.annotate_a_path(bc_2, 3, path_storage)
 
 
-
-
         return path_storage
 
 

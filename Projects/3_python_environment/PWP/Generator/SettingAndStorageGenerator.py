@@ -117,7 +117,6 @@ class SettingAndStorageGenerator:
 
         self.dated_folder = f'{self.save_loc}{str(datetime.datetime.now().strftime("%Y-%m-%d"))}/'
         UB.mkdir(self.dated_folder)
-        print(self.dated_folder)
 
         if self.get_value_from_basic_settings("batch_name"):
             self.batch_name=self.get_value_from_basic_settings("batch_name")
