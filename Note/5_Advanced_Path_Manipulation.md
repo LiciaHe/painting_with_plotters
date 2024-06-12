@@ -17,13 +17,14 @@ cut vs split
    - nested path test (svg)
       https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
    - boolean operation 
-   - optional (offset)
+
    - Hatch:
      - bounding box and format 
      - create 2 bounding boxes 
      - create lines within the box 
      - rotate lines 
      - cut lines using pyclipper
+   - optional (offset)
 
 3. Drawing Curves
    3. Intro to cubic bezier curve 
