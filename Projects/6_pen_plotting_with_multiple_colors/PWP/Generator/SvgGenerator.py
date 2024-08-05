@@ -284,14 +284,33 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         '''
         for path_obj in paths:
-            self.add_path_to_svg(self.main_svg_idx, path_obj.coordinates, path_obj.tool_idx, path_obj.filled)
+            coordinates=path_obj.coordinates
+            if self.split_paths_to_unit_size:
+                coordinates=path_obj.split_coordinates
+
+            svgs_to_append=[self.main_svg_idx]
             if self.split_to_tool_svgs:
-                #append the path to the corresponding tool svg
-                tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
-                self.add_path_to_svg(tool_svg_idx, path_obj.coordinates,path_obj.tool_idx,path_obj.filled)
+                tool_svg_idx = self.tools[path_obj.tool_idx]["svg_idx"]
+                svgs_to_append.append(tool_svg_idx)
+
+            for svg_idx in svgs_to_append:
+                self.add_path_to_svg(
+                    svg_idx=svg_idx,
+                    path_coordinate=coordinates,
+                    tool_idx=path_obj.tool_idx,
+                    filled=False
+                )
+                if path_obj.filled:
+                    for path in path_obj.fill_path_objects:
+                        self.add_path_to_svg(
+                            svg_idx=svg_idx,
+                            path_coordinate=path.coordinates,
+                            tool_idx=path_obj.tool_idx,
+                            filled=False
+                        )
 
     path_unit_size=5
-    split_paths_to_unit_size=True
+    split_paths_to_unit_size=False
     hatch_rotation_range=(-2*math.pi,2*math.pi)
     def process_paths(self,paths):
         '''
@@ -312,7 +331,8 @@ class SvgGenerator(SettingAndStorageGenerator):
                 path.produce_line_fills(
                     self.stroke_width,
                     rot_radians=random.uniform(*self.hatch_rotation_range),
-                    split_to_unit=self.split_paths_to_unit_size
+                    split_to_unit=self.split_paths_to_unit_size,
+                    path_unit_size=self.path_unit_size
                 )
 
     def generate(self):

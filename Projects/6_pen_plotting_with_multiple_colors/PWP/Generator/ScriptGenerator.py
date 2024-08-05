@@ -226,8 +226,14 @@ class ScriptGenerator(SvgGenerator):
 
         '''
         main_writer=self.script_writers[self.main_script_idx]
-
+        path_will_fillings=[]
         for path_obj in paths:
+            path_will_fillings.append(path_obj)
+            if path_obj.filled:
+                for path_filling_obj in path_obj.fill_path_objects:
+                    path_will_fillings.append(path_filling_obj)
+
+        for path_obj in path_will_fillings:
             main_writer.process_and_append_path(path_obj,self.margins)
             if self.split_to_tool_pys:
                 tool=self.tools[path_obj.tool_idx]

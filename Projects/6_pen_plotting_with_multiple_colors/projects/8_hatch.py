@@ -7,7 +7,7 @@ from PWP.Util import geometry as UG
 from PWP.Util import clipper_helper as UC
 
 settings={
-    "name":"8_split_by_color",
+    "name":"8_hatch",
     "parameters":{
     },
     "basic_settings":{
@@ -33,24 +33,27 @@ class PathManipulation(ScriptGenerator):
         '''
         path_storage=[]
         w=self.wh_m[0]
-        h=self.wh_m[1]
-        rect = UG.create_rect(
-            0, 0, w, h, True
-        )
-        path_storage.append(
-            Path(
-                coordinates=rect,
-                tool_idx=0,
-                filled=True
+        h=self.wh_m[1]/2
+        for i in range(2):
+            rect = UG.create_rect(
+                0, h*i, w, h, True
             )
-        )
+            path=Path(
+                    coordinates=rect,
+                    tool_idx=i,
+                    filled=True
+            )
+            if i==1:
+                path.line_gap=10
 
+            path_storage.append(path)
         return path_storage
 
 
 generator=PathManipulation(
     settings=settings,
-    split_to_tool_svgs=True,
-    split_to_tool_pys=True
+    split_to_tool_svgs=False,
+    split_to_tool_pys=False,
+    split_paths_to_unit_size=False
 )
 generator.generate()
