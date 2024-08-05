@@ -215,6 +215,26 @@ class ScriptGenerator(SvgGenerator):
                 script_idx=self.init_script_writer(additional_tag=f'tool_{i}')
                 tool["script_idx"] = script_idx
 
+    def process_and_append_paths_to_tool_script(self,path_will_fillings):
+        if hasattr(self,"max_dist_per_file"):
+            # needs to break down paths
+            path_by_tools = [[] for i in range(self.tools_ct)]
+            for path_obj in path_will_fillings:
+                path_by_tools[path_obj.tool_idx].append(path_obj)
+            for tool_i,paths in enumerate(path_by_tools):
+                current_svg_ct=0
+                tool_svg_idx=self.tools[tool_i]["svg_idx"]
+                current_dist=0
+                for path_obj in paths:
+                    coordinates = path_obj.coordinates
+                    if self.split_paths_to_unit_size:
+                        coordinates = path_obj.split_coordinates
+
+        else:
+            for path_obj in path_will_fillings:
+                tool = self.tools[path_obj.tool_idx]
+                tool_writer = self.script_writers[tool["script_idx"]]
+                tool_writer.process_and_append_path(path_obj, self.margins)
 
     def process_and_append_paths_to_script(self,paths):
         '''
@@ -235,11 +255,9 @@ class ScriptGenerator(SvgGenerator):
 
         for path_obj in path_will_fillings:
             main_writer.process_and_append_path(path_obj,self.margins)
-            if self.split_to_tool_pys:
-                tool=self.tools[path_obj.tool_idx]
-                tool_writer=self.script_writers[tool["script_idx"]]
-                tool_writer.process_and_append_path(path_obj,self.margins)
 
+        if self.split_to_tool_pys:
+            self.process_and_append_paths_to_tool_script(path_will_fillings)
     def export_scripts(self):
         for script_writer in self.script_writers:
             script_writer.export(self.margins)
