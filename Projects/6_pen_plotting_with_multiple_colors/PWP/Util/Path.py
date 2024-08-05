@@ -5,7 +5,7 @@ from PWP.Util.basic import convert_unit
 from PWP.Util import geometry as UG
 from PWP.Util import clipper_helper as UCH
 class Path:
-    def __init__(self,coordinates,tool_idx,filled=False):
+    def __init__(self,coordinates,tool_idx,filled=False,**kwargs):
         '''
         Stores the given information
         Args:
@@ -18,6 +18,9 @@ class Path:
         self.filled=filled
         self.split_coordinates=[]
         self.fill_path_objects=[]
+        for key in kwargs:
+            setattr(self,key,kwargs[key])
+
 
     def create_margined_unit_path(self,unit_to,margins,overwrite=False):
         '''

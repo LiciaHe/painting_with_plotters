@@ -588,6 +588,26 @@ def cut_path_to_paths_by_dist(path,dist_lim):
 
     return path_segments
 
+def find_pt_in_path_by_dist(path,dist):
+    '''
+    Given a path and a distance, starting from the first point, find the index of the point such that the cumulative distance to this point is larger and closest to the given dist.
+
+    Args:
+        path: a list of coordinates
+        dist:distance to search for
+
+    Returns: an index. If the dist is larger than the full distance, return None
+    '''
+
+    cumulative_dist=0
+    for i,pt in enumerate(path):
+        if i==0:
+            continue
+        cumulative_dist+=math.dist(path[i],path[i-1])
+        if cumulative_dist>dist:
+            return i
+    return None
+
 
 
 

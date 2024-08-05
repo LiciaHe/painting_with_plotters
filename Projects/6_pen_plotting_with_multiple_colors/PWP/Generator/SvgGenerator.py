@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 import random,math
 from ..Util import basic as UB
 from ..Util import color as UC
+from ..Util import geometry as UG
 
 from ..Generator.SettingAndStorageGenerator import SettingAndStorageGenerator
 
@@ -274,6 +275,95 @@ class SvgGenerator(SettingAndStorageGenerator):
             for i,tool in enumerate(self.tools):
                 svg,svg_idx=self.init_svg(additional_tag=f'tool_{i}')
                 tool["svg_idx"]=svg_idx
+
+
+    def append_coordinates_to_tool_svg(self,current_dist,coordinates,tool_svg_idx,tool_idx,current_svg_ct):
+        dist_quota = self.max_dist_per_file - current_dist
+
+        break_idx = UG.find_pt_in_path_by_dist(coordinates, dist_quota)
+
+        if break_idx is None:
+            self.add_path_to_svg(
+                svg_idx=tool_svg_idx,
+                path_coordinate=coordinates,
+                tool_idx=tool_idx,
+                filled=False
+            )
+            current_dist += UG.calc_path_length(coordinates)
+        else:
+            self.add_path_to_svg(
+                svg_idx=tool_svg_idx,
+                path_coordinate=coordinates[:break_idx + 1],
+                tool_idx=tool_idx,
+                filled=False
+            )
+            current_svg_ct += 1
+            current_dist = 0
+            tool_svg, tool_svg_idx = self.init_svg(
+                additional_tag=f'tool_{tool_idx}_{current_svg_ct}'
+            )
+        return current_dist,tool_svg_idx,current_svg_ct
+    def process_and_append_paths_to_tool_svgs(self,paths):
+        if hasattr(self,"max_dist_per_file"):
+            # sort paths by their objects
+            path_by_tools=[[] for i in range(self.tools_ct)]
+            for path_obj in paths:
+                path_by_tools[path_obj.tool_idx].append(path_obj)
+
+            #for each tool, process their paths and cut when the distance is reached.
+            for tool_i,paths in enumerate(path_by_tools):
+                current_svg_ct=0
+                tool_svg_idx=self.tools[tool_i]["svg_idx"]
+                current_dist=0
+                for path_obj in paths:
+                    coordinates = path_obj.coordinates
+                    if self.split_paths_to_unit_size:
+                        coordinates = path_obj.split_coordinates
+
+                    current_dist,tool_svg_idx,current_svg_ct=self.append_coordinates_to_tool_svg(current_dist,coordinates,tool_svg_idx,tool_i,current_svg_ct)
+                    if path_obj.filled:
+                        for fill_path_obj in path_obj.fill_path_objects:
+                            current_dist, tool_svg_idx, current_svg_ct = self.append_coordinates_to_tool_svg(
+                                current_dist, fill_path_obj.coordinates, tool_svg_idx, tool_i, current_svg_ct)
+
+        else:
+            for path_obj in paths:
+                tool_svg_idx = self.tools[path_obj.tool_idx]["svg_idx"]
+                self.append_path_obj_to_svg(path_obj,tool_svg_idx)
+
+
+
+
+
+
+    def append_path_obj_to_svg(self,path_obj,svg_idx):
+        '''
+        Append a path object go a given svg
+        Args:
+            path_obj:
+            svg_idx:
+
+        Returns:
+
+        '''
+        coordinates = path_obj.coordinates
+        if self.split_paths_to_unit_size:
+            coordinates = path_obj.split_coordinates
+
+        self.add_path_to_svg(
+            svg_idx=svg_idx,
+            path_coordinate=coordinates,
+            tool_idx=path_obj.tool_idx,
+            filled=False
+        )
+        if path_obj.filled:
+            for path in path_obj.fill_path_objects:
+                self.add_path_to_svg(
+                    svg_idx=svg_idx,
+                    path_coordinate=path.coordinates,
+                    tool_idx=path_obj.tool_idx,
+                    filled=False
+                )
     def process_and_append_paths_to_svgs(self,paths):
         '''
         Given a list of path objects, process them and append them as <path> to svgs.
@@ -284,30 +374,11 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         '''
         for path_obj in paths:
-            coordinates=path_obj.coordinates
-            if self.split_paths_to_unit_size:
-                coordinates=path_obj.split_coordinates
+            self.append_path_obj_to_svg( path_obj, self.main_svg_idx)
 
-            svgs_to_append=[self.main_svg_idx]
-            if self.split_to_tool_svgs:
-                tool_svg_idx = self.tools[path_obj.tool_idx]["svg_idx"]
-                svgs_to_append.append(tool_svg_idx)
+        if self.split_to_tool_svgs:
+            self.process_and_append_paths_to_tool_svgs(paths)
 
-            for svg_idx in svgs_to_append:
-                self.add_path_to_svg(
-                    svg_idx=svg_idx,
-                    path_coordinate=coordinates,
-                    tool_idx=path_obj.tool_idx,
-                    filled=False
-                )
-                if path_obj.filled:
-                    for path in path_obj.fill_path_objects:
-                        self.add_path_to_svg(
-                            svg_idx=svg_idx,
-                            path_coordinate=path.coordinates,
-                            tool_idx=path_obj.tool_idx,
-                            filled=False
-                        )
 
     path_unit_size=5
     split_paths_to_unit_size=False
@@ -324,6 +395,7 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         Returns: None. The action modify the Path object
         '''
+
         for path in paths:
             if self.split_paths_to_unit_size:
                 path.split_to_unit_size(self.path_unit_size)
@@ -344,6 +416,8 @@ class SvgGenerator(SettingAndStorageGenerator):
         Returns: paths obtained from the create() function
         '''
         paths=self.create()
+
+
 
         self.process_paths(paths)
         self.prepare_svgs()
