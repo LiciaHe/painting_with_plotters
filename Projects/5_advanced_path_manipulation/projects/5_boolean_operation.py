@@ -4,7 +4,7 @@ sys.path.insert(1,"../")
 from PWP.Generator.ScriptGenerator import ScriptGenerator
 from PWP.Util.Path import Path
 from PWP.Util import geometry as UG
-from PWP.Util import clipper_helper as UC
+from PWP.Util import clipper_helper as UCH
 
 settings={
     "name":"5_boolean_operation",
@@ -97,7 +97,7 @@ class PathManipulation(ScriptGenerator):
             tx=(i+1)*cell_w
             subj=UG.translate_path(rectangle,tx,0)
             clip=UG.translate_path(hexagon,tx,0)
-            clipper_results=UC.make_clipper(
+            clipper_results=UCH.make_clipper(
                 subj_path=subj,
                 clip_path=clip,
                 clipper_type_string=ct
@@ -164,7 +164,7 @@ class PathManipulation(ScriptGenerator):
         coordinates+=lines
 
         c3=UG.translate_path(circle,0,cell_height,False)
-        fill_lines=UC.fill_with_line(
+        fill_lines=UCH.fill_with_line(
             path=c3,
             gap=gap,
             rot_radians=rot_radians,
@@ -174,7 +174,7 @@ class PathManipulation(ScriptGenerator):
         self.create_colored_paths(coordinates,path_storage)
 
         c4=UG.translate_path(circle,cell_width,cell_height,False)
-        fill_lines_4=UC.fill_with_line(
+        fill_lines_4=UCH.fill_with_line(
             path=c4,
             gap=self.stroke_width,
             rot_radians=rot_radians,
@@ -196,7 +196,7 @@ class PathManipulation(ScriptGenerator):
         values_to_test=["CLOSEDPOLYGON","CLOSEDLINE","OPENROUND","OPENSQUARE","OPENBUTT"]
         for i,v in enumerate(values_to_test):
             c=UG.translate_path(curve,cell_width*(i+1),0)
-            offsets=UC.make_offset(
+            offsets=UCH.make_offset(
                 c,
                 offset_width,
                  offset_type=v

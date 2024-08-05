@@ -29,34 +29,38 @@ MODULE START
 1. Equipment needed for plotter painting
 2. Prepare the machine
 3. Prepare the painting environment 
-4. Materials to prepare
+4. Materials and Tools
 ### 2: The Plotter Language: How to Talk To A Plotter
 1. What can a plotter do 
 2. Two ways (Svg, Python Script) to communicate with Axidraws
 3. Producing simple images manually
 ### 3: Developing a Plotter Painting Environment in Python 
 1. Ideal development process for my painting practice 
-2. Why I use Python
+2. Why Python
 3. Developing a setting and storage management system in Python
 ### 4: Authoring Plotter Instructions
 1. Developing a SVG-authoring tool
 2. Drawing simple geometries (lines, rectangles, uniform polygons)
 3. Authoring Python-based Axidraw instructions (direct authoring, resume function)
+4. Program 1-3 
 ### 5. Advanced Path Manipulation for Plotter Painting
 1. Drawing Curves
 2. Cut paths by distance 
 2. Polygon Operation 
 3. Hatch 
+4. Program 4-6
 ### 6. [Practice] Pen Plotting with Multiple Colors 
 1. Generating individual scripts for colored plotting 
 2. Split instruction based on max drawing distance
 4. Add resume, registration, and shake operation 
 5. DIY Ink reservoir for technical pen
+6. Program 7,8,9
 ### 7. Preparing Painting Materials 
 1. Making inkwells 
 2. Preparing watercolor papers 
 3. Preparing brush 
 4. Safety and tips
+5. P
 ### 8: Logic Behind Plotter Painting Explained
 1. Refill Action 
 2. Refill Distance 
@@ -73,16 +77,16 @@ MODULE START
 2. Demo Project 2: The Petal Algorithm
 ### 12: Exploring Different Materials and Techniques
 1. Ink vs. watercolor vs. acrylic 
-2. other creative materials 
-### 13: [Bonus] Preserving and Processing Plotted Works
-1. Photographing your work.
-2. Scanning your work.
-3. Automatically generating supporting files of your work. 
-4. Naming your file.
-### 14: Conclusion and Studio Tour
+2. Modifications needed for each material 
+2. other creative materials
+### 13: Conclusion and Studio Tour
 1. Virtual Studio Tour 
 2. Going through my favorite plotter paintings 
 3. Additional Resources
+### 14: [Bonus Topics] 
+1. Preserving and Processing Plotted Works
+2. Building portable gadget for plotters
+3. Designing 3D models
 
 MODULE END 
 

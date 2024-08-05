@@ -173,7 +173,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             with open(save_loc, 'w') as saveFile:
                 saveFile.write(convert_to_export_ready_svg(svg_soup))
         return
-    def assign_color_to_a_tool(self,tool,tool_idx):
+    def assign_color_to_a_tool(self,tool):
         '''
         Given a tool and its index, generate a random color fill the "stroke" and "fill" value.
 
@@ -209,7 +209,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             tool={
                 "stroke-width":self.stroke_width
             }
-            self.assign_color_to_a_tool(tool,tool_idx)
+            self.assign_color_to_a_tool(tool)
             self.tools.append(tool)
     def get_random_tool_idx(self):
         '''
@@ -290,6 +290,31 @@ class SvgGenerator(SettingAndStorageGenerator):
                 tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
                 self.add_path_to_svg(tool_svg_idx, path_obj.coordinates,path_obj.tool_idx,path_obj.filled)
 
+    path_unit_size=5
+    split_paths_to_unit_size=True
+    hatch_rotation_range=(-2*math.pi,2*math.pi)
+    def process_paths(self,paths):
+        '''
+        Given a list of Path Object, perform the following actions
+
+        1. If the path needs to be broken down, break the path down to have more closely-spaced coordinates.
+        2. If the path has fill, generate the hatch line
+
+        Args:
+            paths: a list of Path element
+
+        Returns: None. The action modify the Path object
+        '''
+        for path in paths:
+            if self.split_paths_to_unit_size:
+                path.split_to_unit_size(self.path_unit_size)
+            if path.filled:
+                path.produce_line_fills(
+                    self.stroke_width,
+                    rot_radians=random.uniform(*self.hatch_rotation_range),
+                    split_to_unit=self.split_paths_to_unit_size
+                )
+
     def generate(self):
         '''
         The default pipeline for using this generator.
@@ -300,6 +325,7 @@ class SvgGenerator(SettingAndStorageGenerator):
         '''
         paths=self.create()
 
+        self.process_paths(paths)
         self.prepare_svgs()
         self.process_and_append_paths_to_svgs(paths)
         self.export_svgs()

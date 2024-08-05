@@ -2,6 +2,8 @@
 A class that represent one path in the design. Used to store path (coordinates) and tool (index) together.
 '''
 from PWP.Util.basic import convert_unit
+from PWP.Util import geometry as UG
+from PWP.Util import clipper_helper as UCH
 class Path:
     def __init__(self,coordinates,tool_idx,filled=False):
         '''
@@ -14,6 +16,7 @@ class Path:
         self.coordinates=coordinates
         self.tool_idx=tool_idx
         self.filled=filled
+        self.split_coordinates=[]
 
     def create_margined_unit_path(self,unit_to,margins,overwrite=False):
         '''
@@ -43,4 +46,36 @@ class Path:
             new_pt[0]+=converted_margin["l"]
             new_pt[1]+=converted_margin["t"]
             self.unit_path.append(new_pt)
+
+    def split_to_unit_size(self,unit_size):
+        '''
+        Ensure the distance between any two adjacent points (in this path) is shorter or equal to the unit_size
+        Args:
+            unit_size: a number in pixel.
+
+        Returns: None. The new list of coordinates will be stored in self.split_coordinates
+
+        '''
+        self.split_coordinates=UG.split_path_by_dist(unit_size)
+
+
+    def produce_line_fills(self,line_gap,rot_radians,split_to_unit):
+        '''
+        Assuming self.coordinates stores a closed path, fill the path with lines using the given line_gap and rotation
+        Args:
+            line_gap:
+            rotation:
+
+        Returns:
+
+        '''
+        fill_lines=UCH.fill_with_line(
+            path=self.coordinates,
+            gap=line_gap,
+            rot_radians=rot_radians,
+        )
+        if split_to_unit:
+            for i,fl in enumerate(fill_lines):
+                fill_lines[i]=UG.split_path_by_dist(fl,split_to_unit)
+
 

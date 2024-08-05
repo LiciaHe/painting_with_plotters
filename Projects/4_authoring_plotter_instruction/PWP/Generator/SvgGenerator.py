@@ -173,7 +173,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             with open(save_loc, 'w') as saveFile:
                 saveFile.write(convert_to_export_ready_svg(svg_soup))
         return
-    def assign_color_to_a_tool(self,tool,tool_idx):
+    def assign_color_to_a_tool(self,tool):
         '''
         Given a tool and its index, generate a random color fill the "stroke" and "fill" value.
 
@@ -209,7 +209,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             tool={
                 "stroke-width":self.stroke_width
             }
-            self.assign_color_to_a_tool(tool,tool_idx)
+            self.assign_color_to_a_tool(tool)
             self.tools.append(tool)
     def get_random_tool_idx(self):
         '''
