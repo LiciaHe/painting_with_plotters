@@ -60,10 +60,10 @@ class Path:
         Args:
             unit_size: a number in pixel.
 
-        Returns: None. The new list of coordinates will be stored in self.split_coordinates
+        Returns: None. The new list of coordinates will be stored in self.coordinates
 
         '''
-        self.split_coordinates=UG.split_path_by_dist(self.coordinates,unit_size)
+        self.coordinates=UG.split_path_by_dist(self.coordinates,unit_size)
 
 
     def produce_line_fills(self,line_gap,rot_radians,split_to_unit,path_unit_size):

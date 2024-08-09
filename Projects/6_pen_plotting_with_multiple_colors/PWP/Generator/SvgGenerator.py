@@ -16,6 +16,7 @@ from ..Util import color as UC
 from ..Util import geometry as UG
 
 from ..Generator.SettingAndStorageGenerator import SettingAndStorageGenerator
+from PWP.Util.Path import Path
 
 def apply_attrs_to_soup(soup,attrs):
     '''
@@ -238,6 +239,7 @@ class SvgGenerator(SettingAndStorageGenerator):
             "d":export_path_to_string(path_coordinate,self.precision),
             "fill":"none"
         }
+        print(path_attrs['d'])
         tool_reference=self.tools[tool_idx]
         for key in self.tool_attr_keys_svg:
             path_attrs[key]=tool_reference[key]
@@ -277,59 +279,74 @@ class SvgGenerator(SettingAndStorageGenerator):
                 tool["svg_idx"]=svg_idx
 
 
-    def append_coordinates_to_tool_svg(self,current_dist,coordinates,tool_svg_idx,tool_idx,current_svg_ct):
-        dist_quota = self.max_dist_per_file - current_dist
-
-        break_idx = UG.find_pt_in_path_by_dist(coordinates, dist_quota)
-
-        if break_idx is None:
-            self.add_path_to_svg(
-                svg_idx=tool_svg_idx,
-                path_coordinate=coordinates,
-                tool_idx=tool_idx,
-                filled=False
-            )
-            current_dist += UG.calc_path_length(coordinates)
-        else:
-            self.add_path_to_svg(
-                svg_idx=tool_svg_idx,
-                path_coordinate=coordinates[:break_idx + 1],
-                tool_idx=tool_idx,
-                filled=False
-            )
-            current_svg_ct += 1
-            current_dist = 0
-            tool_svg, tool_svg_idx = self.init_svg(
-                additional_tag=f'tool_{tool_idx}_{current_svg_ct}'
-            )
-        return current_dist,tool_svg_idx,current_svg_ct
     def process_and_append_paths_to_tool_svgs(self,paths):
-        if hasattr(self,"max_dist_per_file"):
+        if hasattr(self,"dist_split_paths_by_tool"):
             # sort paths by their objects
-            path_by_tools=[[] for i in range(self.tools_ct)]
-            for path_obj in paths:
-                path_by_tools[path_obj.tool_idx].append(path_obj)
+            for tool_i,paths_per_file in enumerate(self.dist_split_paths_by_tool):
 
-            #for each tool, process their paths and cut when the distance is reached.
-            for tool_i,paths in enumerate(path_by_tools):
-                current_svg_ct=0
-                tool_svg_idx=self.tools[tool_i]["svg_idx"]
-                current_dist=0
-                for path_obj in paths:
-                    coordinates = path_obj.coordinates
-                    if self.split_paths_to_unit_size:
-                        coordinates = path_obj.split_coordinates
-
-                    current_dist,tool_svg_idx,current_svg_ct=self.append_coordinates_to_tool_svg(current_dist,coordinates,tool_svg_idx,tool_i,current_svg_ct)
-                    if path_obj.filled:
-                        for fill_path_obj in path_obj.fill_path_objects:
-                            current_dist, tool_svg_idx, current_svg_ct = self.append_coordinates_to_tool_svg(
-                                current_dist, fill_path_obj.coordinates, tool_svg_idx, tool_i, current_svg_ct)
-
+                for file_i,path_in_file in enumerate(paths_per_file):
+                    print(f'tool {tool_i},file {file_i},len_path {len(path_in_file)}')
+                    if file_i==0:
+                        svg_id=self.tools[tool_i]["svg_idx"]
+                    else:
+                        _,svg_id=self.init_svg(additional_tag=f'tool_{tool_i}_{file_i}')
+                    for path_obj in path_in_file:
+                        self.append_path_obj_to_svg(path_obj, svg_id)
         else:
             for path_obj in paths:
                 tool_svg_idx = self.tools[path_obj.tool_idx]["svg_idx"]
                 self.append_path_obj_to_svg(path_obj,tool_svg_idx)
+
+
+    def produce_dist_split_paths_by_tool(self,paths):
+        paths_by_tools=[[] for i in range(self.tools_ct)]
+        self.dist_split_paths_by_tool=[[] for i in range(self.tools_ct)]
+        for path_obj in paths:
+            paths_by_tools[path_obj.tool_idx].append(path_obj)
+        print(len(paths_by_tools[0]),paths_by_tools[0])
+        for tool_i,path_stack in enumerate(paths_by_tools):
+            paths_for_current_file=[]
+            current_dist = 0
+            path_stack.reverse()
+            self.dist_split_paths_by_tool[tool_i].append(paths_for_current_file)
+            while len(path_stack)>0:
+                current_path=path_stack.pop()
+                dist_quota = self.max_dist_per_file - current_dist
+
+                break_idx = UG.find_pt_in_path_by_dist(current_path.coordinates, dist_quota)
+
+                if break_idx is None:
+                    # not breaking
+                    paths_for_current_file.append(current_path)
+                    current_dist += UG.calc_path_length(current_path.coordinates)
+                    if current_path.filled:
+                        for fill_path_obj in current_path.fill_path_objects:
+                            path_stack.append(fill_path_obj)
+                    print(current_dist,len(path_stack),dist_quota)
+
+                else:
+                    # break_path into 2 parts
+                    broken_path_start = Path(
+                        coordinates=current_path.coordinates[:break_idx],
+                        tool_idx=current_path.tool_idx,
+                        filled=False
+                    )
+                    broken_path_end = Path(
+                        coordinates=current_path.coordinates[break_idx:],
+                        tool_idx=current_path.tool_idx,
+                        filled=False
+                    )
+                    # print("break",current_dist,len(path_stack),dist_quota,len(broken_path_end.coordinates))
+                    paths_for_current_file.append(broken_path_start)
+                    path_stack.append(broken_path_end)
+
+                    current_dist = 0
+                    paths_for_current_file=[]
+            if len(paths_for_current_file)>0 and self.dist_split_paths_by_tool[tool_i][-1]!=paths_for_current_file:
+                self.dist_split_paths_by_tool[tool_i].append(paths_for_current_file)
+
+
+
 
 
 
@@ -347,8 +364,6 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         '''
         coordinates = path_obj.coordinates
-        if self.split_paths_to_unit_size:
-            coordinates = path_obj.split_coordinates
 
         self.add_path_to_svg(
             svg_idx=svg_idx,
@@ -374,10 +389,12 @@ class SvgGenerator(SettingAndStorageGenerator):
 
         '''
         for path_obj in paths:
-            self.append_path_obj_to_svg( path_obj, self.main_svg_idx)
-
+            self.append_path_obj_to_svg(path_obj, self.main_svg_idx)
         if self.split_to_tool_svgs:
             self.process_and_append_paths_to_tool_svgs(paths)
+        # print(self.dist_split_paths_by_tool)
+
+
 
 
     path_unit_size=5
@@ -406,6 +423,9 @@ class SvgGenerator(SettingAndStorageGenerator):
                     split_to_unit=self.split_paths_to_unit_size,
                     path_unit_size=self.path_unit_size
                 )
+
+        if self.split_to_tool_svgs and hasattr(self,"max_dist_per_file"):
+            self.produce_dist_split_paths_by_tool(paths)
 
     def generate(self):
         '''
