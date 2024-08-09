@@ -281,7 +281,6 @@ class SvgGenerator(SettingAndStorageGenerator):
 
     def process_and_append_paths_to_tool_svgs(self,paths):
         if hasattr(self,"dist_split_paths_by_tool"):
-            # sort paths by their objects
             for tool_i,paths_per_file in enumerate(self.dist_split_paths_by_tool):
                 for file_i,path_in_file in enumerate(paths_per_file):
                     if file_i==0:
@@ -394,7 +393,6 @@ class SvgGenerator(SettingAndStorageGenerator):
             self.append_path_obj_to_svg(path_obj, self.main_svg_idx)
         if self.split_to_tool_svgs:
             self.process_and_append_paths_to_tool_svgs(paths)
-        # print(self.dist_split_paths_by_tool)
 
 
 
@@ -426,7 +424,7 @@ class SvgGenerator(SettingAndStorageGenerator):
                     path_unit_size=self.path_unit_size
                 )
 
-        if self.split_to_tool_svgs and hasattr(self,"max_dist_per_file"):
+        if hasattr(self,"max_dist_per_file"):
             self.produce_dist_split_paths_by_tool(paths)
 
     def generate(self):

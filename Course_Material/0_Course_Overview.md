@@ -41,7 +41,7 @@ MODULE START
 ### 4: Authoring Plotter Instructions
 1. Developing a SVG-authoring tool
 2. Drawing simple geometries (lines, rectangles, uniform polygons)
-3. Authoring Python-based Axidraw instructions (direct authoring, resume function)
+3. Authoring Python-based Axidraw instructions (direct authoring, resume,registration function)
 4. Program 1-3 
 ### 5. Advanced Path Manipulation for Plotter Painting
 1. Drawing Curves
@@ -52,7 +52,7 @@ MODULE START
 ### 6. [Practice] Pen Plotting with Multiple Colors 
 1. Generating individual scripts for colored plotting 
 2. Split instruction based on max drawing distance
-4. Add resume, registration, and shake operation 
+4. Add shake operation 
 5. DIY Ink reservoir for technical pen
 6. Program 7,8,9
 ### 7. Preparing Painting Materials 

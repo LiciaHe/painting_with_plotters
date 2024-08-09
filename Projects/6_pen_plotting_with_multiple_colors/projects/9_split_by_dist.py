@@ -77,7 +77,7 @@ class PathManipulation(ScriptGenerator):
 generator=PathManipulation(
     settings=settings,
     split_to_tool_svgs=True,
-    split_to_tool_pys=False,
+    split_to_tool_pys=True,
     split_paths_to_unit_size=False
 )
 generator.generate()
