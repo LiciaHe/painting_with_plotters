@@ -25,25 +25,21 @@ settings={
 }
 
 class PathManipulation(ScriptGenerator):
-
-    def create(self):
-        '''
-        Returns: a list of paths
-        '''
+    def line_test(self):
         path_storage=[]
-        w=self.wh_m[0]
-        h=self.wh_m[1]
+        # w=self.wh_m[0]
+        # h=self.wh_m[1]
         line_gap=10
 
         # self.hatch_rotation_range=(0,0)
         # total_hatch_line=h/10
         # self.max_dist_per_file=total_hatch_line/2*self.wh_m[0] #only impact tool svg and tool path
-
-        rect = UG.create_rect(
-            0, 0, w, h, True
-        )
+        #
+        # rect = UG.create_rect(
+        #     0, 0, w, h, True
+        # )
         line_gap=10
-        rep_ct=10
+        rep_ct=10*10
         for i in range(rep_ct):
             path= Path(
                 coordinates=[[0,i*line_gap],[self.wh_m[0],i*line_gap]],
@@ -52,14 +48,36 @@ class PathManipulation(ScriptGenerator):
             )
             path_storage.append(path)
 
-        self.max_dist_per_file=self.wh_m[0]*rep_ct/2 #only impact tool svg and tool path
+        self.max_dist_per_file=self.wh_m[0]*rep_ct/4 #only impact tool svg and tool path
         return path_storage
+
+    def filled_rect_test(self):
+
+        rect = UG.create_rect(
+            0, 0, self.wh_m[0], self.wh_m[1], True
+        )
+        line_gap=10
+        path = Path(
+            coordinates=rect,
+            tool_idx=0,
+            filled=True,
+            line_gap=line_gap
+        )
+        self.max_dist_per_file = self.wh_m[0]*self.wh_m[1]/line_gap/2
+        return [path]
+
+
+    def create(self):
+        '''
+        Returns: a list of paths
+        '''
+        return self.filled_rect_test()
 
 
 generator=PathManipulation(
     settings=settings,
     split_to_tool_svgs=True,
     split_to_tool_pys=False,
-    split_paths_to_unit_size=True
+    split_paths_to_unit_size=False
 )
 generator.generate()
