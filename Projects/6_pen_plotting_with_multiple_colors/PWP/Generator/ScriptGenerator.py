@@ -30,7 +30,7 @@ class ScriptWriter:
 
         '''
         self.options.update(options)
-    def __init__(self,writer_addr,anchor_paths):
+    def __init__(self,writer_addr):
         self.writer_addr=writer_addr
         self.writer=open(writer_addr,"w")
         self.options={
@@ -46,8 +46,8 @@ class ScriptWriter:
             "speed_penup": 80  # Maximum XY speed when the pen is up (0-100)
         }
         self.paths=[]# used to store paths included in this writer.
-        self.anchor_paths=anchor_paths # store paths used to generate the anchor_paths value.
-    def process_and_append_path(self,path_obj,margins):
+        self.registration_marks=[] #stores paths that make registration marks.
+    def process_and_append_path(self,path_obj,margins,storage=None):
         '''
         Given a path object, generate the unit converted path, store the path in self.paths
         Args:
@@ -56,7 +56,9 @@ class ScriptWriter:
         Returns:
 
         '''
-        self.paths.append(path_obj)
+        if storage is None:
+            storage=self.paths
+        storage.append(path_obj)
         unit_to=["inch","cm","mm"][self.options["unit"]]
         path_obj.create_margined_unit_path(unit_to,margins)
 
@@ -69,6 +71,23 @@ class ScriptWriter:
         '''
         option_strs=f'options = {json.dumps(self.options)}'
         return option_strs
+    def produce_registration_str(self):
+        '''
+        Treat all Paths stored in self.registration_paths and store into the variable registration_marks
+        Returns:
+
+        '''
+        path_str='registration_marks=['
+        for i,path_obj in enumerate(self.registration_marks):
+            rounded_list = [[round(val, self.precision) for val in pt] for pt in path_obj.unit_path]
+            path_str+=str(rounded_list)
+            if i!=len(self.registration_marks)-1:
+                path_str+=","
+
+        path_str+="]"
+
+        path_str = path_str.replace("'", "")
+        return path_str
 
     precision=4
 
@@ -164,36 +183,19 @@ class ScriptGenerator(SvgGenerator):
 
         '''
         writer_addr=self.get_full_save_loc(file_extension="py",additional_tag=additional_tag)
-        writer=ScriptWriter(writer_addr,self.anchor_paths)
+        writer=ScriptWriter(writer_addr)
         self.script_writers.append(writer)
         writer_idx=len(self.script_writers)-1
 
         if self.get_value_from_basic_settings("script_options"):
             writer.update_options(self.get_value_from_basic_settings("script_options"))
 
+        for reg_path in self.registration_marks:
+            writer.process_and_append_path(reg_path,self.margins,writer.registration_marks)
+
         return writer_idx
 
     split_to_tool_pys=False
-    anchor_length=5
-    def initiate_anchor_paths(self):
-        '''
-        Initiate self.anchor_paths=[path_objects]
-        Each path object is a corner of the rectangle image area (without margin)
-
-        Returns:
-        '''
-        corners=UG.create_rect(0,0,*self.wh_m)
-        self.anchor_paths=[]
-        for i,corner_pt in enumerate(corners):
-            pre_corner=corners[i-1]
-            next_corner=corners[(i+1)%len(corners)]
-            pre_pt=UG.get_pt_on_line_by_dist(corner_pt,pre_corner,self.anchor_length)
-            next_pt=UG.get_pt_on_line_by_dist(corner_pt,next_corner,self.anchor_length)
-            corner_path=Path(
-                coordinates=[pre_pt,corner_pt,next_pt],
-                tool_idx=0 #will be ignored.
-            )
-            self.anchor_paths.append(corner_path)
 
     def prepare_script_writers(self):
         '''
@@ -206,8 +208,6 @@ class ScriptGenerator(SvgGenerator):
 
         '''
         self.script_writers=[]
-        # initiate anchor paths
-        self.initiate_anchor_paths()
         # initiate main
         self.main_script_idx=self.init_script_writer(additional_tag="main")
         if self.split_to_tool_pys:

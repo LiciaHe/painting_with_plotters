@@ -44,7 +44,8 @@ class ScriptWriter:
             "speed_penup": 80  # Maximum XY speed when the pen is up (0-100)
         }
         self.paths=[]# used to store paths included in this writer.
-    def process_and_append_path(self,path_obj,margins):
+        self.registration_marks = []  # stores paths that make registration marks.
+    def process_and_append_path(self,path_obj,margins,storage=None):
         '''
         Given a path object, generate the unit converted path, store the path in self.paths
         Args:
@@ -53,9 +54,12 @@ class ScriptWriter:
         Returns:
 
         '''
-        self.paths.append(path_obj)
+        if storage is None:
+            storage=self.paths
+        storage.append(path_obj)
         unit_to=["inch","cm","mm"][self.options["unit"]]
         path_obj.create_margined_unit_path(unit_to,margins)
+
 
     def produce_options_str(self):
         '''
@@ -87,7 +91,23 @@ class ScriptWriter:
 
         path_str = path_str.replace("'", "")
         return path_str
+    def produce_registration_str(self):
+        '''
+        Treat all Paths stored in self.registration_paths and store into the variable registration_marks
+        Returns:
 
+        '''
+        path_str='registration_marks=['
+        for i,path_obj in enumerate(self.registration_marks):
+            rounded_list = [[round(val, self.precision) for val in pt] for pt in path_obj.unit_path]
+            path_str+=str(rounded_list)
+            if i!=len(self.registration_marks)-1:
+                path_str+=","
+
+        path_str+="]"
+
+        path_str = path_str.replace("'", "")
+        return path_str
     def export(self):
         '''
 
@@ -145,6 +165,9 @@ class ScriptGenerator(SvgGenerator):
 
         if self.get_value_from_basic_settings("script_options"):
             writer.update_options(self.get_value_from_basic_settings("script_options"))
+
+        for reg_path in self.registration_marks:
+            writer.process_and_append_path(reg_path,self.margins,writer.registration_marks)
 
         return writer_idx
 

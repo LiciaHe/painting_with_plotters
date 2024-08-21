@@ -55,6 +55,7 @@ class PipelineTester(SvgGenerator):
 
 generator=PipelineTester(
     settings=settings,
-    split_to_tool_svgs=True
+    split_to_tool_svgs=True,
+    visualize_registration_marks=True
 )
 generator.generate()

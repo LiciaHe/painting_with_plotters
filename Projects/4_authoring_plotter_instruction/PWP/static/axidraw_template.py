@@ -1,5 +1,5 @@
 from pyaxidraw import axidraw
-
+import time,argparse,ast,re
 def initiate_axidraw():
     '''
     Initiate an axidraw instance.
@@ -62,13 +62,55 @@ def run(ad,paths):
             # Not a line. Skip.
             continue
         move_and_draw_path(ad, path[0], path[1:])
+        if i%100==0:
+            print(i)
     end(ad)
 
+def format_time(seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    return int(h),int(m),int(s)
 
-ad = initiate_axidraw()
-run(ad, paths)
+def set_arg_parser(parser):
+    '''
+    Enable the command line options.
+    Args:
+        parser: The parser object.
+
+    Returns: None
+
+    '''
+    parser.add_argument('-reg', '--register', action='store_true', help='Perform the registration action.')
+    # run
+    parser.add_argument('-re', '--resume', type=int,
+                        help='Restart the run at a given index. Require an integer input for index')
+
+
+def main():
+    starttime = time.time()
+    parser = argparse.ArgumentParser()
+    set_arg_parser(parser)
+
+    args = parser.parse_args()
+
+
+    ad = initiate_axidraw()
+
+    if args.resume:
+        start_idx = args.resume
+        print(f"Resume at index {start_idx}")
+        run(ad,paths[:start_idx])
+    elif args.register:
+        print(f'Registering according to register_marks')
+        run(ad,registration_marks)
+    else:
+        run(ad, paths)
+    seconds = time.time() - starttime
+    h, m, s = format_time(seconds)
+    print(f'Total Running Time {int(h)}, {int(m)}, {int(s)}')
 
 
 
-
+if __name__ == "__main__":
+    main()
 

@@ -9,8 +9,7 @@
    3. Script generator
 4. Make split by distance
    5. Split individual path
-6. Utility functions 
-   7. resume
+6. Utility functions
    8. shake
 
 Homework: 

@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 import random,math
 from ..Util import basic as UB
 from ..Util import color as UC
+from ..Util.Path import Path
 
 from ..Generator.SettingAndStorageGenerator import SettingAndStorageGenerator
 
@@ -289,7 +290,40 @@ class SvgGenerator(SettingAndStorageGenerator):
                 #append the path to the corresponding tool svg
                 tool_svg_idx=self.tools[path_obj.tool_idx]["svg_idx"]
                 self.add_path_to_svg(tool_svg_idx, path_obj.coordinates,path_obj.tool_idx,path_obj.filled)
-
+                
+    reg_mark_length=10
+    def produce_registration_marks(self):
+        '''
+        For each corner of the page, produce a small cross mark and store it in the registration_marks list
+        Returns:
+        '''
+        self.registration_marks=[]
+        cross_center=[
+            [-self.reg_mark_length/2,-self.reg_mark_length/2],
+            [-self.reg_mark_length/2,self.wh_m[1]+self.reg_mark_length/2],
+            [self.wh_m[0]+self.reg_mark_length/2,-self.reg_mark_length/2],
+            [self.wh_m[0]+self.reg_mark_length/2, self.wh_m[1] + self.reg_mark_length/2]
+        ]
+        for center in cross_center:
+            self.registration_marks.append(
+                Path(
+                    coordinates=[
+                        [center[0],center[1]-self.reg_mark_length/2],
+                        [center[0],center[1]+self.reg_mark_length/2],
+                    ], #horizontal line
+                    tool_idx=0
+                )
+            )
+            self.registration_marks.append(
+                Path(
+                    coordinates=[
+                        [center[0] - self.reg_mark_length / 2, center[1]],
+                        [center[0] + self.reg_mark_length / 2, center[1]],
+                    ],  # horizontal line
+                    tool_idx=0
+                )
+            )
+    visualize_registration_marks=False
     def generate(self):
         '''
         The default pipeline for using this generator.
@@ -299,9 +333,11 @@ class SvgGenerator(SettingAndStorageGenerator):
         Returns: paths obtained from the create() function
         '''
         paths=self.create()
-
+        self.produce_registration_marks()
         self.prepare_svgs()
         self.process_and_append_paths_to_svgs(paths)
+        if self.visualize_registration_marks:
+            self.process_and_append_paths_to_svgs(self.registration_marks)
         self.export_svgs()
         return paths
 

@@ -10,6 +10,7 @@ Learning Objective:
    3. ScriptGenerator
    4. ScriptWriter
 3. Developing a tool/color-management system and split designs by tools. 
+4. Utility functions: Resume + Registration + Plotting Time 
 
 ## Developing A SVG Generator
 
@@ -31,6 +32,7 @@ Learning Objective:
 - process options 
 - process path str (unit convert, margin issue)
 - putting it together 
+- 
 
 ## Practice: Inspired by (Des)Ordres by Vera Molnar
 

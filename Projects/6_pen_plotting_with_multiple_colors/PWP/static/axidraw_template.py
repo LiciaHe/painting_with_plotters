@@ -56,37 +56,61 @@ def end(ad):
     ad.moveto(0,0)
     ad.disconnect()
 
-def run(ad,paths,start_idx=0):
-    path_ct=len(paths)
-    for i, path in enumerate(paths[start_idx:]):
+def run(ad,paths):
+    for i, path in enumerate(paths):
         if len(path)<2:
             # Not a line. Skip.
             continue
-        current_idx=start_idx+i
-        if i%10==0:
-            print(f'{current_idx}/{path_ct}')
         move_and_draw_path(ad, path[0], path[1:])
+        if i%100==0:
+            print(i)
     end(ad)
 
-starttime = time.time()
-parser = argparse.ArgumentParser()
-parser.add_argument('-reg', '--register', action='store_true', help='Perform the registration action.')
-parser.add_argument('-sk', '--shake', action='store_true',
-                    help='Enable shaking. Using shake_idx and shake_times to control the shaking.')
-parser.add_argument('-re', '--resume', type=int,
-                    help='Restart the run at a given index. Require an integer input for index')
-args = parser.parse_args()
-ad = initiate_axidraw()
-if args.register:
-    run(ad, anchor_paths)
-elif args.resume:
-    print(f"Resume at index {args.resume}")
-    run(ad,paths,start_idx=args.resume)
-else:
-    run(ad,paths)
+def format_time(seconds):
+    m, s = divmod(seconds, 60)
+    h, m = divmod(m, 60)
+    return int(h),int(m),int(s)
+
+def set_arg_parser(parser):
+    '''
+    Enable the command line options.
+    Args:
+        parser: The parser object.
+
+    Returns: None
+
+    '''
+    parser.add_argument('-reg', '--register', action='store_true', help='Perform the registration action.')
+    # run
+    parser.add_argument('-re', '--resume', type=int,
+                        help='Restart the run at a given index. Require an integer input for index')
+
+
+def main():
+    starttime = time.time()
+    parser = argparse.ArgumentParser()
+    set_arg_parser(parser)
+
+    args = parser.parse_args()
+
+
+    ad = initiate_axidraw()
+
+    if args.resume:
+        start_idx = args.resume
+        print(f"Resume at index {start_idx}")
+        run(ad,paths[:start_idx])
+    elif args.register:
+        print(f'Registering according to register_marks')
+        run(ad,registration_marks)
+    else:
+        run(ad, paths)
+    seconds = time.time() - starttime
+    h, m, s = format_time(seconds)
+    print(f'Total Running Time {int(h)}, {int(m)}, {int(s)}')
 
 
 
-
-
+if __name__ == "__main__":
+    main()
 
