@@ -60,14 +60,14 @@ MODULE START
 2. Preparing watercolor papers 
 3. Preparing brush 
 4. Safety and tips
-5. P
 ### 8: Logic Behind Plotter Painting Explained
 1. Refill Action 
 2. Refill Distance 
-3. Manually designing a plotter painting
+3. Manually designing a plotter painting (inkscape)
 ### 9: Developing A Paint Refill Station 
-1. Designing a paint refiller 
-2. Designing a painting generator (path cutting, adding refill action)
+1. Designing an ink station
+2. Designing a paint refiller  generator (path cutting, adding refill action)
+3. Program 10
 ### 10: Test Before Making Your First Plotter Painting
 1. Placement of inkwells
 2. Z-axis alignment 
