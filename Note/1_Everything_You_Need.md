@@ -22,7 +22,6 @@ Tools List
 4. Paper and Tray holder:
    5. Magnetic surface (white board)
 
-   
 Materials
 To paint on :
 1. Paper/board/canvas  

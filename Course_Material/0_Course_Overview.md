@@ -29,7 +29,9 @@ MODULE START
 1. Equipment needed for plotter painting
 2. Prepare the machine
 3. Prepare the painting environment 
-4. Materials and Tools
+4. Materials and Tools overview 
+5. Stretching watercolor paper 
+6. Making Inkwells
 ### 2: The Plotter Language: How to Talk To A Plotter
 1. What can a plotter do 
 2. Two ways (Svg, Python Script) to communicate with Axidraws
@@ -37,6 +39,7 @@ MODULE START
 ### 3: Developing a Plotter Painting Environment in Python 
 1. Ideal development process for my painting practice 
 2. Why Python
+3. Software Package Overview
 3. Developing a setting and storage management system in Python
 ### 4: Authoring Plotter Instructions
 1. Developing a SVG-authoring tool
@@ -61,13 +64,13 @@ MODULE START
 3. Preparing brush 
 4. Safety and tips
 ### 8: Logic Behind Plotter Painting Explained
-1. Refill Action 
-2. Refill Distance 
+1. Refill Action (path)
+2. Refill Distance (brush treatment and testing)
 3. Manually designing a plotter painting (inkscape)
 ### 9: Developing A Paint Refill Station 
 1. Designing an ink station
-2. Designing a paint refiller  generator (path cutting, adding refill action)
-3. Program 10
+2. Designing a paint refiller generator (path cutting, adding refill action)
+3. Program 10,11
 ### 10: Test Before Making Your First Plotter Painting
 1. Placement of inkwells
 2. Z-axis alignment 
@@ -78,12 +81,12 @@ MODULE START
 ### 12: Exploring Different Materials and Techniques
 1. Ink vs. watercolor vs. acrylic 
 2. Modifications needed for each material 
-2. other creative materials
+2. Other Creative Materials
 ### 13: Conclusion and Studio Tour
 1. Virtual Studio Tour 
 2. Going through my favorite plotter paintings 
 3. Additional Resources
-### 14: [Bonus Topics] 
+### 14: Bonus Topics (that might be included in the future)
 1. Preserving and Processing Plotted Works
 2. Building portable gadget for plotters
 3. Designing 3D models

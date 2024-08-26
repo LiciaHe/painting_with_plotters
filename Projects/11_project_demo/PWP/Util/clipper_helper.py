@@ -75,7 +75,7 @@ def fill_with_line(path,gap,rot_radians=0,fill_type="positive"):
         fill_type: the fill type of the subject (path)
 
 
-    Returns: a list of paths (2d points)
+    Returns:
 
     '''
     #generate original bbox and large bbox
