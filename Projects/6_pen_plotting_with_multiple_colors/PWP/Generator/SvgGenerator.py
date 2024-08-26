@@ -317,18 +317,19 @@ class SvgGenerator(SettingAndStorageGenerator):
                 current_path=path_stack.pop()
                 dist_quota = self.max_dist_per_file - current_dist
                 break_idx = UG.find_pt_in_path_by_dist(current_path.coordinates, dist_quota)
+                if current_path.filled:
+                    for fill_path_obj in current_path.fill_path_objects:
+                        path_stack.append(fill_path_obj)
 
                 if break_idx is None:
                     # not breaking
                     paths_for_current_file.append(current_path)
                     current_dist += UG.calc_path_length(current_path.coordinates)
-                    if current_path.filled:
-                        for fill_path_obj in current_path.fill_path_objects:
-                            path_stack.append(fill_path_obj)
+
                 else:
                     # break_path into 2 parts
                     broken_path_start = Path(
-                        coordinates=current_path.coordinates[:break_idx],
+                        coordinates=current_path.coordinates[:break_idx+1],
                         tool_idx=current_path.tool_idx,
                         filled=False
                     )
