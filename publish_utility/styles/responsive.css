@@ -28,91 +28,98 @@ a:hover {
 }
 
 .margin_lr {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 p {
   text-align: left;
   font-size: 1.7vw;
+  line-height: 1.785vw;
 }
-@media (max-width: 648) {
-  p {
-    font-size: 4vw;
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.15vw;
   }
 }
 
 ol {
+  line-height: 1.785vw;
   list-style-position: inside;
+  margin-bottom: 0.17vw;
   padding: 0;
   text-align: left;
-  font-size: 1.7vw;
-}
-@media (max-width: 648) {
-  ol * {
-    font-size: 4vw;
-  }
+  font-size: 1.615vw;
 }
 
 ul {
+  line-height: 1.785vw;
   list-style-position: inside;
   padding: 0;
   text-align: left;
   font-size: 1.7vw;
-}
-@media (max-width: 648) {
-  ul * {
-    font-size: 4vw;
-  }
 }
 
 h1 {
   text-align: center;
   font-size: 4.25vw;
 }
-@media (max-width: 648) {
-  h1 {
-    font-size: 5vw;
-  }
-}
 
 h2 {
   text-align: left;
   font-size: 2.55vw;
-}
-@media (max-width: 648) {
-  h2 {
-    font-size: 4.6vw;
-  }
 }
 
 h3 {
   text-align: left;
   font-size: 2.125vw;
 }
-@media (max-width: 648) {
-  h3 {
-    font-size: 4.6vw;
-  }
-}
 
 h4 {
   text-align: left;
   font-size: 1.955vw;
-}
-@media (max-width: 648) {
-  h4 {
-    font-size: 4.6vw;
-  }
 }
 
 h5 {
   text-align: left;
   font-size: 1.8275vw;
 }
-@media (max-width: 648) {
-  h5 {
-    font-size: 4.6vw;
+
+@media (max-width: 500px) {
+  h1, h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1, h2 {
+    font-size: 4.05vw;
+  }
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
   }
 }
 

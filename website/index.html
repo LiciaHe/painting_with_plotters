@@ -70,10 +70,10 @@ p {
 ol {
   line-height: 1.785vw;
   list-style-position: inside;
+  margin-bottom: 0.17vw;
   padding: 0;
   text-align: left;
-  font-size: 1.36vw;
-  margin-bottom: 0.34vw;
+  font-size: 1.615vw;
 }
 
 ul {
@@ -251,10 +251,10 @@ p {
 ol {
   line-height: 1.785vw;
   list-style-position: inside;
+  margin-bottom: 0.17vw;
   padding: 0;
   text-align: left;
-  font-size: 1.36vw;
-  margin-bottom: 0.34vw;
+  font-size: 1.615vw;
 }
 
 ul {
@@ -347,10 +347,19 @@ h5 {
   flex-basis: 25%;
 }
 .course-module .topic {
-  flex-basis: 30%;
+  flex-basis: 35%;
 }
 .course-module .material {
   flex-basis: 20%;
+}
+.course-module .module .topic .material {
+  border-bottom: none;
+}
+@media (max-width: 1000px) {
+  .course-module .module, .course-module .topic, .course-module .material {
+    flex-basis: 100%;
+    border-bottom: 1px solid #01090e;
+  }
 }
 
 .author {
@@ -542,6 +551,29 @@ h5 {
     </div>
     <div class="course-module">
      <h3 class="module">
+      -1: Painting With Plotters: Special Event at the Victoria and Albert Museum
+     </h3>
+     <ol class="topic">
+      <li>
+       Celebrate the art of generative plotter painting (and the launch of this course) with me at the
+       <a href="https://www.vam.ac.uk/event/9pmbZOVdEw/digital-design-weekend-2024" target="_blank">
+        V&amp;A Digital Design Weekend
+       </a>
+       through
+       <a href="https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024" target="_blank">
+        a special participatory event
+       </a>
+       !
+      </li>
+     </ol>
+     <div class="material">
+      <p>
+       Coming Soon
+      </p>
+     </div>
+    </div>
+    <div class="course-module">
+     <h3 class="module">
       0: Introduction to Plotter Painting: A Speed Run
      </h3>
      <ol class="topic">
@@ -579,7 +611,13 @@ h5 {
        Prepare the painting environment
       </li>
       <li>
-       Materials to prepare
+       Materials and Tools overview
+      </li>
+      <li>
+       Stretching watercolor paper
+      </li>
+      <li>
+       Making Inkwells
       </li>
      </ol>
      <div class="material">
@@ -618,7 +656,10 @@ h5 {
        Ideal development process for my painting practice
       </li>
       <li>
-       Why I use Python
+       Why Python
+      </li>
+      <li>
+       Software Package Overview
       </li>
       <li>
        Developing a setting and storage management system in Python
@@ -632,7 +673,7 @@ h5 {
     </div>
     <div class="course-module">
      <h3 class="module">
-      4: Authoring Plotter Instruction
+      4: Authoring Plotter Instructions
      </h3>
      <ol class="topic">
       <li>
@@ -642,10 +683,10 @@ h5 {
        Drawing simple geometries (lines, rectangles, uniform polygons)
       </li>
       <li>
-       Drawing polygons, curves
+       Authoring Python-based Axidraw instructions (direct authoring, resume,registration function)
       </li>
       <li>
-       Authoring Python-based Axidraw instructions
+       Program 1-3
       </li>
      </ol>
      <div class="material">
@@ -660,13 +701,19 @@ h5 {
      </h3>
      <ol class="topic">
       <li>
-       Cut shape by distance
+       Drawing Curves
+      </li>
+      <li>
+       Cut paths by distance
       </li>
       <li>
        Polygon Operation
       </li>
       <li>
        Hatch
+      </li>
+      <li>
+       Program 4-6
       </li>
      </ol>
      <div class="material">
@@ -677,7 +724,7 @@ h5 {
     </div>
     <div class="course-module">
      <h3 class="module">
-      6. Practice: Pen Plotting with Multiple Colors
+      6. [Practice] Pen Plotting with Multiple Colors
      </h3>
      <ol class="topic">
       <li>
@@ -687,10 +734,13 @@ h5 {
        Split instruction based on max drawing distance
       </li>
       <li>
+       Add shake operation
+      </li>
+      <li>
        DIY Ink reservoir for technical pen
       </li>
       <li>
-       Add shake operation
+       Program 7,8,9
       </li>
      </ol>
      <div class="material">
@@ -729,13 +779,13 @@ h5 {
      </h3>
      <ol class="topic">
       <li>
-       Refill Action
+       Refill Action (path)
       </li>
       <li>
-       Refill Distance
+       Refill Distance (brush treatment and testing)
       </li>
       <li>
-       Manually designing a plotter painting
+       Manually designing a plotter painting (inkscape)
       </li>
      </ol>
      <div class="material">
@@ -750,10 +800,13 @@ h5 {
      </h3>
      <ol class="topic">
       <li>
-       Designing a paint refiller
+       Designing an ink station
       </li>
       <li>
-       Designing a painting generator
+       Designing a paint refiller generator (path cutting, adding refill action)
+      </li>
+      <li>
+       Program 10,11
       </li>
      </ol>
      <div class="material">
@@ -785,11 +838,14 @@ h5 {
     </div>
     <div class="course-module">
      <h3 class="module">
-      11: Putting It Together: Project Demonstration
+      11: [Demo] Putting It Together: From the Ideation to Plot
      </h3>
      <ol class="topic">
       <li>
-       A project from the ideation to finish
+       Demo Project 1: Color Testing
+      </li>
+      <li>
+       Demo Project 2: The Petal Algorithm
       </li>
      </ol>
      <div class="material">
@@ -807,7 +863,10 @@ h5 {
        Ink vs. watercolor vs. acrylic
       </li>
       <li>
-       other creative materials
+       Modifications needed for each material
+      </li>
+      <li>
+       Other Creative Materials
       </li>
      </ol>
      <div class="material">
@@ -837,10 +896,38 @@ h5 {
       </p>
      </div>
     </div>
+    <div class="course-module">
+     <h3 class="module">
+      14: Bonus Topics (that might be included in the future)
+     </h3>
+     <ol class="topic">
+      <li>
+       Preserving and Processing Plotted Works
+      </li>
+      <li>
+       Building portable gadget for plotters
+      </li>
+      <li>
+       Designing 3D models
+      </li>
+     </ol>
+     <div class="material">
+      <p>
+       Coming Soon
+      </p>
+     </div>
+    </div>
     <h2>
      Additional Resources
     </h2>
     <ul>
+     <li>
+      I have started a
+      <a href="https://liciahe.substack.com/" target="_blank">
+       newsletter
+      </a>
+      where I will share my news related to this course directly to your inbox.
+     </li>
      <li>
       <a href="https://github.com/LiciaHe/painting_with_plotters" target="_blank">
        Github Repository for this course
@@ -852,13 +939,15 @@ h5 {
        20+ Questions About My Plotter Painting Practice
       </a>
       covers many of the topics in this course in a brief, written format.
+     </li>
+     <li>
       <a href="https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17" target="_blank">
        Question 17
       </a>
       in this article points to several useful resources for plotter/plotter paintings.
      </li>
      <li>
-      Coming soon
+      More coming soon
      </li>
     </ul>
     <h2>
@@ -869,13 +958,26 @@ h5 {
       The course primarily focuses on sharing my (Licia's) plotter painting practice.  Audiences will have to adjust according to their own setup. This is especially important regarding machine operation. Always follow instructions and safety rules provided by your machine manufacturers.
      </li>
      <li>
-      The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machine and materials are my own.
+      The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machines, brands, and materials are my own.
      </li>
     </ol>
+    <h2>
+     LICENSE:
+    </h2>
+    <p>
+     Media (images and videos): Unless otherwise mentioned, ALL RIGHTS RESERVED.
+Code and Notes: Unless otherwise mentioned, code and notes in this repository are under MIT LICENSE
+    </p>
     <h2>
      News/Updates
     </h2>
     <ul>
+     <li>
+      2024-Sep :
+      <a href="https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024" target="_blank">
+       Special Event At the Victoria and Albert Museum
+      </a>
+     </li>
      <li>
       2024-Sep
       <em>

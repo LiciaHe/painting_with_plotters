@@ -20,6 +20,9 @@ The course aims to provide an in-depth presentation of Licia's research and prac
 ## Course Plan
 
 MODULE START 
+### -1: Painting With Plotters: Special Event at the Victoria and Albert Museum
+1. Celebrate the art of generative plotter painting (and the launch of this course) with me at the [V&A Digital Design Weekend](https://www.vam.ac.uk/event/9pmbZOVdEw/digital-design-weekend-2024) through [a special participatory event](https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024)! 
+
 ### 0: Introduction to Plotter Painting: A Speed Run 
 1. Why I made this course 
 2. My plotters and why I use them for paintings 
@@ -94,6 +97,7 @@ MODULE START
 MODULE END 
 
 ## Additional Resources
+- I have started a [newsletter](https://liciahe.substack.com/) where I will share my news related to this course directly to your inbox. 
 - [Github Repository for this course](https://github.com/LiciaHe/painting_with_plotters)
 -  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. 
   - [Question 17](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17) in this article points to several useful resources for plotter/plotter paintings.
@@ -108,7 +112,7 @@ Media (images and videos): Unless otherwise mentioned, ALL RIGHTS RESERVED.
 Code and Notes: Unless otherwise mentioned, code and notes in this repository are under MIT LICENSE
 
 ## News/Updates
-
+- 2024-Sep : [Special Event At the Victoria and Albert Museum](https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024)
 - 2024-Sep *(planned)*: Course release
 - 2024-Jun *(planned)*: Video production 
 - 2024-May: The course website is online 

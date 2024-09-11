@@ -38,13 +38,12 @@
     flex-basis: 35%
   .material
     flex-basis: 20%
-  //@media (max-width: $breakpoint-tablet)
-  //  .module
-  //    flex-basis: 100%
-  //  .topic
-  //    flex-basis: 100%
-  //  .material
-  //    flex-basis: 100%
+  .module .topic .material
+    border-bottom: none
+  @media (max-width: $breakpoint-tablet)
+    .module, .topic, .material
+      flex-basis: 100%
+      border-bottom: 1px solid #01090e
 
 .author
   text-align: center

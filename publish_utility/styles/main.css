@@ -343,6 +343,15 @@ h5 {
 .course-module .material {
   flex-basis: 20%;
 }
+.course-module .module .topic .material {
+  border-bottom: none;
+}
+@media (max-width: 1000px) {
+  .course-module .module, .course-module .topic, .course-module .material {
+    flex-basis: 100%;
+    border-bottom: 1px solid #01090e;
+  }
+}
 
 .author {
   text-align: center;
