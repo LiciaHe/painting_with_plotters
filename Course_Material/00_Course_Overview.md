@@ -24,9 +24,8 @@ MODULE START
 1. Celebrate the art of generative plotter painting (and the launch of this course) with me at the [V&A Digital Design Weekend](https://www.vam.ac.uk/event/9pmbZOVdEw/digital-design-weekend-2024) through [a special participatory event](https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024)! 
 
 ### 0: Introduction to Plotter Painting: A Speed Run 
-1. Why I made this course 
-2. My plotters and why I use them for paintings 
-3. What will this course cover 
+1. Why I made this course
+2. What will this course cover 
 4. Course resources
 ### 1: Everything You Need For Plotter Painting: Machine, Material, and Safety
 1. Equipment needed for plotter painting
@@ -108,7 +107,7 @@ MODULE END
 2. The course is free and open to all. Unless otherwise mentioned, this course contains no paid promotions of any product. Opinions towards machines, brands, and materials are my own.
 
 ## LICENSE: 
-Media (images and videos): Unless otherwise mentioned, ALL RIGHTS RESERVED.
+Media (images, audio, and videos): Unless otherwise mentioned, ALL RIGHTS RESERVED.
 Code and Notes: Unless otherwise mentioned, code and notes in this repository are under MIT LICENSE
 
 ## News/Updates
