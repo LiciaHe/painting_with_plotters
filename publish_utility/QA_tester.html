@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A</title>
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/qa.css" />
+
+    <style>
+        /*#tag-navigation {*/
+        /*    margin: 20px 0;*/
+        /*}*/
+        /*select {*/
+        /*    padding: 10px;*/
+        /*    border-radius: 5px;*/
+        /*    border: 1px solid #d1d1d1;*/
+        /*    background-color: #fff;*/
+        /*    font-size: 16px;*/
+        /*    cursor: pointer;*/
+        /*}*/
+        /*#qa-list {*/
+        /*    width: 80%;*/
+        /*    max-width: 800px;*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*    gap: 10px;*/
+        /*}*/
+        /*.question {*/
+        /*    cursor: pointer;*/
+        /*    background-color: white;*/
+        /*    padding: 15px;*/
+        /*    border-radius: 5px;*/
+        /*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+        /*    transition: transform 0.2s ease, box-shadow 0.2s ease;*/
+        /*}*/
+        .question:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .answer {
+            display: none;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #e1e1e1;
+            margin-top: -10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        .tags {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div  class="container">
+    <div id="container" class="hor_container">
+        <h1>Questions and Answers</h1>
+
+            <h2 class="author">
+             For <a href="https://www.eyesofpanda.com/project/painting_with_plotters/" target="_blank">
+              Painting with Plotters Course
+             </a> by <a href="http://eyesofpanda.com" target="_blank">
+              Licia He
+             </a>
+            </h2>
+
+        <div id="tag-navigation">
+            <p><strong>Filter by Tags:</strong></p>
+            <select id="tag-filter">
+                <option value="all">All</option>
+            </select>
+        </div>
+
+        <div id="qa-list"></div>
+    </div>
+    </div>
+
+
+
+
+
+    <script>
+        // Mock JSON data
+        const qaData = [
+            {"q": "What is HTML?", "a": "HTML stands for HyperText Markup Language.", "tags": ["HTML", "Basics"], "id": 1},
+            {"q": "What is CSS?", "a": "CSS stands for Cascading Style Sheets.", "tags": ["CSS", "Basics"], "id": 2},
+            {"q": "What is JavaScript?", "a": "JavaScript is a programming language for the web.", "tags": ["JavaScript", "Programming"], "id": 3}
+        ];
+
+        const qaList = document.getElementById('qa-list');
+        const tagFilter = document.getElementById('tag-filter');
+
+        // Initialize tag navigation
+        const tags = new Set();
+        qaData.forEach(item => item.tags.forEach(tag => tags.add(tag)));
+        tags.forEach(tag => {
+            const option = document.createElement('option');
+            option.value = tag;
+            option.textContent = tag;
+            tagFilter.appendChild(option);
+        });
+
+        // Render Q&A items
+        function renderQA(filterTag = 'all') {
+            qaList.innerHTML = '';
+            const filteredData = filterTag === 'all'
+                ? qaData
+                : qaData.filter(item => item.tags.includes(filterTag));
+
+            filteredData.sort((a, b) => a.id - b.id).forEach(item => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.textContent = item.q;
+
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'answer';
+
+                const answerText = document.createElement('p');
+                answerText.textContent = item.a;
+                answerDiv.appendChild(answerText);
+
+                const tagsSpan = document.createElement('span');
+                tagsSpan.className = 'tags';
+                tagsSpan.textContent = `Tags: ${item.tags.join(', ')}`;
+                answerDiv.appendChild(tagsSpan);
+
+                questionDiv.addEventListener('click', () => {
+                    answerDiv.style.display = answerDiv.style.display === 'none' ? 'block' : 'none';
+                });
+
+                qaList.appendChild(questionDiv);
+                qaList.appendChild(answerDiv);
+            });
+        }
+
+        // Event listener for tag filter
+        tagFilter.addEventListener('change', (e) => {
+            renderQA(e.target.value);
+        });
+
+        // Initial render
+        renderQA();
+    </script>
+</body>
+</html>

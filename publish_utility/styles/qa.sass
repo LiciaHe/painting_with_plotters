@@ -1,0 +1,41 @@
+@import "responsive"
+@import "basic"
+
+#tag-navigation
+  padding: 2vw
+  font-size: $base-font-size
+
+select
+  padding: 1vw
+  border-radius: 1vw
+  border: 2px solid $primary-color
+  cursor: pointer
+  font-size: $base-font-size
+
+
+#qa-list
+  width: 100%
+  display: flex
+  flex-direction: column
+  padding: 1vw
+
+.question
+  cursor: pointer
+  background: $secondary-color
+  padding: 1vw
+  border-radius: 1vw
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
+  transition: transform 0.2s ease, box-shadow 0.2s ease
+
+  :hover
+    transform: translateY(-3px)
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2)
+
+.answer
+  display: none
+  padding: 2vw
+  border-radius: 1vw
+  background-color: $primary-color
+  
+  color:$background-color
+
