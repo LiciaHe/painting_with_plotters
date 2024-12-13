@@ -80,11 +80,31 @@ h1 {
   font-size: 4.25vw;
 }
 
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
 h2 {
   text-align: left;
   font-size: 2.55vw;
 }
 
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
 h3 {
   text-align: left;
   font-size: 2.125vw;
@@ -100,16 +120,6 @@ h5 {
   font-size: 1.8275vw;
 }
 
-@media (max-width: 500px) {
-  h1, h2 {
-    font-size: 7.425vw;
-  }
-}
-@media (max-width: 1000px) {
-  h1, h2 {
-    font-size: 4.05vw;
-  }
-}
 @media (max-width: 500px) {
   h3, h4, h5 {
     font-size: 6.325vw;
@@ -260,10 +270,30 @@ h1 {
   text-align: center;
   font-size: 4.25vw;
 }
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
 
 h2 {
   text-align: left;
   font-size: 2.55vw;
+}
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
 }
 
 h3 {
@@ -279,17 +309,6 @@ h4 {
 h5 {
   text-align: left;
   font-size: 1.8275vw;
-}
-
-@media (max-width: 500px) {
-  h1, h2 {
-    font-size: 7.425vw;
-  }
-}
-@media (max-width: 1000px) {
-  h1, h2 {
-    font-size: 4.05vw;
-  }
 }
 
 @media (max-width: 500px) {
@@ -330,6 +349,8 @@ select {
   border-radius: 1vw;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 3vw;
+  font-size: 2.125vw;
 }
 .question :hover {
   transform: translateY(-3px);
@@ -341,6 +362,40 @@ select {
   padding: 2vw;
   border-radius: 1vw;
   background-color: #01090e;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.answer p {
+  color: #eeeeee;
+}
+
+.tags {
+  font-size: 1.275vw;
+  color: #a1a1a1;
+  margin-top: 1vw;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .question, .answer, .tags, #qa-list {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  .question, .answer, .tags, #qa-list {
+    font-size: 4.05vw;
+  }
+}
+@media (max-width: 500px) {
+  .question *, .answer *, .tags *, #qa-list * {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  .question *, .answer *, .tags *, #qa-list * {
+    font-size: 4.05vw;
+  }
 }
 
 /*# sourceMappingURL=qa.css.map */

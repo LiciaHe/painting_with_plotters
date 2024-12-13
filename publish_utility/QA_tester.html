@@ -7,54 +7,6 @@
     <link rel="stylesheet" href="styles/main.css" />
     <link rel="stylesheet" href="styles/qa.css" />
 
-    <style>
-        /*#tag-navigation {*/
-        /*    margin: 20px 0;*/
-        /*}*/
-        /*select {*/
-        /*    padding: 10px;*/
-        /*    border-radius: 5px;*/
-        /*    border: 1px solid #d1d1d1;*/
-        /*    background-color: #fff;*/
-        /*    font-size: 16px;*/
-        /*    cursor: pointer;*/
-        /*}*/
-        /*#qa-list {*/
-        /*    width: 80%;*/
-        /*    max-width: 800px;*/
-        /*    display: flex;*/
-        /*    flex-direction: column;*/
-        /*    gap: 10px;*/
-        /*}*/
-        /*.question {*/
-        /*    cursor: pointer;*/
-        /*    background-color: white;*/
-        /*    padding: 15px;*/
-        /*    border-radius: 5px;*/
-        /*    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
-        /*    transition: transform 0.2s ease, box-shadow 0.2s ease;*/
-        /*}*/
-        .question:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .answer {
-            display: none;
-            padding: 15px;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            border: 1px solid #e1e1e1;
-            margin-top: -10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            position: relative;
-        }
-        .tags {
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
-            display: block;
-        }
-    </style>
 </head>
 <body>
     <div  class="container">
@@ -82,15 +34,10 @@
 
 
 
-
+    <script>//const_qaData=</script>
 
     <script>
-        // Mock JSON data
-        const qaData = [
-            {"q": "What is HTML?", "a": "HTML stands for HyperText Markup Language.", "tags": ["HTML", "Basics"], "id": 1},
-            {"q": "What is CSS?", "a": "CSS stands for Cascading Style Sheets.", "tags": ["CSS", "Basics"], "id": 2},
-            {"q": "What is JavaScript?", "a": "JavaScript is a programming language for the web.", "tags": ["JavaScript", "Programming"], "id": 3}
-        ];
+
 
         const qaList = document.getElementById('qa-list');
         const tagFilter = document.getElementById('tag-filter');

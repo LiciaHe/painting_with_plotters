@@ -26,6 +26,9 @@ select
   border-radius: 1vw
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
   transition: transform 0.2s ease, box-shadow 0.2s ease
+  margin-top : 3vw
+
+  font-size : 1.25*$base-font-size
 
   :hover
     transform: translateY(-3px)
@@ -36,6 +39,27 @@ select
   padding: 2vw
   border-radius: 1vw
   background-color: $primary-color
-  
-  color:$background-color
+  border: 2px solid $background-color
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05)
+  position: relative
+  p
+    color: #eeeeee
+
+.tags
+  font-size: 0.75*$base-font-size
+  color: #a1a1a1
+  margin-top: 1vw
+  display: block
+
+
+.question,.answer,.tags,#qa-list
+  @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.5
+  @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.35
+  *
+    @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.5
+    @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.35
 

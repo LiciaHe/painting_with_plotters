@@ -2,17 +2,17 @@
   {
     "q": "Can we have a studio tour?",
     "a": "Yes. There will be a virtual studio towards the end of the course, currently scheduled in module 13.",
-    "tags": ["others"]
+    "tags": ["general"]
   },
     {
     "q": "Where to sell your paintings? How to make effective marketing?",
     "a": "Yes, I do sell my paintings. At this moment, most of my paintings were sold through exhibitions and galleries. For the marketing part, I have to admit that I am learning as well.",
-    "tags": ["others"]
+    "tags": ["general"]
   },
   {
     "q": "Can you give a step-by step process for taking an image to having the finished plot?",
     "a": "I mostly make my images by building generative systems. These systems generate images that can be exported into various formats, such as svg and the plotter-operating script, a process we will cover in detail. Unfortunately the raster-to-vector process is not my expertise, and I highly recommend looking to various plotter community, such as the [DrawingBot discord](https://discord.com/invite/XHP3dBg).",
-    "tags": ["software","raster image"]
+    "tags": ["software","design"]
   },
   {
     "q": "Please provide a list of recommended prerequisites",
@@ -46,7 +46,7 @@
   },
       {
     "q": "How do send drawings to g code?",
-    "a": "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code. ",
+    "a": "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code at this moment.",
             "tags": ["software"]
   },
       {

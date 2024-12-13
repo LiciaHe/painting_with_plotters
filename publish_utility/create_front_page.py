@@ -1,8 +1,7 @@
 import markdown,re
 from markdown import markdown
-from markdown.extensions import Extension
-from markdown.preprocessors import Preprocessor
 from bs4 import BeautifulSoup
+from web_md_utils import *
 def load_soups(original_name,template_loc):
     with open(f'{template_loc}.html',"r",encoding="utf-8") as basesf:
         template_soup=BeautifulSoup(basesf.read(), "html.parser")
@@ -20,19 +19,10 @@ def load_soups(original_name,template_loc):
         ]
     return template_soup,content_soup
 
-def name_treat(text):
-    names=text.split("_")
-    name=" ".join([v[0].upper()+v[1:].lower() for v in names])
-    return name
 
-def applyAttrs(tag,attrs):
-    for key in attrs:
-        tag.attrs[key]=attrs[key]
-def create_and_append_tag(soup,parent,name,attr):
-    tag=soup.new_tag(name)
-    applyAttrs(tag,attr)
-    parent.append(tag)
-    return tag
+
+
+
 
 def process_links(soup,template_loc,level=2):
     links=soup.find_all("link")
@@ -122,10 +112,7 @@ def process_images(template_soup):
         else:
             loc=f'{web_asset_loc}{img.attrs["name"]}'
         img.attrs["src"]=loc
-def process_hrefs(template_soup):
-    a_coll=template_soup.findAll("a")
-    for a in a_coll:
-        a.attrs["target"]="_blank"
+
 
 def make_front_page(original_name,template_loc,template_name,export_name):
     '''

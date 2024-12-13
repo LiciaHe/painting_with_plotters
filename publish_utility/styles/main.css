@@ -80,11 +80,31 @@ h1 {
   font-size: 4.25vw;
 }
 
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
 h2 {
   text-align: left;
   font-size: 2.55vw;
 }
 
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
 h3 {
   text-align: left;
   font-size: 2.125vw;
@@ -100,16 +120,6 @@ h5 {
   font-size: 1.8275vw;
 }
 
-@media (max-width: 500px) {
-  h1, h2 {
-    font-size: 7.425vw;
-  }
-}
-@media (max-width: 1000px) {
-  h1, h2 {
-    font-size: 4.05vw;
-  }
-}
 @media (max-width: 500px) {
   h3, h4, h5 {
     font-size: 6.325vw;
@@ -260,10 +270,30 @@ h1 {
   text-align: center;
   font-size: 4.25vw;
 }
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
 
 h2 {
   text-align: left;
   font-size: 2.55vw;
+}
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
 }
 
 h3 {
@@ -279,17 +309,6 @@ h4 {
 h5 {
   text-align: left;
   font-size: 1.8275vw;
-}
-
-@media (max-width: 500px) {
-  h1, h2 {
-    font-size: 7.425vw;
-  }
-}
-@media (max-width: 1000px) {
-  h1, h2 {
-    font-size: 4.05vw;
-  }
 }
 
 @media (max-width: 500px) {

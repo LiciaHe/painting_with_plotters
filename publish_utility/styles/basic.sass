@@ -100,10 +100,19 @@ ul
 h1
   text-align: center
   font-size: 2.5*$base-font-size
+  @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.5
+  @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.5
+
 
 h2
   text-align: left
   font-size: 1.5*$base-font-size
+  @media (max-width: $breakpoint-phone)
+      font-size: $mobile_font_size*1.35
+  @media (max-width: $breakpoint-tablet)
+      font-size: $tablet-font-size*1.35
 
 h3
   text-align: left
@@ -118,11 +127,7 @@ h5
   font-size: 1.075*$base-font-size
 
 
-h1,h2
-    @media (max-width: $breakpoint-phone)
-      font-size: $mobile_font_size*1.35
-    @media (max-width: $breakpoint-tablet)
-      font-size: $tablet-font-size*1.35
+
 h3,h4,h5
     @media (max-width: $breakpoint-phone)
       font-size: $mobile_font_size*1.15
