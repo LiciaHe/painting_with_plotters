@@ -1,0 +1,62 @@
+[
+  {
+    "q": "Can we have a studio tour?",
+    "a": "Yes. There will be a virtual studio towards the end of the course, currently scheduled in module 13.",
+    "tags": ["others"]
+  },
+    {
+    "q": "Where to sell your paintings? How to make effective marketing?",
+    "a": "Yes, I do sell my paintings. At this moment, most of my paintings were sold through exhibitions and galleries. For the marketing part, I have to admit that I am learning as well.",
+    "tags": ["others"]
+  },
+  {
+    "q": "Can you give a step-by step process for taking an image to having the finished plot?",
+    "a": "I mostly make my images by building generative systems. These systems generate images that can be exported into various formats, such as svg and the plotter-operating script, a process we will cover in detail. Unfortunately the raster-to-vector process is not my expertise, and I highly recommend looking to various plotter community, such as the [DrawingBot discord](https://discord.com/invite/XHP3dBg).",
+    "tags": ["software","raster image"]
+  },
+  {
+    "q": "Please provide a list of recommended prerequisites",
+    "a": "Passion towards plotters and interests in learning new things!",
+    "tags": ["preparation","general"]
+  },
+    {
+    "q": "How do you get so productive?",
+    "a": "My honest answer is I don't think I am productive. I do have many plotters and I hope to keep them running as much as I can. It does take all of my energy.",
+    "tags": ["general"]
+  },
+  {
+    "q": "Are you in active communities for creative coding and pen plotting?",
+    "a": "Yes, I am part of the [Generative Artist Club](https://www.genartclub.com/). I still post to the #plottertwitter community, and I am in the [DrawingBot discord](https://discord.com/invite/XHP3dBg).",
+        "tags": ["general","community"]
+  },
+  {
+    "q": "How do you avoid or deal with misprints?",
+    "a": "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.",
+            "tags": ["material","post-processing"]
+  },
+  {
+    "q": "What's your opinion on the relationship between code and the media? Is code strongly tied to the media?",
+    "a": "My code is definitely strongly tied to the media. Each media has its unique properties and optimal way to be painted. For my work, it is important to take that into consideration. We will discuss this in module 12.",
+    "tags": ["material"]
+  },
+    {
+    "q": "How do you avoid or deal with misprints?",
+    "a": "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.",
+            "tags": ["material","post-processing"]
+  },
+      {
+    "q": "How do send drawings to g code?",
+    "a": "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code. ",
+            "tags": ["software"]
+  },
+      {
+    "q": "What suggestions do you have for plotting with pencil?",
+    "a": "The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I've tried sand paper for pastel, which makes colored pencil leaves much more intense marks.",
+            "tags": ["material"]
+  },
+  {
+    "q": "How to do custom fill and hatching algorithms? ",
+    "a": "I will go over my go-to fill algorithm in module 5. It's the most basic straight line hatching achieved by polygon boolean operation.",
+            "tags": ["software"]
+  }
+]
