@@ -12,8 +12,10 @@ This repository will host all the materials (code, image etc.) used for this cou
 
 ## News/Updates
 
-- 2024-Sep *(planned)*: Course release
-- 2024-Jun *(planned)*: Video production 
+- 2024-Dec : Course Launch! 
+- 2024-Sep : [Special Event At the Victoria and Albert Museum](https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024)
+- 2024-Sep *(planned/FAILED)*: Course release
+- 2024-Jun *(planned/FAILED)*: Video production 
 - 2024-May: The course website is online 
 - 2024-Jan: Pre-course survey is online. Thanks filling the survey!!!! I will try to incorporate points raised there into the class.   
 - 2024-Jan: The Q&A article is online.
