@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Q&A</title>
-    <link rel="stylesheet" href="styles/main.css" />
-    <link rel="stylesheet" href="styles/qa.css" />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/qa.css" />
 
 </head>
 <body>
@@ -26,6 +26,9 @@
             <select id="tag-filter">
                 <option value="all">All</option>
             </select>
+             <button id="expand-all">Expand All</button>
+        <button id="collapse-all">Collapse All</button>
+
         </div>
 
         <div id="qa-list"></div>
@@ -41,6 +44,8 @@
 
         const qaList = document.getElementById('qa-list');
         const tagFilter = document.getElementById('tag-filter');
+        const expandAllBtn = document.getElementById('expand-all');
+        const collapseAllBtn = document.getElementById('collapse-all');
 
         // Initialize tag navigation
         const tags = new Set();
@@ -62,13 +67,13 @@
             filteredData.sort((a, b) => a.id - b.id).forEach(item => {
                 const questionDiv = document.createElement('div');
                 questionDiv.className = 'question';
-                questionDiv.textContent = item.q;
+                questionDiv.innerHTML = item.q;
 
                 const answerDiv = document.createElement('div');
                 answerDiv.className = 'answer';
 
-                const answerText = document.createElement('p');
-                answerText.textContent = item.a;
+                const answerText = document.createElement('div');
+                answerText.innerHTML = item.a;
                 answerDiv.appendChild(answerText);
 
                 const tagsSpan = document.createElement('span');
@@ -90,6 +95,19 @@
             renderQA(e.target.value);
         });
 
+        // Expand All functionality
+        expandAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.answer').forEach(answer => {
+                answer.style.display = 'block';
+            });
+        });
+
+        // Collapse All functionality
+        collapseAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+        });
         // Initial render
         renderQA();
     </script>

@@ -2,6 +2,7 @@ from web_md_utils import *
 import json
 import os
 
+
 def load_all_qa():
     files=[f for f in os.listdir(data_loc) if f.endswith('.json')]
     files.sort(key=lambda f:int(f.split("_")[0]))
@@ -21,12 +22,31 @@ def load_all_qa():
 
     return all_data
 
-# def load_template()
+def load_template(data):
+    with open(template_file,'r') as f:
+        plain_html=f.read()
+    html=plain_html.replace("<script>//const_qaData=</script>",f'    <script>const qaData={data}</script>')
+
+    soup=BeautifulSoup(html,"html.parser")
+    return soup
+
 
 
 
 
 qa_loc="../QA/"
 data_loc=f'{qa_loc}data/'
+template_loc="templates/"
+template_file=f'{template_loc}QA_template.html'
 data=load_all_qa()
-print(data)
+soup=load_template(data)
+process_links(soup,template_loc,level=3)
+print(soup)
+
+export_loc="../website/QA/"
+export_name="index"
+with open(f'{export_loc}{export_name}.html', "w", encoding="utf-8") as exf:
+    exf.write(soup.prettify())
+
+
+

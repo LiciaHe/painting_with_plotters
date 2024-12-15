@@ -24,31 +24,7 @@ def load_soups(original_name,template_loc):
 
 
 
-def process_links(soup,template_loc,level=2):
-    links=soup.find_all("link")
-    for link in links:
-        href=link["href"]
-        if not href.startswith(template_loc):
-            href=template_loc+href
 
-        style_tag=soup.new_tag("style")
-        with open(href,"r") as css_file:
-            style_string=css_file.read()
-
-
-        level_text = "../" * level
-
-        correct_font = f'src: url(\'{level_text}Straightline_full.woff\') format(\'woff\');'
-        font_reg = r'src: url.*?;'
-
-        style_string = re.sub(font_reg, correct_font, style_string)
-
-        style_tag.string = style_string
-
-        link_parent=link.parent
-        link_parent.append(style_tag)
-        # link_parent.extract(link)
-        link.extract()
     #make sure the font href is correct
 def create_title(original_name,template_soup):
     #update title
@@ -152,7 +128,7 @@ input_loc="../Course_Material/"
 export_loc="../website/"
 
 
-template_loc=""
+template_loc="templates/"
 template_name="front_page_template"
 ori_name="00_Course_Overview"
 local_asset_loc="../assets/local/"

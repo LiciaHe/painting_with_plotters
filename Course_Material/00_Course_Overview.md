@@ -27,13 +27,13 @@ MODULE START
 ### -1: Painting With Plotters: Special Event at the Victoria and Albert Museum
 1. Celebrate the art of generative plotter painting with me at the [V&A Digital Design Weekend](https://www.vam.ac.uk/event/9pmbZOVdEw/digital-design-weekend-2024) through [a special participatory event](https://www.vam.ac.uk/event/bJvmGKbB9/painting-with-plotters-sep-2024)! 
 
-### 0: Introduction to Plotter Painting: A Speed Run 
+### 0: Introduction 
 1. How did I get started with plotter painting? 
 2. Why did I want to make this course?
 2. What will this course cover?
 4. Course resources and notes. 
 
-### 1: Everything You Need For Plotter Painting: Machine, Material, and Safety
+### 1: Everything You Need For Plotter Painting: Machine, Material, and Tools
 1. Equipment needed for plotter painting
 2. Prepare the machine
 3. Prepare the painting environment 

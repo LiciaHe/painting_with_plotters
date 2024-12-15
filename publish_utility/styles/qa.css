@@ -325,10 +325,13 @@ h5 {
 #tag-navigation {
   padding: 2vw;
   font-size: 1.7vw;
+  display: flex;
+  flex-direction: row;
 }
 
-select {
+select, button {
   padding: 1vw;
+  margin: 1vw;
   border-radius: 1vw;
   border: 2px solid #01090e;
   cursor: pointer;
@@ -366,8 +369,9 @@ select {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   position: relative;
 }
-.answer p {
+.answer * {
   color: #eeeeee;
+  font-size: 1.7vw;
 }
 
 .tags {

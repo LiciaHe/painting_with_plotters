@@ -51,7 +51,7 @@
   },
       {
     "q": "What suggestions do you have for plotting with pencil?",
-    "a": "The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I've tried sand paper for pastel, which makes colored pencil leaves much more intense marks.",
+    "a": "The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I've tried sand paper for pastel, which makes colored pencil leaves much more intense marks.<br> Another challenging point is to adjust the z-axis to compensate the loss of pencil length during the plotting process. I currently don't have a great solution. I recommend checking out the work of [Cory Haber](https://www.coryhaber.com/), who has implemented a mechanism that works for oil sticks. ",
             "tags": ["material"]
   },
   {

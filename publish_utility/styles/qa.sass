@@ -4,9 +4,13 @@
 #tag-navigation
   padding: 2vw
   font-size: $base-font-size
+  display: flex
+  flex-direction: row
 
-select
+
+select,button
   padding: 1vw
+  margin: 1vw
   border-radius: 1vw
   border: 2px solid $primary-color
   cursor: pointer
@@ -42,8 +46,9 @@ select
   border: 2px solid $background-color
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05)
   position: relative
-  p
+  *
     color: #eeeeee
+    font-size: $base-font-size
 
 .tags
   font-size: 0.75*$base-font-size

@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Q&amp;A
+  </title>
+  <style>
+   @font-face {
+  font-family: "straightlineregular";
+  src: url('../Straightline_full.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.785vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+}
+ol {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  margin-bottom: 0.17vw;
+  padding: 0;
+  text-align: left;
+  font-size: 1.615vw;
+}
+
+ul {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+.flex-container, .left_column, .course-module, .start-around-row, .start-start-row, .center-around-row, .nav, .center-between-row, .center-center-row, .start-start-column, .center-around-column, .center-start-column, .center-center-column, .left_column .preview, .iframe_container, .hor_container, .container {
+  display: flex;
+}
+
+.center-center-column, .left_column .preview, .iframe_container, .hor_container, .container {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.center-start-column {
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-around-column {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.start-start-column {
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-center-row {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.center-between-row {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.center-around-row, .nav {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.start-start-row {
+  align-items: start;
+  justify-content: start;
+  flex-direction: row;
+}
+
+.start-around-row {
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@font-face {
+  font-family: "straightlineregular";
+  src: url('../../../Straightline_full.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.785vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+}
+
+ol {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  margin-bottom: 0.17vw;
+  padding: 0;
+  text-align: left;
+  font-size: 1.615vw;
+}
+
+ul {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+
+.container {
+  width: 100%;
+}
+@media (max-width: 500px) {
+  .container {
+    font-size: 5.5vw;
+  }
+}
+
+.hor_container {
+  width: 60%;
+  margin-top: 6.6666666667%;
+}
+.hor_container * {
+  width: 100%;
+}
+
+.mini-tag {
+  font-size: 1.7vw;
+  border-bottom: 3px dotted #01090e;
+  text-align: center;
+  width: 60%;
+}
+
+.course-module {
+  align-items: start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-bottom: 2px solid #01090e;
+}
+.course-module .module {
+  flex-basis: 25%;
+}
+.course-module .topic {
+  flex-basis: 35%;
+}
+.course-module .material {
+  flex-basis: 20%;
+}
+.course-module .module .topic .material {
+  border-bottom: none;
+}
+@media (max-width: 1000px) {
+  .course-module .module, .course-module .topic, .course-module .material {
+    flex-basis: 100%;
+    border-bottom: 1px solid #01090e;
+  }
+}
+
+.author {
+  text-align: center;
+}
+
+.icon {
+  width: 30%;
+}
+@media (max-width: 500px) {
+  .icon {
+    width: 50%;
+  }
+}
+
+.iframe_container {
+  width: 60%;
+  height: 50vh;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 20%;
+  overflow: hidden;
+}
+
+.responsive-iframe {
+  width: 200vw;
+  height: 200vw;
+  border: none;
+  max-width: 100%;
+}
+
+.nav {
+  font-size: 2.125vw;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  flex-wrap: wrap;
+  width: 60%;
+  height: auto;
+}
+@media (max-width: 500px) {
+  .nav {
+    font-size: 6.325vw;
+    flex-wrap: wrap;
+  }
+}
+.nav div {
+  padding: 3%;
+}
+@media (max-width: 500px) {
+  .nav div {
+    flex-basis: 100%;
+    text-align: center;
+  }
+}
+
+.full_width_content {
+  width: 100%;
+  margin-top: 2.5%;
+}
+.full_width_content * {
+  text-align: left;
+  margin: 0;
+  margin-top: 0.625%;
+}
+
+.left_column {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 60%;
+  margin-bottom: 20%;
+  margin-top: 5%;
+}
+@media (max-width: 500px) {
+  .left_column {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+}
+.left_column * {
+  margin: 0;
+  padding: 0;
+}
+.left_column .preview {
+  flex-basis: 60%;
+  max-width: 55%;
+  max-height: 100%;
+  height: 100%;
+  display: block;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: center;
+  overflow: hidden;
+}
+@media (max-width: 500px) {
+  .left_column .preview {
+    flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.left_column .preview * {
+  margin: 0;
+  max-width: 90%;
+  max-height: 90%;
+  padding: 0;
+}
+.left_column .description {
+  flex-basis: 40%;
+  height: 100%;
+  text-align: center;
+  padding: 0;
+}
+@media (max-width: 500px) {
+  .left_column .description {
+    flex-basis: 100%;
+    height: auto;
+    padding-top: 5%;
+  }
+}
+.left_column .description * {
+  padding-bottom: 10%;
+  text-align: left;
+}
+.left_column .description a {
+  padding: 0;
+}
+
+/*# sourceMappingURL=main.css.map */
+  </style>
+  <style>
+   @font-face {
+  font-family: "straightlineregular";
+  src: url('../../../Straightline_full.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.785vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+}
+ol {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  margin-bottom: 0.17vw;
+  padding: 0;
+  text-align: left;
+  font-size: 1.615vw;
+}
+
+ul {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+.flex-container, .start-around-row, .start-start-row, .center-around-row, .center-between-row, .center-center-row, .start-start-column, .center-around-column, .center-start-column, .center-center-column {
+  display: flex;
+}
+
+.center-center-column {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.center-start-column {
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-around-column {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.start-start-column {
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.center-center-row {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.center-between-row {
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.center-around-row {
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.start-start-row {
+  align-items: start;
+  justify-content: start;
+  flex-direction: row;
+}
+
+.start-around-row {
+  align-items: start;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@font-face {
+  font-family: "straightlineregular";
+  src: url('../../../Straightline_full.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  font-family: straightlineregular;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  target: "_blank";
+  color: #01090e;
+  font-size: inherit;
+}
+
+a:hover {
+  background: #01090e;
+  color: white;
+}
+
+.margin_lr {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+p {
+  text-align: left;
+  font-size: 1.7vw;
+  line-height: 1.785vw;
+}
+
+@media (max-width: 500px) {
+  p, ol, ul {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+  p *, ol *, ul * {
+    font-size: 5.5vw;
+    line-height: 5.775vw;
+  }
+}
+@media (max-width: 1000px) {
+  p, ol, ul {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+  p *, ol *, ul * {
+    font-size: 3vw;
+    line-height: 3.15vw;
+  }
+}
+
+ol {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  margin-bottom: 0.17vw;
+  padding: 0;
+  text-align: left;
+  font-size: 1.615vw;
+}
+
+ul {
+  line-height: 1.785vw;
+  list-style-position: inside;
+  padding: 0;
+  text-align: left;
+  font-size: 1.7vw;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.25vw;
+}
+@media (max-width: 500px) {
+  h1 {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 4.5vw;
+  }
+}
+
+h2 {
+  text-align: left;
+  font-size: 2.55vw;
+}
+@media (max-width: 500px) {
+  h2 {
+    font-size: 7.425vw;
+  }
+}
+@media (max-width: 1000px) {
+  h2 {
+    font-size: 4.05vw;
+  }
+}
+
+h3 {
+  text-align: left;
+  font-size: 2.125vw;
+}
+
+h4 {
+  text-align: left;
+  font-size: 1.955vw;
+}
+
+h5 {
+  text-align: left;
+  font-size: 1.8275vw;
+}
+
+@media (max-width: 500px) {
+  h3, h4, h5 {
+    font-size: 6.325vw;
+  }
+}
+@media (max-width: 1000px) {
+  h3, h4, h5 {
+    font-size: 3.45vw;
+  }
+}
+
+#tag-navigation {
+  padding: 2vw;
+  font-size: 1.7vw;
+  display: flex;
+  flex-direction: row;
+}
+
+select, button {
+  padding: 1vw;
+  margin: 1vw;
+  border-radius: 1vw;
+  border: 2px solid #01090e;
+  cursor: pointer;
+  font-size: 1.7vw;
+}
+
+#qa-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+}
+
+.question {
+  cursor: pointer;
+  background: #eeeeee;
+  padding: 1vw;
+  border-radius: 1vw;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 3vw;
+  font-size: 2.125vw;
+}
+.question :hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.answer {
+  display: none;
+  padding: 2vw;
+  border-radius: 1vw;
+  background-color: #01090e;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.answer * {
+  color: #eeeeee;
+  font-size: 1.7vw;
+}
+
+.tags {
+  font-size: 1.275vw;
+  color: #a1a1a1;
+  margin-top: 1vw;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .question, .answer, .tags, #qa-list {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  .question, .answer, .tags, #qa-list {
+    font-size: 4.05vw;
+  }
+}
+@media (max-width: 500px) {
+  .question *, .answer *, .tags *, #qa-list * {
+    font-size: 8.25vw;
+  }
+}
+@media (max-width: 1000px) {
+  .question *, .answer *, .tags *, #qa-list * {
+    font-size: 4.05vw;
+  }
+}
+
+/*# sourceMappingURL=qa.css.map */
+  </style>
+ </head>
+ <body>
+  <div class="container">
+   <div class="hor_container" id="container">
+    <h1>
+     Questions and Answers
+    </h1>
+    <h2 class="author">
+     For
+     <a href="https://www.eyesofpanda.com/project/painting_with_plotters/" target="_blank">
+      Painting with Plotters Course
+     </a>
+     by
+     <a href="http://eyesofpanda.com" target="_blank">
+      Licia He
+     </a>
+    </h2>
+    <div id="tag-navigation">
+     <p>
+      <strong>
+       Filter by Tags:
+      </strong>
+     </p>
+     <select id="tag-filter">
+      <option value="all">
+       All
+      </option>
+     </select>
+     <button id="expand-all">
+      Expand All
+     </button>
+     <button id="collapse-all">
+      Collapse All
+     </button>
+    </div>
+    <div id="qa-list">
+    </div>
+   </div>
+  </div>
+  <script>
+   const qaData=[{'q': 'Can we have a studio tour?', 'a': 'Yes. There will be a virtual studio towards the end of the course, currently scheduled in module 13.', 'tags': ['general'], 'id': 0}, {'q': 'Where to sell your paintings? How to make effective marketing?', 'a': 'Yes, I do sell my paintings. At this moment, most of my paintings were sold through exhibitions and galleries. For the marketing part, I have to admit that I am learning as well.', 'tags': ['general'], 'id': 1}, {'q': 'Can you give a step-by step process for taking an image to having the finished plot?', 'a': 'I mostly make my images by building generative systems. These systems generate images that can be exported into various formats, such as svg and the plotter-operating script, a process we will cover in detail. Unfortunately the raster-to-vector process is not my expertise, and I highly recommend looking to various plotter community, such as the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['software', 'design'], 'id': 2}, {'q': 'Please provide a list of recommended prerequisites', 'a': 'Passion towards plotters and interests in learning new things!', 'tags': ['preparation', 'general'], 'id': 3}, {'q': 'How do you get so productive?', 'a': "My honest answer is I don't think I am productive. I do have many plotters and I hope to keep them running as much as I can. It does take all of my energy.", 'tags': ['general'], 'id': 4}, {'q': 'Are you in active communities for creative coding and pen plotting?', 'a': 'Yes, I am part of the <a target="_blank" href="https://www.genartclub.com/">Generative Artist Club</a>. I still post to the #plottertwitter community, and I am in the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['general', 'community'], 'id': 5}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 6}, {'q': "What's your opinion on the relationship between code and the media? Is code strongly tied to the media?", 'a': 'My code is definitely strongly tied to the media. Each media has its unique properties and optimal way to be painted. For my work, it is important to take that into consideration. We will discuss this in module 12.', 'tags': ['material'], 'id': 7}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 8}, {'q': 'How do send drawings to g code?', 'a': "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code at this moment.", 'tags': ['software'], 'id': 9}, {'q': 'What suggestions do you have for plotting with pencil?', 'a': "The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I've tried sand paper for pastel, which makes colored pencil leaves much more intense marks.", 'tags': ['material'], 'id': 10}, {'q': 'How to do custom fill and hatching algorithms? ', 'a': "I will go over my go-to fill algorithm in module 5. It's the most basic straight line hatching achieved by polygon boolean operation.", 'tags': ['software'], 'id': 11}]
+  </script>
+  <script>
+   const qaList = document.getElementById('qa-list');
+        const tagFilter = document.getElementById('tag-filter');
+        const expandAllBtn = document.getElementById('expand-all');
+        const collapseAllBtn = document.getElementById('collapse-all');
+
+        // Initialize tag navigation
+        const tags = new Set();
+        qaData.forEach(item => item.tags.forEach(tag => tags.add(tag)));
+        tags.forEach(tag => {
+            const option = document.createElement('option');
+            option.value = tag;
+            option.textContent = tag;
+            tagFilter.appendChild(option);
+        });
+
+        // Render Q&A items
+        function renderQA(filterTag = 'all') {
+            qaList.innerHTML = '';
+            const filteredData = filterTag === 'all'
+                ? qaData
+                : qaData.filter(item => item.tags.includes(filterTag));
+
+            filteredData.sort((a, b) => a.id - b.id).forEach(item => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = item.q;
+
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'answer';
+
+                const answerText = document.createElement('div');
+                answerText.innerHTML = item.a;
+                answerDiv.appendChild(answerText);
+
+                const tagsSpan = document.createElement('span');
+                tagsSpan.className = 'tags';
+                tagsSpan.textContent = `Tags: ${item.tags.join(', ')}`;
+                answerDiv.appendChild(tagsSpan);
+
+                questionDiv.addEventListener('click', () => {
+                    answerDiv.style.display = answerDiv.style.display === 'none' ? 'block' : 'none';
+                });
+
+                qaList.appendChild(questionDiv);
+                qaList.appendChild(answerDiv);
+            });
+        }
+
+        // Event listener for tag filter
+        tagFilter.addEventListener('change', (e) => {
+            renderQA(e.target.value);
+        });
+
+        // Expand All functionality
+        expandAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.answer').forEach(answer => {
+                answer.style.display = 'block';
+            });
+        });
+
+        // Collapse All functionality
+        collapseAllBtn.addEventListener('click', () => {
+            document.querySelectorAll('.answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+        });
+        // Initial render
+        renderQA();
+  </script>
+ </body>
+</html>
