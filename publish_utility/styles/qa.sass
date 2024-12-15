@@ -6,6 +6,14 @@
   font-size: $base-font-size
   display: flex
   flex-direction: row
+  flex-wrap: nowrap
+  *
+    flex-basis: 25%
+  @media (max-width: $breakpoint-tablet)
+    flex-wrap: wrap
+    *
+      font-size: $mobile_font_size
+      flex-basis: 100%
 
 
 select,button

@@ -75,7 +75,7 @@ def make_module_page(original_name,template_loc,template_name,export_name):
 
     '''
     template_soup, content_soup=load_soups(original_name,template_loc+template_name)
-    process_links(template_soup,template_loc)
+    process_links(template_soup,template_loc,level=3)
     container=create_title(template_soup,content_soup)
 
     create_navigation(container)

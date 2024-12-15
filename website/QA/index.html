@@ -515,7 +515,6 @@ h5 {
 .youtube-video-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
   margin: 0 auto;
   padding-bottom: 56.25%;
   height: 0;
@@ -864,6 +863,19 @@ h5 {
   font-size: 1.7vw;
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
+}
+#tag-navigation * {
+  flex-basis: 25%;
+}
+@media (max-width: 1000px) {
+  #tag-navigation {
+    flex-wrap: wrap;
+  }
+  #tag-navigation * {
+    font-size: 5.5vw;
+    flex-basis: 100%;
+  }
 }
 
 select, button {
