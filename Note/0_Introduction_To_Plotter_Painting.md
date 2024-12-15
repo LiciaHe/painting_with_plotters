@@ -40,6 +40,20 @@ How to do that: take the course
 
 
 
+###youtube description
 
 
+Welcome to the very first module of the Painting with Plotters Course! I am thrilled to finally share this course with you. I hope we have a fantastic time together. You will find more information about this course on the [Course Website](https://www.eyesofpanda.com/project/painting_with_plotters/). 
+
+This is an introductory video that goes through the background and basics of this course. The complete information about this module is available at https://www.eyesofpanda.com/project/painting_with_plotters/module_0/
+
+Here are some of the links mentioned in the video:
+
+- [Q&A Page](https://www.eyesofpanda.com/project/painting_with_plotters/QA/)
+- [Google Form to Ask A Question](https://docs.google.com/forms/d/e/1FAIpQLSdAMLVMtuUR2i5G695Mufm0polT8fs-n0bQurwLId-2cLDx7Q/viewform?usp=sharing)
+- [GitHub Repository for this course](https://github.com/LiciaHe/painting_with_plotters)
+- [Newsletter](https://liciahe.substack.com/)
+- Social media: [Instagram](https://www.instagram.com/blahblahpaperblah/), [Twitter/X](https://x.com/Licia_He)
+
+Happy Plotting!
 

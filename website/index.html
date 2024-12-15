@@ -361,15 +361,17 @@ h5 {
   flex-wrap: wrap;
   flex-direction: row;
   border-bottom: 2px solid #01090e;
+  padding-bottom: 1vw;
+  padding-top: 2vw;
 }
 .course-module .module {
-  flex-basis: 25%;
+  flex-basis: 20%;
 }
 .course-module .topic {
-  flex-basis: 35%;
+  flex-basis: 30%;
 }
 .course-module .material {
-  flex-basis: 20%;
+  flex-basis: 30%;
 }
 .course-module .module .topic .material {
   border-bottom: none;
@@ -510,6 +512,26 @@ h5 {
   padding: 0;
 }
 
+.youtube-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.youtube-video-container .youtube_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 /*# sourceMappingURL=main.css.map */
   </style>
  </head>
@@ -531,15 +553,22 @@ h5 {
      <strong>
       Painting With Plotters
      </strong>
-     is a virtual course that introduces Licia He's method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint.
+     is a virtual course that introduces Licia He's method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. Painting with plotters (or other types of robots) requires design efforts from different aspects:
     </p>
-    <p>
-     Painting with plotters (or other types of robots) requires design efforts from different aspects:
-1. the preparation of machines
-2. the selection of material
-3. the making of the design
-4. the machine operation.
-    </p>
+    <ol>
+     <li>
+      the preparation of machines
+     </li>
+     <li>
+      the selection of material
+     </li>
+     <li>
+      the making of the design
+     </li>
+     <li>
+      the machine operation.
+     </li>
+    </ol>
     <p>
      The course aims to provide an in-depth presentation of Licia's research and practice in these aspects. It contains 14 modules. Each module includes video tutorials, notes, and code snippets. Although all course materials are developed for
      <a href="https://axidraw.com/" target="_blank">
@@ -550,6 +579,14 @@ h5 {
       Python
      </a>
      , most of the content could apply to other machines and design environments.
+    </p>
+    <p>
+     <em>
+      <strong>
+       Latest Update:
+      </strong>
+      Module 0 Releases on Dec 15th, 2024.
+     </em>
     </p>
     <p>
      <img class="full-width-img" name="00/00_banner.jpg" src="https://eyesofpandaweb.s3.us-east-2.amazonaws.com/website_public/projects/painting_with_plotters/00/00_banner.jpg"/>
@@ -564,7 +601,7 @@ h5 {
       </a>
      </li>
      <li>
-      <a href="https://www.eyesofpanda.com/project/painting_with_plotters/QA/" target="_blank">
+      <a href="QA/" target="_blank">
        Q&amp;A Page
       </a>
      </li>
@@ -588,7 +625,7 @@ h5 {
       Material
      </h3>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_-1">
      <h3 class="module">
       -1: Painting With Plotters: Special Event at the Victoria and Albert Museum
      </h3>
@@ -605,15 +642,15 @@ h5 {
        !
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_-1">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_0">
      <h3 class="module">
-      0: Introduction to Plotter Painting: A Speed Run
+      0: Introduction
      </h3>
      <ol class="topic">
       <li>
@@ -629,15 +666,15 @@ h5 {
        Course resources and notes.
       </li>
      </ol>
-     <div class="material">
-      <p>
-       Coming Soon
-      </p>
+     <div class="material" id="material_0">
+      <a href="module_0/" target="_blank">
+       <img class="full-width-img" name="0/0_introduction_square.jpg" src="https://eyesofpandaweb.s3.us-east-2.amazonaws.com/website_public/projects/painting_with_plotters/0/0_introduction_square.jpg"/>
+      </a>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_1">
      <h3 class="module">
-      1: Everything You Need For Plotter Painting: Machine, Material, and Safety
+      1: Everything You Need For Plotter Painting: Machine, Material, and Tools
      </h3>
      <ol class="topic">
       <li>
@@ -662,13 +699,13 @@ h5 {
        [Bonus]: Creating 3D models with Python and Blender
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_1">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_2">
      <h3 class="module">
       2: The Plotter Language: How to Talk To A Plotter
      </h3>
@@ -683,13 +720,13 @@ h5 {
        Producing simple images manually using InkScape and Adobe Illustrator
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_2">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_3">
      <h3 class="module">
       3: Developing a Plotter Painting Environment in Python
      </h3>
@@ -707,13 +744,13 @@ h5 {
        Developing a setting and storage management system in Python
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_3">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_4">
      <h3 class="module">
       4: Authoring Plotter Instructions
      </h3>
@@ -731,13 +768,13 @@ h5 {
        Project 1-3
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_4">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_5. Advanced Path Manipulation for Plotter Paintin">
      <h3 class="module">
       5. Advanced Path Manipulation for Plotter Painting
      </h3>
@@ -758,13 +795,13 @@ h5 {
        Project 4-6
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_5. Advanced Path Manipulation for Plotter Paintin">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_6. [Practice] Pen Plotting with Multiple Color">
      <h3 class="module">
       6. [Practice] Pen Plotting with Multiple Colors
      </h3>
@@ -785,13 +822,13 @@ h5 {
        Project 7,8,9
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_6. [Practice] Pen Plotting with Multiple Color">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_7. Preparing Painting Material">
      <h3 class="module">
       7. Preparing Painting Materials
      </h3>
@@ -809,13 +846,13 @@ h5 {
        Safety and tips
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_7. Preparing Painting Material">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_8">
      <h3 class="module">
       8: Logic Behind Plotter Painting Explained
      </h3>
@@ -830,13 +867,13 @@ h5 {
        Manually designing a plotter painting (inkscape)
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_8">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_9">
      <h3 class="module">
       9: Developing A Paint Refill Station
      </h3>
@@ -851,13 +888,13 @@ h5 {
        Project 10,11
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_9">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_10">
      <h3 class="module">
       10: Test Before Making Your First Plotter Painting
      </h3>
@@ -872,13 +909,13 @@ h5 {
        Safety
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_10">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_11">
      <h3 class="module">
       11: [Demo] Putting It Together: From the Ideation to Plot
      </h3>
@@ -890,13 +927,13 @@ h5 {
        Full Demo Project 2: The Expansion Algorithm
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_11">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_12">
      <h3 class="module">
       12: Exploring Different Materials and Techniques
      </h3>
@@ -911,13 +948,13 @@ h5 {
        Other Creative Materials
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_12">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_13">
      <h3 class="module">
       13: Conclusion and Studio Tour
      </h3>
@@ -932,13 +969,13 @@ h5 {
        Additional Resources
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_13">
       <p>
        Coming Soon
       </p>
      </div>
     </div>
-    <div class="course-module">
+    <div class="course-module" id="module_14">
      <h3 class="module">
       14: Bonus Topics (that might be included in the future)
      </h3>
@@ -950,7 +987,7 @@ h5 {
        Building portable gadget for plotters
       </li>
      </ol>
-     <div class="material">
+     <div class="material" id="material_14">
       <p>
        Coming Soon
       </p>
@@ -966,11 +1003,6 @@ h5 {
        newsletter
       </a>
       where I will share my news related to this course directly to your inbox.
-     </li>
-     <li>
-      <a href="https://github.com/LiciaHe/painting_with_plotters" target="_blank">
-       Github Repository for this course
-      </a>
      </li>
      <li>
       My article

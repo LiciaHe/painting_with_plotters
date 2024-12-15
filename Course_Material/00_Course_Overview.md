@@ -5,9 +5,8 @@
 
 ## About this Course 
 
-**Painting With Plotters** is a virtual course that introduces Licia He's method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. 
+**Painting With Plotters** is a virtual course that introduces Licia He's method for making generatively-designed, plotter-rendered paintings using a variety of water-based paint. Painting with plotters (or other types of robots) requires design efforts from different aspects:
 
-Painting with plotters (or other types of robots) requires design efforts from different aspects:
 1. the preparation of machines
 2. the selection of material
 3. the making of the design
@@ -15,12 +14,16 @@ Painting with plotters (or other types of robots) requires design efforts from d
 
 The course aims to provide an in-depth presentation of Licia's research and practice in these aspects. It contains 14 modules. Each module includes video tutorials, notes, and code snippets. Although all course materials are developed for [Axidraw](https://axidraw.com/) and using [Python](https://www.python.org/), most of the content could apply to other machines and design environments.
 
+_**Latest Update:** Module 0 Releases on Dec 15th, 2024._ 
+
 <img name="00/00_banner.jpg" class="full-width-img">
 ## Essential Links:
 
 - [Github Repository for this course](https://github.com/LiciaHe/painting_with_plotters)
-- [Q&A Page](https://www.eyesofpanda.com/project/painting_with_plotters/QA/)
+- [Q&A Page](QA/)
 - [Ask A Question](https://docs.google.com/forms/d/e/1FAIpQLSdAMLVMtuUR2i5G695Mufm0polT8fs-n0bQurwLId-2cLDx7Q/viewform?usp=sharing)
+
+
 
 ## Course Plan
 MODULE START 
@@ -32,6 +35,9 @@ MODULE START
 2. Why did I want to make this course?
 2. What will this course cover?
 4. Course resources and notes. 
+
+<COURSEINFO><a href="module_0/"><img name="0/0_introduction_square.jpg" class="full-width-img"></a></COURSEINFO>
+
 
 ### 1: Everything You Need For Plotter Painting: Machine, Material, and Tools
 1. Equipment needed for plotter painting
@@ -115,8 +121,7 @@ MODULE START
 MODULE END 
 
 ## Additional Resources
-- I have started a [newsletter](https://liciahe.substack.com/) where I will share my news related to this course directly to your inbox. 
-- [Github Repository for this course](https://github.com/LiciaHe/painting_with_plotters)
+- I have started a [newsletter](https://liciahe.substack.com/) where I will share my news related to this course directly to your inbox.
 -  My article [20+ Questions About My Plotter Painting Practice](https://www.eyesofpanda.com/project/plotter_painting_q_a/) covers many of the topics in this course in a brief, written format. 
   - [Question 17](https://www.eyesofpanda.com/project/plotter_painting_q_a/#q17) in this article points to several useful resources for plotter/plotter paintings.
 - More coming soon 

@@ -1,6 +1,7 @@
 import markdown,re
 from markdown import markdown
 from bs4 import BeautifulSoup
+
 from web_md_utils import *
 def load_soups(original_name,template_loc):
     with open(f'{template_loc}.html',"r",encoding="utf-8") as basesf:
@@ -44,14 +45,19 @@ def step_2_create_table(container, module,template_soup):
     container.append(header_text)
     #work on module
     current_div=None
+    resource_div=None
     for tag in module:
         if tag.name in ["h3"]:
             #start a div
+            current_module_id=tag.string[:tag.string.find(":")]
             current_div=create_and_append_tag(
                 template_soup,
                 container,
                 "div",
-                {"class":"course-module"}
+                {
+                    "class":"course-module",
+                    "id":f'module_{current_module_id}'
+                }
             )
             #append content of the div
             applyAttrs(tag, {"class": "module"})
@@ -61,21 +67,39 @@ def step_2_create_table(container, module,template_soup):
         elif tag.name =='ol':
             applyAttrs(tag,{"class":"topic"})
             current_div.append(tag)
-            #append closing div
-            resource=create_and_append_tag(
-                template_soup,
-                current_div,
-                "div",
-                {"class": "material"}
+            resource_div = create_and_append_tag(
+                    template_soup,
+                    current_div,
+                    "div",
+                    {"class": "material",
+                     "id":f'material_{current_module_id}'
+                     }
             )
-            place_holder=create_and_append_tag(
-                template_soup,
-                resource,
-                "p",
-                {}
+            material_place_holder = create_and_append_tag(
+                    template_soup,
+                    resource_div,
+                    "p",
+                    {}
             )
-            # print(place_holder)
-            place_holder.string="Coming Soon"
+            material_place_holder.string = "Coming Soon"
+        elif "courseinfo" in str(tag):
+            resource_div=template_soup.find(id=f'material_{current_module_id}')
+            resource_div.clear()
+            tags_within_info=list(tag.children)[0].children
+            for c in tags_within_info:
+                resource_div.append(c)
+            # print(list())
+            # resource_div.append(tag.children)
+
+    # #append course info
+    # if "courseinfo" in str(module):
+    #     # print()
+    #     course_info=module.find("courseinfo")
+    #     resource_div.clear()
+    #     resource_div.append(course_info)
+    #     print(resource_div,course_info)
+
+
 
 def process_images(template_soup):
     # produce images

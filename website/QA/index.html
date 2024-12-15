@@ -9,7 +9,7 @@
   <style>
    @font-face {
   font-family: "straightlineregular";
-  src: url('../Straightline_full.woff') format('woff');
+  src: url('../../../Straightline_full.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -361,15 +361,17 @@ h5 {
   flex-wrap: wrap;
   flex-direction: row;
   border-bottom: 2px solid #01090e;
+  padding-bottom: 1vw;
+  padding-top: 2vw;
 }
 .course-module .module {
-  flex-basis: 25%;
+  flex-basis: 20%;
 }
 .course-module .topic {
-  flex-basis: 35%;
+  flex-basis: 30%;
 }
 .course-module .material {
-  flex-basis: 20%;
+  flex-basis: 30%;
 }
 .course-module .module .topic .material {
   border-bottom: none;
@@ -508,6 +510,26 @@ h5 {
 }
 .left_column .description a {
   padding: 0;
+}
+
+.youtube-video-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.youtube-video-container .youtube_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /*# sourceMappingURL=main.css.map */
@@ -959,7 +981,7 @@ select, button {
    </div>
   </div>
   <script>
-   const qaData=[{'q': 'Can we have a studio tour?', 'a': 'Yes. There will be a virtual studio towards the end of the course, currently scheduled in module 13.', 'tags': ['general'], 'id': 0}, {'q': 'Where to sell your paintings? How to make effective marketing?', 'a': 'Yes, I do sell my paintings. At this moment, most of my paintings were sold through exhibitions and galleries. For the marketing part, I have to admit that I am learning as well.', 'tags': ['general'], 'id': 1}, {'q': 'Can you give a step-by step process for taking an image to having the finished plot?', 'a': 'I mostly make my images by building generative systems. These systems generate images that can be exported into various formats, such as svg and the plotter-operating script, a process we will cover in detail. Unfortunately the raster-to-vector process is not my expertise, and I highly recommend looking to various plotter community, such as the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['software', 'design'], 'id': 2}, {'q': 'Please provide a list of recommended prerequisites', 'a': 'Passion towards plotters and interests in learning new things!', 'tags': ['preparation', 'general'], 'id': 3}, {'q': 'How do you get so productive?', 'a': "My honest answer is I don't think I am productive. I do have many plotters and I hope to keep them running as much as I can. It does take all of my energy.", 'tags': ['general'], 'id': 4}, {'q': 'Are you in active communities for creative coding and pen plotting?', 'a': 'Yes, I am part of the <a target="_blank" href="https://www.genartclub.com/">Generative Artist Club</a>. I still post to the #plottertwitter community, and I am in the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['general', 'community'], 'id': 5}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 6}, {'q': "What's your opinion on the relationship between code and the media? Is code strongly tied to the media?", 'a': 'My code is definitely strongly tied to the media. Each media has its unique properties and optimal way to be painted. For my work, it is important to take that into consideration. We will discuss this in module 12.', 'tags': ['material'], 'id': 7}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 8}, {'q': 'How do send drawings to g code?', 'a': "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code at this moment.", 'tags': ['software'], 'id': 9}, {'q': 'What suggestions do you have for plotting with pencil?', 'a': "The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I've tried sand paper for pastel, which makes colored pencil leaves much more intense marks.", 'tags': ['material'], 'id': 10}, {'q': 'How to do custom fill and hatching algorithms? ', 'a': "I will go over my go-to fill algorithm in module 5. It's the most basic straight line hatching achieved by polygon boolean operation.", 'tags': ['software'], 'id': 11}]
+   const qaData=[{'q': 'Can we have a studio tour?', 'a': 'Yes. There will be a virtual studio towards the end of the course, currently scheduled in module 13.', 'tags': ['general'], 'id': 0}, {'q': 'Where to sell your paintings? How to make effective marketing?', 'a': 'Yes, I do sell my paintings. At this moment, most of my paintings were sold through exhibitions and galleries. For the marketing part, I have to admit that I am learning as well.', 'tags': ['general'], 'id': 1}, {'q': 'Can you give a step-by step process for taking an image to having the finished plot?', 'a': 'I mostly make my images by building generative systems. These systems generate images that can be exported into various formats, such as svg and the plotter-operating script, a process we will cover in detail. Unfortunately the raster-to-vector process is not my expertise, and I highly recommend looking to various plotter community, such as the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['software', 'design'], 'id': 2}, {'q': 'Please provide a list of recommended prerequisites', 'a': 'Passion towards plotters and interests in learning new things!', 'tags': ['preparation', 'general'], 'id': 3}, {'q': 'How do you get so productive?', 'a': "My honest answer is I don't think I am productive. I do have many plotters and I hope to keep them running as much as I can. It does take all of my energy.", 'tags': ['general'], 'id': 4}, {'q': 'Are you in active communities for creative coding and pen plotting?', 'a': 'Yes, I am part of the <a target="_blank" href="https://www.genartclub.com/">Generative Artist Club</a>. I still post to the #plottertwitter community, and I am in the <a target="_blank" href="https://discord.com/invite/XHP3dBg">DrawingBot discord</a>.', 'tags': ['general', 'community'], 'id': 5}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 6}, {'q': "What's your opinion on the relationship between code and the media? Is code strongly tied to the media?", 'a': 'My code is definitely strongly tied to the media. Each media has its unique properties and optimal way to be painted. For my work, it is important to take that into consideration. We will discuss this in module 12.', 'tags': ['material'], 'id': 7}, {'q': 'How do you avoid or deal with misprints?', 'a': "I don't think it's possible to avoid misprints. My plotting process is filled surprises and it's impossible to be happy with everything. I currently don't do anything to the misprints. I keep them and maybe find ways to use them another way. I've seen some artists cut them up and use them as name cards or postcards.", 'tags': ['material', 'post-processing'], 'id': 8}, {'q': 'How do send drawings to g code?', 'a': "The plotter I use (Axidraw/NextDraw) is operated in Python. Therefore I won't be able to go over the generation and conversion of g-code at this moment.", 'tags': ['software'], 'id': 9}, {'q': 'What suggestions do you have for plotting with pencil?', 'a': 'The most challenging part I found with plotting using the pencil is the amount of pressure you need. A common solution is to add weight to the pen. Axidraw provides several ways do so, especially with the brushless servo motor upgrade. Another method I have explored is using sand-textured paper. I\'ve tried sand paper for pastel, which makes colored pencil leaves much more intense marks.<br> Another challenging point is to adjust the z-axis to compensate the loss of pencil length during the plotting process. I currently don\'t have a great solution. I recommend checking out the work of <a target="_blank" href="https://www.coryhaber.com/">Cory Haber</a>, who has implemented a mechanism that works for oil sticks. ', 'tags': ['material'], 'id': 10}, {'q': 'How to do custom fill and hatching algorithms? ', 'a': "I will go over my go-to fill algorithm in module 5. It's the most basic straight line hatching achieved by polygon boolean operation.", 'tags': ['software'], 'id': 11}]
   </script>
   <script>
    const qaList = document.getElementById('qa-list');
@@ -1001,8 +1023,9 @@ select, button {
                 tagsSpan.textContent = `Tags: ${item.tags.join(', ')}`;
                 answerDiv.appendChild(tagsSpan);
 
-                questionDiv.addEventListener('click', () => {
-                    answerDiv.style.display = answerDiv.style.display === 'none' ? 'block' : 'none';
+                 questionDiv.addEventListener('click', function toggleAnswer() {
+                    const isHidden = answerDiv.style.display === 'none' || !answerDiv.style.display;
+                    answerDiv.style.display = isHidden ? 'block' : 'none';
                 });
 
                 qaList.appendChild(questionDiv);

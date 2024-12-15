@@ -81,8 +81,9 @@
                 tagsSpan.textContent = `Tags: ${item.tags.join(', ')}`;
                 answerDiv.appendChild(tagsSpan);
 
-                questionDiv.addEventListener('click', () => {
-                    answerDiv.style.display = answerDiv.style.display === 'none' ? 'block' : 'none';
+                 questionDiv.addEventListener('click', function toggleAnswer() {
+                    const isHidden = answerDiv.style.display === 'none' || !answerDiv.style.display;
+                    answerDiv.style.display = isHidden ? 'block' : 'none';
                 });
 
                 qaList.appendChild(questionDiv);
