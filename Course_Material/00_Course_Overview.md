@@ -48,7 +48,7 @@ MODULE START
 6. Stretching watercolor paper
 7. [Bonus]: Creating 3D models with Python and Blender
 
-<COURSEINFO><a href="module_1/"><img name="1/1_machines_square.jpg" class="full-width-img"></a></COURSEINFO>
+<COURSEINFO><a href="module_1/"><img name="1/1_1_machines_square.jpg" class="full-width-img"></a></COURSEINFO>
 
 
 ### 2: The Plotter Language: How to Talk To A Plotter

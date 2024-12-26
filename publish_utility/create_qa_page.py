@@ -41,7 +41,6 @@ template_file=f'{template_loc}QA_template.html'
 data=load_all_qa()
 soup=load_template(data)
 process_links(soup,template_loc,level=3)
-print(soup)
 
 export_loc="../website/QA/"
 export_name="index"

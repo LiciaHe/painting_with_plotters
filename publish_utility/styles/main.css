@@ -363,6 +363,7 @@ h5 {
 }
 .course-module .material {
   flex-basis: 30%;
+  justify-content: center;
 }
 .course-module .module .topic .material {
   border-bottom: none;
