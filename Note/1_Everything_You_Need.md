@@ -57,3 +57,15 @@ Other things
    3. USB stick to transport information 
 2. 3D printer
 
+hanging 
+https://scribit.design/
+http://www.makelangelo.com/
+
+flat
+https://axidraw.com/
+https://idrawpenplotter.com/
+
+slanted
+https://commons.wikimedia.org/wiki/File:My_drawing_-_Brighton_Mini_Maker_Fair_2011.jpg
+
+https://shop.evilmadscientist.com/about

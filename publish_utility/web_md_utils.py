@@ -24,8 +24,16 @@ def create_and_append_tag(soup,parent,name,attr):
 
 def process_hrefs(template_soup):
     a_coll=template_soup.findAll("a")
+    pattern = r"!Q_(\d+)!"
+    qa_loc="https://www.eyesofpanda.com/project/painting_with_plotters/QA/"
     for a in a_coll:
         a.attrs["target"]="_blank"
+        link=a.attrs["href"]
+        match = re.search(pattern, link)
+        if match:
+            numbers = int(match.group(1))
+            new_loc=f'{qa_loc}#Q_{numbers}'
+            a.attrs["href"]=new_loc
 
 
 def convert_md_to_html(md_text):

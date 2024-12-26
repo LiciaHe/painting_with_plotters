@@ -107,11 +107,11 @@ debug=False
 default_nav='<h2 class="author">Part of  <a href="https://www.eyesofpanda.com/project/painting_with_plotters/" target="_blank">The Painting with Plotters Course</a> by <a href="http://eyesofpanda.com" target="_blank">Licia He</a></h2>'
 
 
-export_loc=f'{export_loc}module_0/'
+export_loc=f'{export_loc}module_1/'
 mkdir(export_loc)
 
 make_module_page(
-    "0_Introduction",
+    "1_Machines_Materials_Tools",
     template_loc,
     template_name,
     "index"

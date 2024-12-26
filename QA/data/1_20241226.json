@@ -1,0 +1,7 @@
+[
+  {
+    "q": "How much z-axis space do you need? Is 10 mm enough?",
+    "a": "How much you need exactly depends on 1) the depth of the tray and 2) whether you want to reach the bottom of the tray. If you don't need to reach the bottom of the ink tray (e.g., with ink) or use a shallow ink tray, then a small z-axis space might work. But if you have a deep tray and need to stir the paint (e.g., with watercolor), you need to reach the bottom of your tray. So, if your ink tray is 15mm in depth, you would need a z-travel distance larger than 15mm. You want to leave some margin for error. As a reference, the z-axis travel space for AxiDraw/NextDraw is roughly 17mm. More discussion about this in [Module 1](https://www.eyesofpanda.com/project/painting_with_plotters/module_1/)",
+    "tags": ["machine","module 1"]
+  }
+]

@@ -12,9 +12,9 @@
 3. the making of the design
 4. the machine operation. 
 
-The course aims to provide an in-depth presentation of Licia's research and practice in these aspects. It contains 14 modules. Each module includes video tutorials, notes, and code snippets. Although all course materials are developed for [Axidraw](https://axidraw.com/) and using [Python](https://www.python.org/), most of the content could apply to other machines and design environments.
+The course aims to provide an in-depth presentation of Licia's research and practice in these aspects. It contains 14 modules. Each module includes video tutorials, notes, and code snippets. Although all course materials are developed for [AxiDraw](https://axidraw.com/) and using [Python](https://www.python.org/), most of the content could apply to other machines and design environments.
 
-_**Latest Update:** Module 0 Releases on Dec 15th, 2024._ 
+_**Latest Update:** Module 1 Part 1 Releases on Dec 26th, 2024._ 
 
 <img name="00/00_banner.jpg" class="full-width-img">
 ## Essential Links:
@@ -48,9 +48,12 @@ MODULE START
 6. Stretching watercolor paper
 7. [Bonus]: Creating 3D models with Python and Blender
 
+<COURSEINFO><a href="module_1/"><img name="1/1_machines_square.jpg" class="full-width-img"></a></COURSEINFO>
+
+
 ### 2: The Plotter Language: How to Talk To A Plotter
 1. What can a plotter do 
-2. Two ways (Svg, Python Script) to communicate with Axidraws
+2. Two ways (Svg, Python Script) to communicate with AxiDraws
 3. Producing simple images manually using InkScape and Adobe Illustrator
 
 ### 3: Developing a Plotter Painting Environment in Python 
@@ -62,7 +65,7 @@ MODULE START
 ### 4: Authoring Plotter Instructions
 1. Developing a SVG-authoring tool
 2. Drawing simple geometries (lines, rectangles, uniform polygons)
-3. Authoring Python-based Axidraw instructions (direct authoring, resume,registration function)
+3. Authoring Python-based AxiDraw instructions (direct authoring, resume,registration function)
 4. Project 1-3
 
 ### 5. Advanced Path Manipulation for Plotter Painting
@@ -117,6 +120,7 @@ MODULE START
 ### 14: Bonus Topics (that might be included in the future)
 1. Preserving and Processing Plotted Works
 2. Building portable gadget for plotters
+3. Controlling multiple plotters with raspberry pi
 
 MODULE END 
 
